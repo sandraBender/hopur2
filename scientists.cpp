@@ -22,3 +22,28 @@ ostream& operator <<(ostream& outs, vector<Scientists> p)
     //}
     return outs;
 }
+
+string Scientists::getName()
+{
+    return name;
+}
+
+string Scientists::getGender()
+{
+    return gender;
+}
+
+string Scientists::getAge()
+{
+    return age;
+}
+
+string Scientists::getYearOfBirth()
+{
+    return yearOfBirth;
+}
+
+string Scientists::getYearOfDeath()
+{
+    return yearOfDeath;
+}

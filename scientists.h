@@ -19,6 +19,11 @@ class Scientists {
         void getAlignment(); //
         friend ostream& operator <<(ostream& outs, const Scientists& p);
 
+        string getName();
+        string getGender();
+        string getAge();
+        string getYearOfBirth();
+        string getYearOfDeath();
     private:
         string name;
         string gender;
