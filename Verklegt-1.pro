@@ -11,9 +11,10 @@ SOURCES += main.cpp \
     scientists.cpp \
     information.cpp \
     sort.cpp
+    database.cpp
 
 HEADERS += \
     scientists.h \
     information.h \
     sort.h
-    sort.h
+    database.h
