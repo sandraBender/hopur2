@@ -15,7 +15,10 @@ int main()
 
     vector<Scientists> SClist;
 
+    //readScientists(SClist);
+
     readScientists(SClist);
+
 
    return 0;
 }

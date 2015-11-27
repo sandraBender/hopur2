@@ -6,6 +6,7 @@ Sort::Sort()
 }
 
 void Sort::sortByName(vector<Scientists> a, string s)
+
 {
     string j, x;
 
