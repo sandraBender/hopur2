@@ -7,13 +7,13 @@ class Sort
     public:
          Sort();
          ~Sort();
-         vector<Scientists> sortByName(vector<Scientists> v);
+         vector<Scientists> sortByName(vector<Scientists>& a, string s);
          vector<Scientists> sortByAge(vector<Scientists> v);
          vector<Scientists> sortByGender(vector<Scientists> v);
          vector<Scientists> sortByDateOfBirth(vector<Scientists> v);
          vector<Scientists> sortByDateOfDeath(vector<Scientists> v);
     private:
-        vector<Scientists> vec;
+        //vector<Scientists> vec;
 };
 
 #endif // SORT_H

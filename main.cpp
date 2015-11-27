@@ -14,13 +14,7 @@ int main()
 
     vector<Scientists> SClist;
 
-<<<<<<< HEAD
-    //readScientists(SClist);
-=======
-
-
     readScientists(SClist);
->>>>>>> 7139692885c3ecd9a6a7643bc1a61abc8741cb99
 
    return 0;
 }
