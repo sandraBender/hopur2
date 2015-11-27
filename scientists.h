@@ -1,24 +1,23 @@
 #ifndef SCIENTISTS
 #define SCIENTISTS
 
-
-
 #include <iostream>
 #include <string>
-#include "StringNode.h"
+#include <vector>
 
 using namespace std;
 
-
 class Scientists {
     public:
-        Person();
-        ~Person();
-        void insert(const string& name);
+        Scientists();
+        ~Scientists();
+        void insert(const vector<Scientists>& p, string name);
         friend ostream& operator <<(ostream& outs, const Scientists& p);
+
     private:
         string name;
-        char sex;
+        char gender;
+        int age;
         int dateOfBirth;
         int dateOfDeath;
 };
