@@ -6,11 +6,10 @@ Sort::Sort()
 }
 
 void Sort::sortByName(vector<Scientists> a, string s)
-
 {
     string j, x;
 
-    for (size_t index = 1; index < vec.size(); index++) {
+    for (size_t index = 1; index < a.size(); index++) {
         x = a[index].name;
         j = index;
         while (j > 0 && a[j-1].name > x) {
@@ -22,11 +21,11 @@ void Sort::sortByName(vector<Scientists> a, string s)
     displayArray(a);
 }
 
-void sortByAge(vector<Scientists> a, string s)
+void Sort::sortByAge(vector<Scientists> a, string s)
 {
     string j, x;
 
-    for (size_t index = 1; index < vec.size(); index++) {
+    for (size_t index = 1; index < a.size(); index++) {
         x = a[index].age;
         j = index;
         while (j > 0 && a[j-1].age > x) {
@@ -38,11 +37,11 @@ void sortByAge(vector<Scientists> a, string s)
     displayArray(a);
 }
 
-void sortByGender(vector<Scientists> a, string s)
+void Sort::sortByGender(vector<Scientists> a, string s)
 {
     string j, x;
 
-    for (size_t index = 1; index < vec.size(); index++) {
+    for (size_t index = 1; index < a.size(); index++) {
         x = a[index].gender;
         j = index;
         while (j > 0 && a[j-1].gender > x) {
@@ -54,11 +53,11 @@ void sortByGender(vector<Scientists> a, string s)
     displayArray(a);
 }
 
-void sortByDateOfBirth(vector<Scientists> a, string s)
+void Sort::sortByDateOfBirth(vector<Scientists> a, string s)
 {
     string j, x;
 
-    for (size_t index = 1; index < vec.size(); index++) {
+    for (size_t index = 1; index < a.size(); index++) {
         x = a[index].dateOfBirth;
         j = index;
         while (j > 0 && a[j-1].dateOfBirth > x) {
@@ -70,11 +69,11 @@ void sortByDateOfBirth(vector<Scientists> a, string s)
     displayArray(a);
 }
 
-void sortByDateOfDeath(vector<Scientists> a, string s)
+void Sort::sortByDateOfDeath(vector<Scientists> a, string s)
 {
     string j, x;
 
-    for (size_t index = 1; index < vec.size(); index++) {
+    for (size_t index = 1; index < a.size(); index++) {
         x = a[index].dateOfDeath;
         j = index;
         while (j > 0 && a[j-1].dateOfDeath > x) {
@@ -86,7 +85,7 @@ void sortByDateOfDeath(vector<Scientists> a, string s)
     displayArray(a);
 }
 
-void Sort::displayArray(const vector<Scientists> a)
+void Sort::displayVector(const vector<Scientists> a)
 {
     for (size_t i = 0; i < a.size(); i++) {
         cout << "Name: " << a[i].name << " Age: " << a[i].age << "Gender: " << a[i].gender << " Date of birth: " << a[i].dateOfBirth << " Date of death: " << a[i].dateOfDeath;
