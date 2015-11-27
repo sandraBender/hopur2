@@ -5,7 +5,8 @@ Sort::Sort()
 
 }
 
-vector<Scientists> Sort::sortVector(vector<Scientists> vec, string s)
+/*vector<Scientists> Sort::sortVector(vector<Scientists> vec, string s)
 {
 
 }
+*/

@@ -6,8 +6,11 @@ class Information
 {
 public:
     Information();
-    void displayOpening();
-    void instructions();
+    void displayOpening(); // This prints out the opening display
+    void instructions();  // This prints out the instuctions
+    void choices();
+    void choiceChange();
+    void choiceSort();
 };
 
 #endif // INFORMATION_H
