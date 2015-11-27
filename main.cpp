@@ -1,20 +1,20 @@
-#include <QCoreApplication>
 #include <fstream>
+#include <iostream>
 #include "scientists.h"
 #include <vector>
+using namespace std;
 
 void readScientists(vector<Scientists> vec);
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-   // freopen("input.txt", "r", stdin);
 
+    cout << "Hello world!";
     vector<Scientists> SClist;
 
     readScientists(SClist);
 
-    return a.exec();
+   return 0;
 }
 
 void readScientists(vector<Scientists> vec)
