@@ -11,9 +11,6 @@ class Scientists {
     public:
         Scientists();
         ~Scientists();
-        void sortByName();
-        void sortByPerson();
-        void sortBySex();
         void search();
         void display();
         void getFile();
@@ -24,10 +21,10 @@ class Scientists {
 
     private:
         string name;
-        char gender;
-        int age;
-        int dateOfBirth;
-        int dateOfDeath;
+        string gender;
+        string age;
+        string yearOfBirth;
+        string yearOfDeath;
 };
 
 
