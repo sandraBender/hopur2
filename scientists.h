@@ -11,7 +11,15 @@ class Scientists {
     public:
         Scientists();
         ~Scientists();
-        void insert(const vector<Scientists>& p, string name);
+        void sortByName();
+        void sortByPerson();
+        void sortBySex();
+        void search();
+        void display();
+        void getFile();
+        void inputFile();
+        void checkIfExists();
+        void getAlignment(); //
         friend ostream& operator <<(ostream& outs, const Scientists& p);
 
     private:
