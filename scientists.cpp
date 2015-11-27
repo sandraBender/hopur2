@@ -3,10 +3,10 @@
 Scientists::Scientists()
 {
     name = "";
-    gender = ' ';
-    age = 0;
-    dateOfBirth = 0;
-    dateOfDeath = 0;
+    gender = "";
+    age = "";
+    yearOfBirth = "";
+    yearOfDeath = "";
 }
 
 Scientists::~Scientists()
