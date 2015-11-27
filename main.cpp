@@ -2,17 +2,19 @@
 #include <iostream>
 #include "scientists.h"
 #include <vector>
+#include "information.h"
 using namespace std;
 
 void readScientists(vector<Scientists> vec);
 
 int main()
 {
+    //information info;
+    //info.displayOpening();
 
-    cout << "Hello world!";
     vector<Scientists> SClist;
 
-    readScientists(SClist);
+    //readScientists(SClist);
 
    return 0;
 }
