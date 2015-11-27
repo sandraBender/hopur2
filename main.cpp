@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include "scientists.h"
+#include "database.h"
 #include <vector>
 using namespace std;
 
