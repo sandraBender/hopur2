@@ -17,8 +17,8 @@ void Sort::sortByName(vector<Scientists> a, string s)
             j = j-1;
             a[j].name = x;
         }
-        displayArray(a);
     }
+    displayArray(a);
 }
 
 void sortByAge(vector<Scientists> a, string s)
@@ -33,8 +33,8 @@ void sortByAge(vector<Scientists> a, string s)
             j = j-1;
             a[j].age = x;
         }
-        displayArray(a);
     }
+    displayArray(a);
 }
 
 void sortByGender(vector<Scientists> a, string s)
@@ -49,8 +49,8 @@ void sortByGender(vector<Scientists> a, string s)
             j = j-1;
             a[j].gender = x;
         }
-        displayArray(a);
     }
+    displayArray(a);
 }
 
 void sortByDateOfBirth(vector<Scientists> a, string s)
@@ -65,8 +65,8 @@ void sortByDateOfBirth(vector<Scientists> a, string s)
             j = j-1;
             a[j].dateOfBirth = x;
         }
-        displayArray(a);
     }
+    displayArray(a);
 }
 
 void sortByDateOfDeath(vector<Scientists> a, string s)
@@ -81,8 +81,8 @@ void sortByDateOfDeath(vector<Scientists> a, string s)
             j = j-1;
             a[j].dateOfDeath = x;
         }
-        displayArray(a);
     }
+    displayArray(a);
 }
 
 void Sort::displayArray(const vector<Scientists> a)

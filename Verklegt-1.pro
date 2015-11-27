@@ -9,7 +9,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     scientists.cpp \
-<<<<<<< HEAD
+<<<<<<< HEAD \
+    sort.cpp \
+    database.cpp
     database.cpp
 
 HEADERS += \
