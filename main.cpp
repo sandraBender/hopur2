@@ -10,8 +10,9 @@ void readScientists(vector<Scientists> vec);
 
 int main()
 {
-    //information info;
-    //info.displayOpening();
+    Information info;
+    info.displayOpening();
+    info.instructions();
 
     vector<Scientists> SClist;
 

@@ -10,7 +10,8 @@ TEMPLATE = app
 SOURCES += main.cpp \
     scientists.cpp \
     sort.cpp \
-    database.cpp
+    database.cpp \
+    information.cpp
     information.cpp
     search.cpp
 

@@ -9,7 +9,8 @@ Information::Information()
 void Information::displayOpening(){
     cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
          << "- - - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - - " << endl
-         << "In this program you can add, change or rearrange computer scientists" << endl;
+         << "In this program you can add, change or rearrange computer scientists" << endl
+         << endl;
 }
 void Information::instructions(){
     cout << "What do you want to do? " << endl
@@ -49,4 +50,3 @@ void Information::choiceSort(){
          << "press 4 year order descending " << endl
          << "press 5 if you want to arrange by sex" << endl;
 }
-
