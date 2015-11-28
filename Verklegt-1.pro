@@ -11,6 +11,8 @@ SOURCES += main.cpp \
     scientists.cpp \
     sort.cpp \
     database.cpp
+    information.cpp
+
 
 HEADERS += \
     scientists.h \
