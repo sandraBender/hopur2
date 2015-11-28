@@ -12,6 +12,7 @@ public:
     void choiceChange();
     void choiceSort();
     void addDeleCha();
+    void order();
 };
 
 #endif // INFORMATION_H
