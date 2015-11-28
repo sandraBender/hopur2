@@ -50,3 +50,22 @@ void Information::choiceSort(){
          << "press 4 year order descending " << endl
          << "press 5 if you want to arrange by sex" << endl;
 }
+void addDeleCha(){
+    int number;
+    cin >> number;
+    switch (number) {
+    case 1:
+        //kalla á sort fallið
+        break;
+    case 2:
+        //kalla á sort fallið
+        break;
+    case 3:
+        //kalla á sort fallið
+        break;
+    default:
+       cout << "This is invalid choice! " << endl;
+       addDeleCha();
+        break;
+    }
+}
