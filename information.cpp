@@ -7,12 +7,15 @@ Information::Information()
 
 }
 void Information::displayOpening(){
-        cout << "Welcome to the amazing program!" << endl;
+    cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
+         << "- - - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - - " << endl
+         << "In this program you can add, change or rearrange computer scientists" << endl;
 }
 void Information::instructions(){
     cout << "What do you want to do? " << endl
-         << "If you press 1 you can make changes to the list " << endl
-         << "If you press 2 you can see the list " << endl;
+         << "Press 1 and you can make changes to the list " << endl
+         << "Press 2 and you can see the list " << endl;
+    choices();
 }
 void Information::choices(){
     int number;
