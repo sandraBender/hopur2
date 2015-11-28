@@ -1,5 +1,14 @@
 #include "scientists.h"
 
+Scientists::Scientists(string nAme, string gEnder, string aGe, string yOb, string yOd)
+{
+    name = nAme;
+    gender = gEnder;
+    age = aGe;
+    yearOfBirth = yOb;
+    yearOfDeath = yOd;
+}
+
 Scientists::Scientists()
 {
     name = "";
@@ -7,11 +16,6 @@ Scientists::Scientists()
     age = "";
     yearOfBirth = "";
     yearOfDeath = "";
-}
-
-Scientists::~Scientists()
-{
-
 }
 
 ostream& operator <<(ostream& outs, vector<Scientists> p)

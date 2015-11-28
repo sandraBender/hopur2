@@ -9,8 +9,8 @@ using namespace std;
 
 class Scientists {
     public:
+        Scientists(string nAme, string gEnder, string aGe, string yOb, string yOd);
         Scientists();
-        ~Scientists();
         void search();
         void display();
         void getFile();
