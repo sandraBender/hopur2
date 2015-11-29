@@ -15,6 +15,7 @@ public:
     void choiceSearch();
     void order();
     void search();
+    void addScientist();
 };
 
 #endif // INFORMATION_H

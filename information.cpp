@@ -1,5 +1,6 @@
 #include "information.h"
 #include <iostream>
+#include "scientist.h"
 using namespace std;
 
 Information::Information()
@@ -142,4 +143,36 @@ void Information::search(){
     default:
         break;
     }
+}
+
+void Information::addScientist(){
+    string tempYod, tempName, tempAge, tempYob, tempGender;
+    string alive = "x";
+    string veryalive = "X";
+
+
+    Scientist temp;
+    cout << "Enter information about the computer scientist whom you wish to add" << endl;
+    cout << "If he/she is still alive put in ‘x’ in 'Year of death'";
+
+    cout << "Name: ";
+    getline(cin, tempName);
+
+    cout << "Year of birth";
+    cin >> tempYob;
+
+    cout << "Year of death";
+    cin >> tempYod;
+        if(tempYod == alive || tempYod == veryalive)
+            tempYod = "Alive";
+
+    cout << "Gender: ";
+    cin >> tempGender;
+
+    cout << "Age: ";
+    cin >> tempAge;
+
+    temp.getScientist(tempName, tempAge, tempYob, tempYod, tempGender);
+
+    //Service.addScientist(temp);
 }

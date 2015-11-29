@@ -1,6 +1,6 @@
 #include "Scientist.h"
 
-Scientist::Scientist(string n, string g, string a, string b, string d)
+void Scientist::getScientist(string n, string g, string a, string b, string d)
 {
     name = n;
     gender = g;
@@ -48,3 +48,5 @@ string Scientist::getYod()
 {
     return yearOfDeath;
 }
+
+
