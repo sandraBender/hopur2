@@ -1,6 +1,6 @@
 #include "Scientist.h"
 
-void Scientist::setScientist(string n, string g, string a, string b, string d)
+void Scientist::setScientist(string n, string a, string b, string d, string g)
 {
     name = n;
     gender = g;
@@ -18,16 +18,7 @@ Scientist::Scientist()
     yearOfDeath = "";
 }
 
-ostream& operator << (ostream& outs, Scientist& sci)
-{
-    outs << "Name: " << sci.getName() << endl;
-    outs << "Year of birth: " << sci.getYob() << endl;
-    outs << "Year of death: " << sci.getYod() << endl;
-    outs << "Gender: " << sci.getGender() << endl;
-    outs << "Age: " << sci.getAge() << endl;
 
-    return outs;
-}
 
 string Scientist::getName()
 {

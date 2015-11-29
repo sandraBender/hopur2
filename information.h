@@ -2,6 +2,8 @@
 #define INFORMATION_H
 #include "scientist.h"
 #include "service.h"
+#include <string>
+#include <iostream>
 
 
 class Information
@@ -17,8 +19,8 @@ public:
     void choiceSearch();
     void order();
     void search();
-    void addScientist();
-    void displayScientist(int num);
+    void addScientist(Service& serv);
+    void displayScientist(int num, Service serv);
 };
 
 #endif // INFORMATION_H
