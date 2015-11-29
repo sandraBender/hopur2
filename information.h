@@ -1,5 +1,7 @@
 #ifndef INFORMATION_H
 #define INFORMATION_H
+#include "scientist.h"
+#include "service.h"
 
 
 class Information
@@ -16,6 +18,7 @@ public:
     void order();
     void search();
     void addScientist();
+    void displayScientist(int num);
 };
 
 #endif // INFORMATION_H

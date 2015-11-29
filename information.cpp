@@ -1,6 +1,5 @@
 #include "information.h"
 #include <iostream>
-#include "scientist.h"
 using namespace std;
 
 Information::Information()
@@ -153,15 +152,15 @@ void Information::addScientist(){
 
     Scientist temp;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
-    cout << "If he/she is still alive put in ‘x’ in 'Year of death'";
+    cout << "If he/she is still alive put in ‘x’ in 'Year of death'" << endl;
 
     cout << "Name: ";
     getline(cin, tempName);
 
-    cout << "Year of birth";
+    cout << "Year of birth: ";
     cin >> tempYob;
 
-    cout << "Year of death";
+    cout << "Year of death: ";
     cin >> tempYod;
         if(tempYod == alive || tempYod == veryalive)
             tempYod = "Alive";
@@ -172,7 +171,15 @@ void Information::addScientist(){
     cout << "Age: ";
     cin >> tempAge;
 
-    temp.getScientist(tempName, tempAge, tempYob, tempYod, tempGender);
+    temp.setScientist(tempName, tempAge, tempYob, tempYod, tempGender);
 
-    //Service.addScientist(temp);
+    Service serv;
+    serv.addScientist(temp);
 }
+
+void displayScientist(int num){
+    Service serv;
+    cout << serv.getScientist(num);
+}
+
+

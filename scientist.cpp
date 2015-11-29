@@ -1,6 +1,6 @@
 #include "Scientist.h"
 
-void Scientist::getScientist(string n, string g, string a, string b, string d)
+void Scientist::setScientist(string n, string g, string a, string b, string d)
 {
     name = n;
     gender = g;
@@ -18,8 +18,13 @@ Scientist::Scientist()
     yearOfDeath = "";
 }
 
-ostream& operator <<(ostream& outs, vector<Scientist> p)
+ostream& operator << (ostream& outs, Scientist& sci)
 {
+    outs << "Name: " << sci.getName() << endl;
+    outs << "Year of birth: " << sci.getYob() << endl;
+    outs << "Year of death: " << sci.getYod() << endl;
+    outs << "Gender: " << sci.getGender() << endl;
+    outs << "Age: " << sci.getAge() << endl;
 
     return outs;
 }
@@ -48,5 +53,6 @@ string Scientist::getYod()
 {
     return yearOfDeath;
 }
+
 
 

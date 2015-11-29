@@ -9,8 +9,11 @@ class Service
 {
 public:
     Service();
+    void search();
+    void addScientist(Scientist newSci);
+    Scientist getScientist(int num);
 private:
-    vector<Scientist>SciVec;
+    vector<Scientist> SciVec;
 };
 
 #endif // SERVICE_H

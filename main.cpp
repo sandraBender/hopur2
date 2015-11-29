@@ -6,28 +6,20 @@
 #include "information.h"
 using namespace std;
 
-void readScientist(vector<Scientist> vec);
-
-int main()
-{
+int main(){
     Information info;
-    info.displayOpening();
+    /*info.displayOpening();
     info.instructions();
 
     vector<Scientist> SClist;
 
     //readScientist(SClist);
 
-    readScientist(SClist);
+    readScientist(SClist);*/
+
+    info.addScientist();
+    info.displayScientist(0);
 
 
    return 0;
-}
-
-void readScientist(vector<Scientist> vec)
-{
-    /*while (cin != ';')
-    {
-
-    }*/
 }
