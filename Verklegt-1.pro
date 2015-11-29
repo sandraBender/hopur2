@@ -12,8 +12,6 @@ SOURCES += main.cpp \
     information.cpp \
     service.cpp \
     scientist.cpp
-    information.cpp
-    search.cpp
 
 HEADERS += \
     information.h \
