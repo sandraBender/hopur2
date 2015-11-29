@@ -8,7 +8,6 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    sort.cpp \
     database.cpp \
     information.cpp \
     service.cpp \
@@ -18,8 +17,6 @@ SOURCES += main.cpp \
 
 HEADERS += \
     information.h \
-    sort.h \
     database.h \
-    search.h \
     service.h \
     scientist.h

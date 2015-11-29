@@ -1,12 +1,12 @@
 #include "Scientist.h"
 
-Scientist::Scientist(string nAme, string gEnder, string aGe, string yOb, string yOd)
+Scientist::Scientist(string n, string g, string a, string b, string d)
 {
-    name = nAme;
-    gender = gEnder;
-    age = aGe;
-    yearOfBirth = yOb;
-    yearOfDeath = yOd;
+    name = n;
+    gender = g;
+    age = a;
+    yearOfBirth = b;
+    yearOfDeath = d;
 }
 
 Scientist::Scientist()
@@ -39,12 +39,12 @@ string Scientist::getAge()
     return age;
 }
 
-string Scientist::getYearOfBirth()
+string Scientist::getYob()
 {
     return yearOfBirth;
 }
 
-string Scientist::getYearOfDeath()
+string Scientist::getYod()
 {
     return yearOfDeath;
 }

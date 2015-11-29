@@ -9,21 +9,15 @@ using namespace std;
 
 class Scientist {
     public:
-        Scientist(string nAme, string gEnder, string aGe, string yOb, string yOd);
+        Scientist(string n, string g, string a, string b, string d);
         Scientist();
-        void search();
-        void display();
-        void getFile();
-        void inputFile();
-        void checkIfExists();
-        void getAlignment(); //
         friend ostream& operator <<(ostream& outs, const Scientist& p);
 
         string getName();
         string getGender();
         string getAge();
-        string getYearOfBirth();
-        string getYearOfDeath();
+        string getYob();
+        string getYod();
     private:
         string name;
         string gender;
