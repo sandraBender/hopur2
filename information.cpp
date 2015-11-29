@@ -7,15 +7,22 @@ Information::Information()
 
 }
 void Information::displayOpening(){
-    cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
-         << "- - - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - - " << endl
-         << "In this program you can add, change or rearrange computer scientists" << endl
+    cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
+         << "- - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - -" << endl
+         << "  This program keeps information about computer scientists " << endl
+         << "         You can add a new scientist to the list " << endl
+         << "             You can make changes to the list " << endl
+         << "You can arrange the list in alphabetic order, genger og birthyear" << endl
+         << "              And you can search in the list  " << endl
+         << "   You just press the number in the list and then enter" << endl
          << endl;
 }
 void Information::instructions(){
     cout << "What do you want to do? " << endl
          << "Press 1 and you can make changes to the list " << endl
-         << "Press 2 and you can see the list " << endl;
+         << "Press 2 and you can see the list " << endl
+         << "Press 3 and you can search in the list" << endl;
+
     choices();
 }
 void Information::choices(){
@@ -28,6 +35,8 @@ void Information::choices(){
     case 2:
        choiceSort();
         break;
+    case 3:
+        choiceSearch();
     default:
         cout << "This is invalid choice!! " << endl;
         choices();
@@ -38,30 +47,47 @@ void Information::choices(){
 void Information::choiceChange(){
     cout << "You can add a computer scientist to the list, make changes or delete." << endl
          << "What do you want to do?? " << endl
-         << "press 1 for adding a person " << endl
-         << "press 2 if you want to delete " << endl
-         << "press 3 if you want to make any changes " << endl;
+         << "Press 1 for adding a person " << endl
+         << "Press 2 if you want to delete " << endl
+         << "Press 3 if you want to make any changes " << endl
+         << "Press 4 if you want to go back" << endl;
+    addDeleCha();
 }
 void Information::choiceSort(){
     cout << "How do you want to display?" << endl
-         << "press 1 alphabet order A-Z " << endl
-         << "press 2 alphabet order Z-A " << endl
-         << "press 3 year order ascending " << endl
-         << "press 4 year order descending " << endl
-         << "press 5 if you want to arrange by sex" << endl;
+         << "Press 1 alphabetic order A-Z " << endl
+         << "Press 2 alphabetic order Z-A " << endl
+         << "Press 3 year order ascending " << endl
+         << "Press 4 year order descending " << endl
+         << "Press 5 if you want to arrange by sex" << endl
+         << "Press 6 if you want to go back "  << endl;
+    order();
+
 }
+void Information::choiceSearch(){
+    cout << "What do you want to search for ?" << endl
+         << "press 1 if you want to search for name " << endl
+         << "Press 2 if you want to search for a certain year" << endl
+         << "Press 3 if you want to look for specific achievement" << endl
+         << "Press 4 if you want to go back " << endl;
+    search();
+}
+
 void Information::addDeleCha(){
     int number;
     cin >> number;
     switch (number) {
     case 1:
-        //kalla á sort fallið
+        //kalla á change fallið
         break;
     case 2:
-        //kalla á sort fallið
+        //kalla á change fallið
         break;
     case 3:
-        //kalla á sort fallið
+        //kalla á change fallið
+        break;
+    case 4:
+        instructions();
         break;
     default:
        cout << "This is invalid choice! " << endl;
@@ -74,23 +100,46 @@ void Information::order(){
     cin >> number;
     switch (number) {
     case 1:
-       //kallar á search fallið
+       //kallar á sort fallið
         break;
     case 2:
-       //kallar á search fallið
+       //kallar á sort fallið
         break;
     case 3:
-        //kallar á search fallið
+        //kallar á sort fallið
          break;
     case 4:
-        //kallar á search fallið
+        //kallar á sort fallið
          break;
     case 5:
-        //kallar á search fallið
+        //kallar á sort fallið
          break;
+    case 6:
+        instructions();
+        break;
     default:
         cout << "This is invalid choice " << endl;
         order();
+        break;
+    }
+}
+void Information::search(){
+    int number;
+    cin >> number;
+    switch (number) {
+    case 1:
+        //kalla á search fallið
+        break;
+    case 2:
+        //kalla á search fallið
+        break;
+    case 3:
+        //kalla á search fallið
+        break;
+    case 4:
+        instructions();
+        break;
+    default:
         break;
     }
 }
