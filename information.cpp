@@ -12,7 +12,7 @@ void Information::displayOpening(){
          << "  This program keeps information about computer scientists " << endl
          << "         You can add a new scientist to the list " << endl
          << "             You can make changes to the list " << endl
-         << "You can arrange the list in alphabetic order, genger og birthyear" << endl
+         << "You can arrange the list in alphabetic order, gender og birthyear" << endl
          << "              And you can search in the list  " << endl
          << "   You just press the number in the list and then enter" << endl
          << endl;

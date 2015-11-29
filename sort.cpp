@@ -1,5 +1,5 @@
 #include "sort.h"
-#include "scientists.h"
+#include "scientist.h"
 #include <string>
 #include <algorithm>
 
@@ -8,7 +8,7 @@ Sort::Sort()
 
 }
 
-void Sort::sortByName(vector<Scientists> a)
+void Sort::sortByName(vector<Scientist> a)
 {
    /* string j, x;
 
@@ -29,7 +29,7 @@ void Sort::sortByName(vector<Scientists> a)
     displayVector(temp, a);
 }
 
-void Sort::sortByAge(vector<Scientists> a)
+void Sort::sortByAge(vector<Scientist> a)
 {
     /*string j, x;
 
@@ -50,7 +50,7 @@ void Sort::sortByAge(vector<Scientists> a)
     displayVector(temp, a);
 }
 
-void Sort::sortByGender(vector<Scientists> a)
+void Sort::sortByGender(vector<Scientist> a)
 {
     /*string j, x;
 
@@ -71,7 +71,7 @@ void Sort::sortByGender(vector<Scientists> a)
     displayVector(temp, a);
 }
 
-void Sort::sortByDateOfBirth(vector<Scientists> a)
+void Sort::sortByDateOfBirth(vector<Scientist> a)
 {
     /*string j, x;
 
@@ -92,7 +92,7 @@ void Sort::sortByDateOfBirth(vector<Scientists> a)
     displayVector(temp, a);
 }
 
-void Sort::sortByDateOfDeath(vector<Scientists> a)
+void Sort::sortByDateOfDeath(vector<Scientist> a)
 {
     /*string j, x;
 
@@ -113,7 +113,7 @@ void Sort::sortByDateOfDeath(vector<Scientists> a)
     displayVector(temp, a);
 }
 
-void Sort::displayVector(vector<string> temp, vector<Scientists> a)
+void Sort::displayVector(vector<string> temp, vector<Scientist> a)
 {
     for (size_t i = 0; i < temp.size(); i++) {
         for (size_t j = 0; j < a.size(); j++) {

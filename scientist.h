@@ -1,5 +1,5 @@
-#ifndef SCIENTISTS
-#define SCIENTISTS
+#ifndef SCIENTIST
+#define SCIENTIST
 
 #include <iostream>
 #include <string>
@@ -7,17 +7,17 @@
 
 using namespace std;
 
-class Scientists {
+class Scientist {
     public:
-        Scientists(string nAme, string gEnder, string aGe, string yOb, string yOd);
-        Scientists();
+        Scientist(string nAme, string gEnder, string aGe, string yOb, string yOd);
+        Scientist();
         void search();
         void display();
         void getFile();
         void inputFile();
         void checkIfExists();
         void getAlignment(); //
-        friend ostream& operator <<(ostream& outs, const Scientists& p);
+        friend ostream& operator <<(ostream& outs, const Scientist& p);
 
         string getName();
         string getGender();
@@ -33,5 +33,5 @@ class Scientists {
 };
 
 
-#endif // SCIENTISTS
+#endif // Scientist
 
