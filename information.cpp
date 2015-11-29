@@ -77,9 +77,12 @@ void Information::addDeleCha(){
     int number;
     cin >> number;
     switch (number) {
-    case 1:
-        //kalla á change fallið
-        break;
+    case 1:{
+        Service serv;
+        addScientist(serv);
+        cout << serv;
+        //hér þarf að skrifa í skrá database
+        break;}
     case 2:
         //kalla á change fallið
         break;
@@ -144,7 +147,7 @@ void Information::search(){
     }
 }
 
-void Information::addScientist(){
+void Information::addScientist(Service& serv){
     string tempYod, tempName, tempAge, tempYob, tempGender;
     string alive = "x";
     string veryalive = "X";
@@ -155,6 +158,7 @@ void Information::addScientist(){
     cout << "If he/she is still alive put in ‘x’ in 'Year of death'" << endl;
 
     cout << "Name: ";
+    cin.ignore();
     getline(cin, tempName);
 
     cout << "Year of birth: ";
@@ -173,13 +177,9 @@ void Information::addScientist(){
 
     temp.setScientist(tempName, tempAge, tempYob, tempYod, tempGender);
 
-    Service serv;
     serv.addScientist(temp);
 }
 
-void displayScientist(int num){
-    Service serv;
-    cout << serv.getScientist(num);
-}
-
-
+/*void displayScientist(int num, Service serv){
+    cout << serv.SciVec[num];
+}*/

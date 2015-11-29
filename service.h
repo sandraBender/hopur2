@@ -12,8 +12,11 @@ public:
     void search();
     void addScientist(Scientist newSci);
     Scientist getScientist(int num);
-private:
     vector<Scientist> SciVec;
+    friend ostream& operator <<(ostream& outs, Service& serv);
+private:
+
 };
 
 #endif // SERVICE_H
+

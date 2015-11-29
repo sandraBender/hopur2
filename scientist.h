@@ -11,7 +11,6 @@ class Scientist {
     public:
         Scientist();
         void setScientist(string n, string a, string b, string d, string g);
-        friend ostream& operator <<(ostream& outs, const Scientist& p);
 
         string getName();
         string getGender();
@@ -29,4 +28,3 @@ class Scientist {
 
 
 #endif // Scientist
-
