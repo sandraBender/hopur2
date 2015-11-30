@@ -34,3 +34,21 @@ void database::readFile(vector<Scientist>& vec)
 
    datas.close();
 }
+
+void writeToFile(vector<Scientist>& sv)      {
+
+    Scientist tempVec;
+
+    ofstream datas;
+    datas.open("/Users/sindrirafn/hopur2/input.csv");
+
+    if(datas.fail())      {
+        cout << "Error, file could not be opened" << endl;
+        exit(1);
+    }
+
+    for(unsigned int i=0;i<sv.size();i++)        {
+        datas << sv[i] << ',';
+    }
+
+}

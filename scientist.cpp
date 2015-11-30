@@ -43,8 +43,8 @@ string Scientist::getYod()
 
 void Scientist::checkAge()
 {
-    int intYod = stoi(yearOfDeath.c_str());
-    int intYob = stoi(yearOfBirth.c_str());
+    int intYod = atoi(yearOfDeath.c_str());
+    int intYob = atoi(yearOfBirth.c_str());
 
     if (intYod == 0)
     {

@@ -53,7 +53,7 @@ void Service::search(string searchCondition)
 void Service::displayAll(vector<Scientist> vec)
 {
     cout << endl;
-    for(int i = 0; i < vec.size(); i++){
+    for(unsigned int i = 0; i < vec.size(); i++){
         cout << vec[i] << endl;
     }
 }
