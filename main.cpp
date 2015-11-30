@@ -17,7 +17,7 @@ int main()
     Information info;
     info.displayOpening();
     info.instructions(vec);
-
+    info.displayAll(vec);
 
 
 
