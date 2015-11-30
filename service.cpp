@@ -3,9 +3,9 @@
 
 Service::Service()
 {
-database data;
+    //database data;
 
-SciVec = data.readFile();
+    //vector<Scientist> SciVec = data.readFile();
 }
 
 void Service::addScientist(Scientist newSci){

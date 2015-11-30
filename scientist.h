@@ -11,11 +11,11 @@ using namespace std;
 class Scientist {
     public:
         Scientist();
-        Scientist(string n, string a, string b, string d, string g);
-        friend ostream& operator <<(ostream& outs, const Scientist& sci);
+        Scientist(string Name, string YearOfBirth, string YearOfDeath, string Gender);
+        friend ostream& operator <<(ostream& outs, Scientist sci);
         string getName();
         string getGender();
-        string getAge();
+        int getAge();
         string getYob();
         string getYod();
         void checkAge();
@@ -23,7 +23,7 @@ class Scientist {
     private:
         string name;
         string gender;
-        string age;
+        int age;
         string yearOfBirth;
         string yearOfDeath;
 };

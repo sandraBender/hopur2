@@ -153,7 +153,7 @@ void Information::addScientist(Service& serv){
     string veryalive = "X";
 
 
-    Scientist temp;
+    //Scientist temp;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
     cout << "If he/she is still alive put in ‘x’ in 'Year of death'" << endl;
 
@@ -175,7 +175,8 @@ void Information::addScientist(Service& serv){
     cout << "Age: ";
     cin >> tempAge;
 
-    temp.setScientist(tempName, tempAge, tempYob, tempYod, tempGender);
+    Scientist temp(tempName,tempYob, tempYod, tempGender);
+    //temp.Scientist(tempName, tempAge, tempYob, tempYod, tempGender);
 
     serv.addScientist(temp);
 }

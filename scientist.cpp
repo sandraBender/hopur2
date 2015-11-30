@@ -1,19 +1,17 @@
 #include "Scientist.h"
 
-void Scientist::Scientist(string name, string age, string yearOfBirth, string yearOfDeath, string age)
+Scientist::Scientist(string Name, string YearOfBirth, string YearOfDeath, string Gender)
 {
-    this->name = name;
-    this->gender = gender;
-    this->age = age;
-    this->yearOfBirth = yearOfBirth;
-    this->yearOfDeath = yearOfDeath;
+    name = Name;
+    gender = Gender;
+    yearOfBirth = YearOfBirth;
+    yearOfDeath = YearOfDeath;
 }
 
 Scientist::Scientist()
 {
     name = "";
     gender = "";
-    age = "";
     yearOfBirth = "";
     yearOfDeath = "";
 }
@@ -28,7 +26,7 @@ string Scientist::getGender()
     return gender;
 }
 
-string Scientist::getAge()
+int Scientist::getAge()
 {
     return age;
 }
@@ -45,17 +43,20 @@ string Scientist::getYod()
 
 void Scientist::checkAge()
 {
-    if (yearOfDeath == 0)
+    int intYod = stoi(yearOfDeath.c_str());
+    int intYob = stoi(yearOfBirth.c_str());
+
+    if (intYod == 0)
     {
-        age =  2015 - yearOfBirth;
+        age =  2015 - intYob;
     }
     else
     {
-        age = yearOfDeath - yearOfBirth;
+        age = intYod - intYob;
     }
 }
 
-ostream& operator <<(ostream& outs, const Scientist& sci)
+ostream& operator <<(ostream& outs, Scientist sci)
 {
     outs << "Name: " << sci.getName() << endl;
     outs << "Year of birth: " << sci.getYob() << endl;
