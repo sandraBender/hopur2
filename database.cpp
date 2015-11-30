@@ -10,7 +10,7 @@ void database::readFile(vector<Scientist>& vec)
 {
   string n, b, d, g;
   ifstream datas;
-  datas.open("/Users/Steinar/hopur2/input.csv"); //Breyta path
+  datas.open("C:/Users/FLX/Desktop/hopur2/input.csv"); //Breyta path
 
   if(datas.fail())
   {
@@ -40,7 +40,7 @@ void writeToFile(vector<Scientist>& sv)      {
     Scientist tempVec;
 
     ofstream datas;
-    datas.open("/Users/sindrirafn/hopur2/input.csv");
+    datas.open("/Users/FLX/Desktop/hopur2/input.csv");
 
     if(datas.fail())      {
         cout << "Error, file could not be opened" << endl;

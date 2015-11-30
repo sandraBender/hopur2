@@ -19,7 +19,7 @@ class Scientist {
         int getAge();
         string getYob();
         string getYod();
-        void checkAge();
+        int checkAge();
 
     private:
         string name;

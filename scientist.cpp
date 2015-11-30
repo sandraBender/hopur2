@@ -6,6 +6,7 @@ Scientist::Scientist(string Name, string YearOfBirth, string YearOfDeath, string
     gender = Gender;
     yearOfBirth = YearOfBirth;
     yearOfDeath = YearOfDeath;
+    age = checkAge();
 }
 
 Scientist::Scientist()
@@ -14,6 +15,7 @@ Scientist::Scientist()
     gender = "";
     yearOfBirth = "";
     yearOfDeath = "";
+    age = 0;
 }
 
 string Scientist::getName()
@@ -41,7 +43,7 @@ string Scientist::getYod()
     return yearOfDeath;
 }
 
-void Scientist::checkAge()
+int Scientist::checkAge()
 {
     int intYod = atoi(yearOfDeath.c_str());
     int intYob = atoi(yearOfBirth.c_str());
@@ -53,7 +55,9 @@ void Scientist::checkAge()
     else
     {
         age = intYod - intYob;
+        age = abs(age);
     }
+    return age;
 }
 
 ostream& operator <<(ostream& outs, Scientist sci)
