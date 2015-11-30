@@ -35,6 +35,7 @@ void Information::choices(){
         break;
     case 3:
         choiceSearch();
+         break;
     default:
         cout << "This is invalid choice!! " << endl;
         choices();
