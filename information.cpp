@@ -12,16 +12,14 @@ void Information::displayOpening(){
          << "  This program keeps information about computer scientists " << endl
          << "         You can add a new scientist to the list " << endl
          << "             You can make changes to the list " << endl
-         << "You can arrange the list in alphabetic order, gender og birthyear" << endl
-         << "              And you can search in the list  " << endl
-         << "   You just press the number in the list and then enter" << endl
-         << endl;
+         << "   You can change the order in which the list is diplayed" << endl
+         << "              And you can search through the list  " << endl;
 }
 void Information::instructions(){
-    cout << "What do you want to do? " << endl
-         << "Press 1 and you can make changes to the list " << endl
-         << "Press 2 and you can see the list " << endl
-         << "Press 3 and you can search in the list" << endl;
+    cout << endl << "What do you want to do? " << endl
+         << "Press 1 to make changes to the list " << endl
+         << "Press 2 to display the list " << endl
+         << "Press 3 to search" << endl;
 
     choices();
 }
@@ -45,22 +43,22 @@ void Information::choices(){
 
 }
 void Information::choiceChange(){
-    cout << "You can add a computer scientist to the list, make changes or delete." << endl
-         << "What do you want to do?? " << endl
-         << "Press 1 for adding a person " << endl
-         << "Press 2 if you want to delete " << endl
-         << "Press 3 if you want to make any changes " << endl
-         << "Press 4 if you want to go back" << endl;
+    cout << "Here you can add to the list and edit/delete existing information." << endl
+         << "What do you want to do? " << endl
+         << "Press 1 to add a person " << endl
+         << "Press 2 to delete " << endl
+         << "Press 3 to edit" << endl
+         << "Press 4 to go back" << endl;
     addDeleCha();
 }
 void Information::choiceSort(){
-    cout << "How do you want to display?" << endl
-         << "Press 1 alphabetic order A-Z " << endl
-         << "Press 2 alphabetic order Z-A " << endl
-         << "Press 3 year order ascending " << endl
-         << "Press 4 year order descending " << endl
-         << "Press 5 if you want to arrange by sex" << endl
-         << "Press 6 if you want to go back "  << endl;
+    cout << "How do you want the list to be displayed?" << endl
+         << "Press 1 for alphabetical order A-Z " << endl
+         << "Press 2 for reverse alphabetical order Z-A " << endl
+         << "Press 3 to order by bithyear (ascending)" << endl
+         << "Press 4 to order by bithyear (descending)" << endl
+         << "Press 5 to arrange by gender" << endl
+         << "Press 6 to go back "  << endl;
     order();
 
 }
@@ -80,8 +78,9 @@ void Information::addDeleCha(){
     case 1:{
         Service serv;
         addScientist(serv);
-        display(serv);
         //hér þarf að skrifa í skrá database
+        cout << "Scientist added to database" << endl;
+        instructions();
         break;}
     case 2:
         //kalla á change fallið

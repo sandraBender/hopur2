@@ -14,7 +14,6 @@ public:
     Scientist getScientist(int num);
     vector<Scientist> SciVec;
     vector<Scientist> SearchVec;
-    friend ostream& operator <<(ostream& outs, Service& serv);
 private:
 
 };
