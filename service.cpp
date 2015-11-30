@@ -8,11 +8,10 @@ Service::Service()
     //vector<Scientist> SciVec = data.readFile();
 }
 
-/*void Service::addScientist(vector<Scientist>& vec)
+void Service::addScientist(vector<Scientist>& vec)
 {
     string tempYod, tempName, tempYob, tempGender;
-    string alive = "x";
-    string veryalive = "X";
+    string alive = "0";
 
     cout << "Name: ";
     cin.ignore();
@@ -23,7 +22,7 @@ Service::Service()
 
     cout << "Year of death: ";
     cin >> tempYod;
-        if(tempYod == alive || tempYod == veryalive)
+        if(tempYod == alive)
             tempYod = "Alive";
 
     cout << "Gender: ";
@@ -34,7 +33,7 @@ Service::Service()
 
     vec.push_back(temp);
 }
-Scientist Service::getScientist(int num)
+/*Scientist Service::getScientist(int num)
 {
     return SciVec[num];
 }

@@ -12,7 +12,7 @@ class Service
 public:
     Service();
     void search(string searchCondition);
-    void addScientist(Scientist newSci);
+    void addScientist(vector<Scientist>& vec);
     Scientist getScientist(int num);
     void displayAll(vector<Scientist> vec);
 
