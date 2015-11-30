@@ -68,7 +68,7 @@ void Information::choiceSearch(vector<Scientist>& vec){
          << "Press 2 if you want to search for a certain year" << endl
          << "Press 3 if you want to look for specific achievement" << endl
          << "Press 4 if you want to go back " << endl;
-    search();
+    search(vec);
 }
 
 void Information::addDeleCha(vector<Scientist>& vec){ //Kommentað út í bili
@@ -79,6 +79,7 @@ void Information::addDeleCha(vector<Scientist>& vec){ //Kommentað út í bili
             addScientist(vec);
             //hér þarf að skrifa í skrá database
             cout << endl << "--Scientist added to database!--" << endl;
+            displayAll(vec);
             instructions(vec);
             break;}
         case 2:
@@ -127,7 +128,7 @@ void Information::order(vector<Scientist> vec)
         break;
     }
 }
-void Information::search(){
+void Information::search(vector<Scientist>& vec){
     int number;
     cin >> number;
     switch (number) {
@@ -157,13 +158,13 @@ void Information::addScientist(vector<Scientist>& vec){
 }
 
 
-/*void Information::displayAll(Service serv){ Kommentað út í bili
+void Information::displayAll(vector<Scientist> vec){
     cout << endl;
-    for(unsigned int i = 0; i < serv.SciVec.size(); i++){
-        cout << serv.SciVec[i];
+    for(unsigned int i = 0; i < vec.size(); i++){
+        cout << vec[i];
         cout << endl;}
 }
-
+/*
 void Information::displaySearch(Service serv){ Kommentað út í bili
     for(unsigned int i = 0; i < serv.SearchVec.size(); i++)
         cout << serv.SearchVec[i];

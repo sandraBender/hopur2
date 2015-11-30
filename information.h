@@ -18,7 +18,7 @@ public:
     void addDeleCha(vector<Scientist>& vec);
     void choiceSearch(vector<Scientist>& vec);
     void order(vector<Scientist> vec);
-    void search();
+    void search(vector<Scientist>& vec);
     void addScientist(vector<Scientist>& vec);
     void displayScientist(int num, vector<Scientist> vec);
     void displayAll(vector<Scientist> vec);
