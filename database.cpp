@@ -35,7 +35,7 @@ void database::readFile(vector<Scientist>& vec)
    datas.close();
 }
 
-void writeToFile(vector<Scientist>& sv)      {
+/*void writeToFile(vector<Scientist>& sv)      {
 
     Scientist tempVec;
 
@@ -52,3 +52,25 @@ void writeToFile(vector<Scientist>& sv)      {
     }
 
 }
+*/
+void database::writeFile(vector<Scientist> vec){
+    ofstream outs;
+    outs.open("/Users/sindrirafn/hopur2/output.csv"); //Breyta path
+
+    if(outs.fail()) {
+        cout << "Error when writing to file" << endl;
+        exit(1);
+    }
+
+    for(unsigned int i = 0; i < vec.size(); i++){
+        outs << vec[i].getName() << ", ";
+        outs << vec[i].getYob() << ", ";
+        outs << vec[i].getYod() << ", ";
+        outs << vec[i].getGender() << ", ";
+
+
+    }
+
+    outs.close();
+}
+

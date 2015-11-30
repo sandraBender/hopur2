@@ -20,4 +20,5 @@ HEADERS += \
     scientist.h
 
 DISTFILES += \
-    input.csv
+    input.csv \
+    output.csv

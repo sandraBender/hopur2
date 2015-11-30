@@ -15,7 +15,8 @@ class database
 public:
     database();
     void readFile(vector<Scientist>& vec);
-   // void useInfo(vector<string> v);
+   //void useInfo(vector<string> v);
+    void writeFile(vector<Scientist> vec);
 };
 
 #endif // DATABASE_H
