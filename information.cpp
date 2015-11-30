@@ -79,7 +79,7 @@ void Information::addDeleCha(){
         Service serv;
         addScientist(serv);
         //hér þarf að skrifa í skrá database
-        cout << "Scientist added to database" << endl;
+        cout << endl << "--Scientist added to database!--" << endl;
         instructions();
         break;}
     case 2:
@@ -181,8 +181,11 @@ void Information::addScientist(Service& serv){
 
 
 void Information::display(Service serv){
-    for(unsigned int i = 0; i < serv.SciVec.size(); i++)
+    cout << endl;
+    for(unsigned int i = 0; i < serv.SciVec.size(); i++){
         cout << serv.SciVec[i];
+        cout << endl;}
+
 }
 
 void Information::displaySearch(Service serv){

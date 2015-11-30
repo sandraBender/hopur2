@@ -18,3 +18,6 @@ HEADERS += \
     database.h \
     service.h \
     scientist.h
+
+DISTFILES += \
+    input.csv

@@ -13,17 +13,17 @@ vector<Scientist> database::readFile()
   Scientist temp;
   string n, a, b, d, g;
   ifstream datas;
-  datas.open("input.csv");
+  datas.open("/Users/sindrirafn/hopur2/input.csv");
 
-  if(!datas.is_open())
+  if(datas.fail())
   {
-      cout << "Error, file could not be opened";
+      cout << "Error, file could not be opened" << endl;
+      exit(1);
   }
   else
   {
       while(!datas.eof())
             {
-
                 getline(datas, n, ',');
 
                 getline(datas, b, ',');

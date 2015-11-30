@@ -6,6 +6,7 @@
 #include <vector>
 #include "scientist.h"
 #include <fstream>
+#include <cstdlib>
 
 
 class database
