@@ -15,15 +15,15 @@ void Information::displayOpening(){
          << "   You can change the order in which the list is diplayed" << endl
          << "              And you can search through the list  " << endl;
 }
-void Information::instructions(){
+void Information::instructions(vector<Scientist>& vec){
     cout << endl << "What do you want to do? " << endl
          << "Press 1 to make changes to the list " << endl
          << "Press 2 to display the list " << endl
          << "Press 3 to search" << endl;
 
-    choices();
+    choices(vec);
 }
-void Information::choices(){
+void Information::choices(vector<Scientist>& vec){
     int number;
     cin >> number;
     switch (number) {
@@ -31,14 +31,14 @@ void Information::choices(){
         choiceChange();
         break;
     case 2:
-       choiceSort();
+        choiceSort(vec);
         break;
     case 3:
         choiceSearch();
          break;
     default:
         cout << "This is invalid choice!! " << endl;
-        choices();
+        choices(vec);
         break;
     }
 
@@ -52,16 +52,15 @@ void Information::choiceChange(){
          << "Press 4 to go back" << endl;
     addDeleCha();
 }
-void Information::choiceSort(){
+void Information::choiceSort(vector<Scientist>& vec){
     cout << "How do you want the list to be displayed?" << endl
          << "Press 1 for alphabetical order A-Z " << endl
          << "Press 2 for reverse alphabetical order Z-A " << endl
-         << "Press 3 to order by bithyear (ascending)" << endl
-         << "Press 4 to order by bithyear (descending)" << endl
+         << "Press 3 to order by birth year (ascending)" << endl
+         << "Press 4 to order by birth year (descending)" << endl
          << "Press 5 to arrange by gender" << endl
          << "Press 6 to go back "  << endl;
-    order();
-
+    order(vec);
 }
 void Information::choiceSearch(){
     cout << "What do you want to search for ?" << endl
@@ -72,38 +71,41 @@ void Information::choiceSearch(){
     search();
 }
 
-void Information::addDeleCha(){
-    int number;
+void Information::addDeleCha(){ //Kommentað út í bili
+   /* int number;
     cin >> number;
     switch (number) {
-    case 1:{
-        Service serv;
-        addScientist(serv);
-        //hér þarf að skrifa í skrá database
-        cout << endl << "--Scientist added to database!--" << endl;
-        instructions();
-        break;}
-    case 2:
-        //kalla á change fallið
-        break;
-    case 3:
-        //kalla á change fallið
-        break;
-    case 4:
-        instructions();
-        break;
-    default:
-       cout << "This is invalid choice! " << endl;
-       addDeleCha();
-        break;
-    }
+        case 1:{
+            Scientist temp;
+            addScientist(temp);
+            //hér þarf að skrifa í skrá database
+            cout << endl << "--Scientist added to database!--" << endl;
+            instructions();
+            break;
+        case 2:
+            //kalla á delete fallið
+            break;
+        case 3:
+            //kalla á edit fallið
+            break;
+        case 4:
+            instructions();
+            break;
+        default:
+           cout << "This is invalid choice! " << endl;
+           addDeleCha();
+            break;
+        }
+    }*/
 }
-void Information::order(){
+void Information::order(vector<Scientist> vec)
+{
+    Service serv;
     int number;
     cin >> number;
     switch (number) {
     case 1:
-       //kallar á sort fallið
+        serv.displayAll(vec);
         break;
     case 2:
        //kallar á sort fallið
@@ -118,11 +120,11 @@ void Information::order(){
         //kallar á sort fallið
          break;
     case 6:
-        instructions();
+        instructions(vec);
         break;
     default:
         cout << "This is invalid choice " << endl;
-        order();
+        order(vec);
         break;
     }
 }
@@ -140,58 +142,31 @@ void Information::search(){
         //kalla á search fallið
         break;
     case 4:
-        instructions();
+       // instructions(vec);
         break;
     default:
         break;
     }
 }
 
-void Information::addScientist(Service& serv){
-    string tempYod, tempName, tempAge, tempYob, tempGender;
-    string alive = "x";
-    string veryalive = "X";
-
-
-    //Scientist temp;
+/*void Information::addScientist(vector<Scientist>& vec){
+    //Service serv;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
-    cout << "If he/she is still alive put in ‘x’ in 'Year of death'" << endl;
+    cout << "If he/she is still alive put in ‘0’ in 'Year of death'" << endl;
 
-    cout << "Name: ";
-    cin.ignore();
-    getline(cin, tempName);
-
-    cout << "Year of birth: ";
-    cin >> tempYob;
-
-    cout << "Year of death: ";
-    cin >> tempYod;
-        if(tempYod == alive || tempYod == veryalive)
-            tempYod = "Alive";
-
-    cout << "Gender: ";
-    cin >> tempGender;
-
-    cout << "Age: ";
-    cin >> tempAge;
+    //serv.addScientist(vec);
+}*/
 
 
-    Scientist temp(tempName,tempYob, tempYod, tempGender);
-
-    serv.addScientist(temp);
-}
-
-
-void Information::display(Service serv){
+/*void Information::displayAll(Service serv){ Kommentað út í bili
     cout << endl;
     for(unsigned int i = 0; i < serv.SciVec.size(); i++){
         cout << serv.SciVec[i];
         cout << endl;}
-
 }
 
-void Information::displaySearch(Service serv){
+void Information::displaySearch(Service serv){ Kommentað út í bili
     for(unsigned int i = 0; i < serv.SearchVec.size(); i++)
         cout << serv.SearchVec[i];
 }
-
+*/

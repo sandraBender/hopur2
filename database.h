@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "scientist.h"
+#include "service.h"
 #include <fstream>
 #include <cstdlib>
 

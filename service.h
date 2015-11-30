@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "database.h"
+#include "information.h"
 
 
 class Service
@@ -13,13 +14,9 @@ public:
     void search(string searchCondition);
     void addScientist(Scientist newSci);
     Scientist getScientist(int num);
+    void displayAll(vector<Scientist> vec);
 
-
-    vector<Scientist> SciVec;
-    friend ostream& operator <<(ostream& outs, Service& serv);
     vector<Scientist> SearchVec;
-private:
-
 };
 
 #endif // SERVICE_H
