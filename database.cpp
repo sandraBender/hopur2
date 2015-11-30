@@ -10,7 +10,7 @@ void database::readFile(vector<Scientist>& vec)
 {
   string n, b, d, g;
   ifstream datas;
-  datas.open("/Users/sindrirafn/hopur2/input.csv"); //Breyta path
+  datas.open("/Users/Steinar/hopur2/input.csv"); //Breyta path
 
   if(datas.fail())
   {
@@ -55,7 +55,7 @@ void database::readFile(vector<Scientist>& vec)
 */
 void database::writeFile(vector<Scientist> vec){
     ofstream outs;
-    outs.open("/Users/sindrirafn/hopur2/output.csv"); //Breyta path
+    outs.open("/Users/Steinar/hopur2/output.csv"); //Breyta path
 
     if(outs.fail()) {
         cout << "Error when writing to file" << endl;
