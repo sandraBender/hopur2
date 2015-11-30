@@ -9,13 +9,14 @@ class Service
 {
 public:
     Service();
-    void search();
+    void search(string searchCondition);
     void addScientist(Scientist newSci);
     Scientist getScientist(int num);
 
-    vector<Scientist> SciVec;
 
+    vector<Scientist> SciVec;
     friend ostream& operator <<(ostream& outs, Service& serv);
+    vector<Scientist> SearchVec;
 private:
 
 };
