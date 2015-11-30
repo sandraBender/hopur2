@@ -3,7 +3,9 @@
 
 Service::Service()
 {
+database data;
 
+SciVec = data.readFile();
 }
 
 void Service::addScientist(Scientist newSci){
@@ -23,6 +25,3 @@ void Service::search(string searchCondition){
 
 
 }
-
-
-

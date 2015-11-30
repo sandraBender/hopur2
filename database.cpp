@@ -1,3 +1,4 @@
+
 #include "database.h"
 
 database::database()
@@ -5,13 +6,14 @@ database::database()
 
 }
 
-void database::readFile()
+vector<Scientist> database::readFile()
 {
 //vector<string> b;
+  vector<Scientist> tempVec;
   Scientist temp;
   string n, a, b, d, g;
   ifstream datas;
-  datas.open("/Users/Steinar/hopur2/input.csv");
+  datas.open("input.csv");
 
   if(!datas.is_open())
   {
@@ -33,6 +35,7 @@ void database::readFile()
                 getline(datas, a, ',');
 
                 temp.setScientist(n, a, b, d, g);
+                tempVec.push_back(temp);
 
             }
 
@@ -40,6 +43,8 @@ void database::readFile()
    // useInfo(b);
   }
   datas.close();
+
+  return tempVec;
 }
 
 //void database::useInfo(vector<string> v)
@@ -51,3 +56,4 @@ void database::readFile()
 //    }
 
 //}
+

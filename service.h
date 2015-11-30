@@ -3,6 +3,7 @@
 #include "scientist.h"
 #include <iostream>
 #include <vector>
+#include "database.h"
 
 
 class Service
@@ -22,4 +23,3 @@ private:
 };
 
 #endif // SERVICE_H
-

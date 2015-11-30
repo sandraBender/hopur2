@@ -12,7 +12,7 @@ class database
 {
 public:
     database();
-    void readFile();
+    vector<Scientist> readFile();
    // void useInfo(vector<string> v);
 };
 
