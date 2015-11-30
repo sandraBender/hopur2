@@ -108,16 +108,16 @@ void Information::order(vector<Scientist> vec)
         serv.displayAll(vec);
         break;
     case 2:
-       //kallar á sort fallið
+       serv.displayAll(vec);
         break;
     case 3:
-        //kallar á sort fallið
+        serv.displayAll(vec);
          break;
     case 4:
-        //kallar á sort fallið
+        serv.displayAll(vec);
          break;
     case 5:
-        //kallar á sort fallið
+        serv.displayAll(vec);
          break;
     case 6:
         instructions(vec);
