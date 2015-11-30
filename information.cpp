@@ -175,8 +175,8 @@ void Information::addScientist(Service& serv){
     cout << "Age: ";
     cin >> tempAge;
 
+
     Scientist temp(tempName,tempYob, tempYod, tempGender);
-    //temp.Scientist(tempName, tempAge, tempYob, tempYod, tempGender);
 
     serv.addScientist(temp);
 }
