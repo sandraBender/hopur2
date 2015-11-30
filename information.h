@@ -13,10 +13,10 @@ public:
     void displayOpening(); // This prints out the opening display
     void instructions(vector<Scientist>& vec);  // This prints out the instuctions
     void choices(vector<Scientist>& vec);
-    void choiceChange();
+    void choiceChange(vector<Scientist>& vec);
     void choiceSort(vector<Scientist>& vec);
-    void addDeleCha();
-    void choiceSearch();
+    void addDeleCha(vector<Scientist>& vec);
+    void choiceSearch(vector<Scientist>& vec);
     void order(vector<Scientist> vec);
     void search();
     void addScientist(vector<Scientist>& vec);

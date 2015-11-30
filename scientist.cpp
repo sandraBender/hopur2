@@ -70,3 +70,12 @@ ostream& operator <<(ostream& outs, Scientist sci)
 
     return outs;
 }
+
+void Scientist::operator=(const Scientist& s)
+{
+    name = s.name;
+    yearOfBirth = s.yearOfBirth;
+    yearOfDeath = s.yearOfDeath;
+    gender = s.gender;
+    age = s.age;
+}

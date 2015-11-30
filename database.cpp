@@ -10,6 +10,7 @@ void database::readFile(vector<Scientist>& vec)
 {
   string n, b, d, g;
   ifstream datas;
+
   datas.open("C:/Users/FLX/Desktop/hopur2/input.csv"); //Breyta path
 
   if(datas.fail())

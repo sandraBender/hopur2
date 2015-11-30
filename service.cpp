@@ -1,18 +1,14 @@
 #include "service.h"
-#include <vector>
 
 Service::Service()
 {
-    //database data;
 
-    //vector<Scientist> SciVec = data.readFile();
 }
 
-/*void Service::addScientist(vector<Scientist>& vec)
+void Service::addScientist(vector<Scientist>& vec)
 {
     string tempYod, tempName, tempYob, tempGender;
-    string alive = "x";
-    string veryalive = "X";
+    string alive = "0";
 
     cout << "Name: ";
     cin.ignore();
@@ -23,7 +19,7 @@ Service::Service()
 
     cout << "Year of death: ";
     cin >> tempYod;
-        if(tempYod == alive || tempYod == veryalive)
+        if(tempYod == alive)
             tempYod = "Alive";
 
     cout << "Gender: ";
@@ -34,7 +30,7 @@ Service::Service()
 
     vec.push_back(temp);
 }
-Scientist Service::getScientist(int num)
+/*Scientist Service::getScientist(int num)
 {
     return SciVec[num];
 }
@@ -56,4 +52,19 @@ void Service::displayAll(vector<Scientist> vec)
     for(unsigned int i = 0; i < vec.size(); i++){
         cout << vec[i] << endl;
     }
+}
+
+vector<string> Service::sortNameAsc(vector<Scientist> vec, bool desc)
+{
+    vector<string> temp;
+    for(size_t i = 0; i < vec.size(); i++) {
+        temp[i] = vec[i].getName();
+    }
+
+    sort(temp.begin(), temp.end());
+    if (desc)
+    {
+        reverse(temp.begin(), temp.end());
+    }
+    return temp;
 }
