@@ -19,7 +19,8 @@ void Information::instructions(vector<Scientist>& vec){
     cout << endl << "What do you want to do? " << endl
          << "Press 1 to make changes to the list " << endl
          << "Press 2 to display the list " << endl
-         << "Press 3 to search" << endl;
+         << "Press 3 to search" << endl
+         << "Press 4 to quit"<< endl;
 
     choices(vec);
 }
@@ -36,6 +37,8 @@ void Information::choices(vector<Scientist>& vec){
     case 3:
         choiceSearch(vec);
          break;
+    case 4:
+        return;
     default:
         cout << "This is invalid choice!! " << endl;
         choices(vec);
@@ -79,7 +82,6 @@ void Information::addDeleCha(vector<Scientist>& vec){ //Kommentað út í bili
             addScientist(vec);
             //hér þarf að skrifa í skrá database
             cout << endl << "--Scientist added to database!--" << endl;
-            displayAll(vec);
             instructions(vec);
             break;}
         case 2:

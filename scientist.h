@@ -21,6 +21,7 @@ class Scientist {
         string getYob();
         string getYod();
         int checkAge();
+        void editScientist(vector<Scientist>& vec, string nameToEdit, string name, string yearOfBirth, string yearOfDeath, string gender, int age);
     private:
         string name;
         string gender;
