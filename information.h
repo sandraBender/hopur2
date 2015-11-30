@@ -21,6 +21,8 @@ public:
     void search();
     void addScientist(Service& serv);
     void displayScientist(int num, Service serv);
+    void display(Service serv);
+    void displaySearch(Service serv);
 };
 
 #endif // INFORMATION_H

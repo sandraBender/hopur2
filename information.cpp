@@ -80,7 +80,7 @@ void Information::addDeleCha(){
     case 1:{
         Service serv;
         addScientist(serv);
-        cout << serv;
+        display(serv);
         //hér þarf að skrifa í skrá database
         break;}
     case 2:
@@ -180,7 +180,14 @@ void Information::addScientist(Service& serv){
     serv.addScientist(temp);
 }
 
-/*void displayScientist(int num, Service serv){
-    cout << serv.SciVec[num];
-}*/
+
+void Information::display(Service serv){
+    for(unsigned int i = 0; i < serv.SciVec.size(); i++)
+        cout << serv.SciVec[i];
+}
+
+void Information::displaySearch(Service serv){
+    for(unsigned int i = 0; i < serv.SearchVec.size(); i++)
+        cout << serv.SearchVec[i];
+}
 

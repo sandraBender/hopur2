@@ -44,3 +44,14 @@ string Scientist::getYod()
 {
     return yearOfDeath;
 }
+
+ostream& operator <<(ostream& outs, Scientist& sci){
+
+    outs << "Name: " << sci.getName() << endl;
+    outs << "Year of birth: " << sci.getYob() << endl;
+    outs << "Year of death: " << sci.getYod() << endl;
+    outs << "Gender: " << sci.getGender() << endl;
+    outs << "Age: " << sci.getAge() << endl;
+
+    return outs;
+}
