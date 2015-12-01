@@ -42,7 +42,7 @@ string Scientist::getYod()
 {
     return yearOfDeath;
 }
-
+// Checkes the age of the scientists
 int Scientist::checkAge()
 {
     int intYod = atoi(yearOfDeath.c_str());

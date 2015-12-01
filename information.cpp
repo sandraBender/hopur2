@@ -6,6 +6,7 @@ Information::Information()
 {
 
 }
+//This function print out the opening instructions
 void Information::displayOpening(){
     cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
          << "- - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - -" << endl
@@ -15,6 +16,7 @@ void Information::displayOpening(){
          << "   You can change the order in which the list is diplayed" << endl
          << "              And you can search through the list  " << endl;
 }
+ // This function askes for the first choices
 void Information::instructions(vector<Scientist>& vec){
     cout << endl << "What do you want to do? " << endl
          << "Press 1 to make changes to the list " << endl
@@ -24,6 +26,7 @@ void Information::instructions(vector<Scientist>& vec){
 
     choices(vec);
 }
+// let the user pick the choices and calls the next function
 void Information::choices(vector<Scientist>& vec){
     int number;
     cin >> number;
@@ -46,6 +49,7 @@ void Information::choices(vector<Scientist>& vec){
     }
 
 }
+// If the users wants to change something this function askes what kind of change
 void Information::choiceChange(vector<Scientist>& vec){
     cout << "Here you can add to the list and edit/delete existing information." << endl
          << "What do you want to do? " << endl
@@ -55,6 +59,7 @@ void Information::choiceChange(vector<Scientist>& vec){
          << "Press 4 to go back" << endl;
     addDeleCha(vec);
 }
+// If the user wants to see the hole list, this function askes in what way
 void Information::choiceSort(vector<Scientist>& vec){
     cout << "How do you want the list to be displayed?" << endl
          << "Press 1 for ascending order A-Z " << endl
@@ -65,6 +70,7 @@ void Information::choiceSort(vector<Scientist>& vec){
          << "Press 6 to go back "  << endl;
     order(vec);
 }
+// If the user wants to search for something this function askes what to search for
 void Information::choiceSearch(vector<Scientist>& vec){
     cout << "What do you want to search for ?" << endl
          << "Press 1 if you want to search for name" << endl
@@ -73,7 +79,7 @@ void Information::choiceSearch(vector<Scientist>& vec){
          << "Press 4 if you want to go back " << endl;
     search(vec);
 }
-
+// If the user wants to add, delete og change anything he pickes one here
 void Information::addDeleCha(vector<Scientist>& vec){
     Service serv;
     int number;
@@ -104,7 +110,7 @@ void Information::addDeleCha(vector<Scientist>& vec){
             break;
         }
     }
-
+// If the user wants to sort the list he tells the program in what kind of way here.
 void Information::order(vector<Scientist> vec)
 {
     Service serv;
@@ -145,6 +151,7 @@ void Information::order(vector<Scientist> vec)
         break;
     }
 }
+//If the user wants to search for something, he pickes the way here
 void Information::search(vector<Scientist>& vec)
 {
     Service serv;
@@ -172,7 +179,7 @@ void Information::search(vector<Scientist>& vec)
         break;
     }
 }
-
+// gives the instructions about adding a scientist
 void Information::addScientist(vector<Scientist>& vec){
     Service serv;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
@@ -181,20 +188,14 @@ void Information::addScientist(vector<Scientist>& vec){
     serv.addScientist(vec);
 }
 
-
+// Prints out the scientists
 void Information::displayAll(vector<Scientist> vec){
     cout << endl;
     for(unsigned int i = 0; i < vec.size(); i++){
         cout << vec[i];
         cout << endl;}
 }
-/*
-void Information::displaySearch(Service serv){ Kommentað út í bili
-    for(unsigned int i = 0; i < serv.SearchVec.size(); i++)
-        cout << serv.SearchVec[i];
-}
-*/
-
+// Checks if the name is in the list
 void Information::matchName(vector<Scientist> sc, vector<string> str)
 {
     for(size_t i = 0; i < str.size(); i++)
@@ -209,7 +210,7 @@ void Information::matchName(vector<Scientist> sc, vector<string> str)
         }
     }
 }
-
+// checks if the Year of birth is in the list
 void Information::matchYob(vector<Scientist> sc, vector<string> str)
 {
     for(size_t i = 0; i < str.size(); i++)
@@ -224,7 +225,7 @@ void Information::matchYob(vector<Scientist> sc, vector<string> str)
         }
     }
 }
-
+// Checkes if the gender is in the list
 void Information::matchGender(vector<Scientist> sc, vector<string> str)
 {
     for(size_t i = 0; i < str.size(); i++)

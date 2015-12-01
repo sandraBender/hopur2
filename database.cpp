@@ -6,7 +6,7 @@ database::database()
 
 }
 
-void database::readFile(vector<Scientist>& vec)
+void database::readFile(vector<Scientist>& vec) // This function reads the file
 {
   string n, b, d, g;
   ifstream datas;
@@ -36,25 +36,7 @@ void database::readFile(vector<Scientist>& vec)
    datas.close();
 }
 
-/*void writeToFile(vector<Scientist>& sv)      {
-
-    Scientist tempVec;
-
-    ofstream datas;
-    datas.open("/Users/FLX/Desktop/hopur2/input.csv");
-
-    if(datas.fail())      {
-        cout << "Error, file could not be opened" << endl;
-        exit(1);
-    }
-
-    for(unsigned int i=0;i<sv.size();i++)        {
-        datas << sv[i] << ',';
-    }
-
-}
-*/
-void database::writeFile(vector<Scientist> vec){
+void database::writeFile(vector<Scientist> vec){ //This function write into the file
     ofstream outs;
     outs.open("/Users/Steinar/hopur2/output.csv"); //Breyta path
 

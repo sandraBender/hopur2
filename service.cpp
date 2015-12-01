@@ -4,7 +4,7 @@ Service::Service()
 {
 
 }
-
+// adds scientists to the list
 void Service::addScientist(vector<Scientist>& vec)
 {
     string tempYod, tempName, tempYob, tempGender;
@@ -30,11 +30,7 @@ void Service::addScientist(vector<Scientist>& vec)
 
     vec.push_back(temp);
 }
-/*Scientist Service::getScientist(int num)
-{
-    return SciVec[num];
-}*/
-
+// print out the scientists
 void Service::displayAll(vector<Scientist> vec)
 {
     cout << endl;
@@ -42,7 +38,7 @@ void Service::displayAll(vector<Scientist> vec)
         cout << vec[i] << endl;
     }
 }
-
+// sorts the list
 vector<string> Service::sortVector(vector<Scientist> vec, bool desc, int typeOfSort)
 {
     vector<string> temp;
@@ -81,7 +77,7 @@ vector<string> Service::sortVector(vector<Scientist> vec, bool desc, int typeOfS
     }
     return temp;
 }
-
+// delete scientist from the list
 void Service::deleteScientist(vector<Scientist>& vec, string nameToDelete)
 {
     for(size_t i = 0; i < vec.size(); i++)
@@ -93,7 +89,7 @@ void Service::deleteScientist(vector<Scientist>& vec, string nameToDelete)
         }
     }
 }
-
+// searches for a name
 vector<string> Service::searchByName(vector<Scientist> vec, string searchStr)
 {
     vector<string> temp;

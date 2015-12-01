@@ -23,9 +23,6 @@ int main()
 
     dataguymanstuff.writeFile(vec);
 
-    //Service serv;
-    //info.addScientist(serv);
-    //cout << serv;
 
    return 0;
 }

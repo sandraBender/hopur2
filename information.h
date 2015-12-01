@@ -10,8 +10,8 @@ class Information
 {
 public:
     Information();
-    void displayOpening(); // This prints out the opening display
-    void instructions(vector<Scientist>& vec);  // This prints out the instuctions
+    void displayOpening();
+    void instructions(vector<Scientist>& vec);
     void choices(vector<Scientist>& vec);
     void choiceChange(vector<Scientist>& vec);
     void choiceSort(vector<Scientist>& vec);
