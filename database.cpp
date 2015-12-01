@@ -40,7 +40,7 @@ void database::readFile(vector<Scientist>& vec) // This function reads the file
 
 void database::writeFile(vector<Scientist> vec){ //This function writes into the file
     ofstream outs;
-    outs.open("c:/temp/output.csv"); //Breyta path
+    outs.open("/Users/sandrabender/hopur2/output.csv"); //Breyta path
 
     if(outs.fail()) {
         cout << "Error when writing to file" << endl;
@@ -58,9 +58,9 @@ void database::writeFile(vector<Scientist> vec){ //This function writes into the
 
 }
 
-void database::writeFileApp(Scientist temp){ //This function appends to the file
+/*void database::writeFileApp(Scientist temp){ //This function appends to the file
 
-    ofstream outs("c:/temp/input.csv", ios::out | ios::app); //Breyta path
+    ofstream outs("/Users/sandrabender/hopur2/output.csv", ios::out | ios::app); //Breyta path
 
     if(outs.fail()) {
         cout << "Error when writing to file" << endl;
@@ -74,3 +74,4 @@ void database::writeFileApp(Scientist temp){ //This function appends to the file
 
     outs.close();
 }
+*/
