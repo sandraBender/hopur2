@@ -15,14 +15,15 @@ int main()
     Information info;
     info.displayOpening();
 
+
     do {
         info.instructions(vec);
         cout << "Do you wish to continue? (Y/N)" << endl;
         cin >> contYN;
     } while(contYN == 'Y' || contYN == 'y');
 
-    dataguymanstuff.writeFile(vec);
 
+    dataguymanstuff.writeFile(vec);
 
    return 0;
 }
