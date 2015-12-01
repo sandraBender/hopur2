@@ -233,6 +233,7 @@ void Information::addScientist(vector<Scientist>& vec){
     Service serv;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
     cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
+    cout << "In gender, enter 'M' for male or 'F' for female"<< endl;
 
     serv.addScientist(vec);
 }
