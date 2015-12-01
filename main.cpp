@@ -8,16 +8,15 @@ using namespace std;
 
 int main()
 {
-    //char contYN;
-    database dataguymanstuff;
+    database data;
     vector<Scientist> vec;
-    dataguymanstuff.readFile(vec);
+    data.readFile(vec);
     Information info;
     info.displayOpening();
     info.instructions(vec);
 
 
-    dataguymanstuff.writeFile(vec);
+    data.writeFile(vec);
 
    return 0;
 }
