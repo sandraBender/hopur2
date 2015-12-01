@@ -33,6 +33,7 @@ void Information::instructions(vector<Scientist>& vec){
 void Information::choices(vector<Scientist>& vec){
     int number;
     cin >> number;
+    cout << endl;
     switch (number) {
     case 1:
         choiceChange(vec);
@@ -45,10 +46,7 @@ void Information::choices(vector<Scientist>& vec){
          break;
     case 4:
         {
-            database dinst;
-            dinst.writeFile(vec);
-            exit(1);
-            break;
+            return;
         }
     default:
         cout << "This is invalid choice!! " << endl;
@@ -60,7 +58,7 @@ void Information::choices(vector<Scientist>& vec){
 
 // If the users wants to change something this function askes what kind of change
 void Information::choiceChange(vector<Scientist>& vec){
-    cout << "Here you can add to the list and edit/delete existing information." << endl
+    cout << "Here you can add or remove from the list" << endl
          << "What do you want to do? " << endl
          << "Press 1 to add a person " << endl
          << "Press 2 to delete" << endl
@@ -100,6 +98,7 @@ void Information::addDelete(vector<Scientist>& vec){
     int number;
     string nameToDelete = "";
     cin >> number;
+    cout << endl;
     switch (number) {
         case 1:{
             addScientist(vec);
@@ -132,6 +131,7 @@ void Information::order(vector<Scientist> vec)
     int number;
     vector<string> temp;
     cin >> number;
+    cout << endl;
     switch (number) {
     case 1:
         cout << "List sorted in alphabetical order:" << endl;
@@ -182,6 +182,7 @@ void Information::search(vector<Scientist> vec)
     vector<string> temp;
     string searchStr;
     cin >> number;
+    cout << endl;
     switch (number) {
     case 1:
         cout << "Enter a name to search for: " << endl;
@@ -232,6 +233,7 @@ void Information::addScientist(vector<Scientist>& vec){
     Service serv;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
     cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
+    cout << "In gender, enter 'M' for male or 'F' for female"<< endl;
 
     serv.addScientist(vec);
 }
