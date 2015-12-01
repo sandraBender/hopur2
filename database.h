@@ -17,6 +17,7 @@ public:
     void readFile(vector<Scientist>& vec);
    //void useInfo(vector<string> v);
     void writeFile(vector<Scientist> vec);
+    void writeFileApp(Scientist temp);
 };
 
 #endif // DATABASE_H

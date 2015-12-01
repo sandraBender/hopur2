@@ -60,3 +60,18 @@ void database::writeFile(vector<Scientist> vec){ //This function writes into the
     outs.close();
 }
 
+void database::writeFileApp(Scientist temp){ //This function appends to the file
+    ofstream outs("c:/temp/output.csv", ios::out | ios::app); //Breyta path
+
+    if(outs.fail()) {
+        cout << "Error when writing to file" << endl;
+        exit(1);
+    }
+
+    outs << temp.getName() << ", "
+         << temp.getYob() << ", "
+         << temp.getYod() << ", "
+         << temp.getGender() << endl;
+
+    outs.close();
+}
