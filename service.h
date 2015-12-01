@@ -20,6 +20,9 @@ public:
     vector<string> sortVector(vector<Scientist> vec, bool desc, int typeOfSort);
     void deleteScientist(vector<Scientist>& vec, string nameToDelete);
     vector<string> search(vector<Scientist> vec, string searchStr, int typeOfSearch);
+    string enterName();
+    string enterYear();
+    string enterGender();
 };
 
 #endif // SERVICE_H

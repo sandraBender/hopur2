@@ -10,38 +10,19 @@ void Service::addScientist(vector<Scientist>& vec)
     string tempYod, tempName, tempYob, tempGender;
     string alive = "0";
 
-    bool notName = true;
-    do
-    {
-        cout << "Name: ";
-        cin.ignore();
-        getline(cin, tempName);
-
-        for(unsigned int i=0; i<tempName.size();i++)
-        {
-            if(isalpha(tempName[i]) == 0)
-            {
-                notName=true;
-            }
-
-            else
-            {
-                notName = false;
-                break;
-            }
-        }
-    }while(notName);
+    cout << "Name: ";
+    tempName = enterName();
 
     cout << "Year of birth: ";
-    cin >> tempYob;
+    tempYob = enterYear();
 
     cout << "Year of death: ";
-    cin >> tempYod;
+    tempYod = enterYear();
         if(tempYod == alive)
             tempYod = "Alive";
 
     cout << "Gender: ";
-    cin >> tempGender;
+    tempGender = enterGender();
         if(tempGender == "m")
             tempGender = "M";
         else if(tempGender == "f")
@@ -163,4 +144,84 @@ vector<string> Service::search(vector<Scientist> vec, string searchStr, int type
     return temp;
 }
 
+string Service::enterName()
+{
+    string tempName;
+    bool notName = true;
+    do
+    {
+        cin.ignore();
+        getline(cin, tempName);
 
+        for(unsigned int i=0; i<tempName.size();i++)    {
+            if(isalpha(tempName[i]) == 0)
+            {
+                notName=true;
+                cout << "Only characters accepted, please try again:\n";
+                break;
+            }
+
+            else
+            {
+                notName = false;
+            }
+        }
+    }while(notName);
+}
+
+string Service::enterYear()
+{
+    bool notYear = true;
+    string tempYear;
+
+    do
+    {
+        cin >> tempYear;
+
+        for (unsigned int i=0; i<tempYear.size();i++)
+        {
+            if (isdigit(tempYear[i])==0)
+            {
+                notYear = true;
+                cout << "Only digits accepted, please try again" << endl;
+                break;
+            }
+            else
+            {
+                notYear = false;
+            }
+        }
+    }while(notYear);
+
+    //check for only 4 digits
+    //check for dates in the future??
+
+    return tempYear;
+}
+
+string Service::enterGender()
+{
+    bool notGender = true;
+    string tempGender;
+    do
+    {
+        cin >> tempGender;
+
+        cout << tempGender;
+
+
+            if ((tempGender != "M") || (tempGender != "F"))
+            {
+                notGender = true;
+                cout << "Only 'F' or 'M' accepted, please try again" << endl;
+                break;
+            }
+            else
+            {
+                notGender = false;
+            }
+
+    }while(notGender);
+
+    return tempGender;
+}
