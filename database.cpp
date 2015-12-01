@@ -11,10 +11,10 @@ void database::readFile(vector<Scientist>& vec) // This function reads the file
   string n, b, d, g;
   ifstream datas;
 
-  //datas.open("/Users/sindrirafn/hopur2/input.csv"); //Breyta path
+  datas.open("/Users/sandrabender/hopur2/input.csv"); //Breyta path
   //datas.open("c:/temp/input.csv"); ABO
 
-  datas.open("c:/temp/input.csv");
+  //datas.open("c:/temp/input.csv");
 
 
   if(datas.fail())
