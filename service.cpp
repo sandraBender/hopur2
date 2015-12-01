@@ -11,7 +11,9 @@ void Service::addScientist(vector<Scientist>& vec)
     string alive = "0";
 
     cout << "Name: ";
-    tempName = enterName();
+    //tempName = enterName();
+    cin.ignore();
+    getline(cin, tempName);
 
     cout << "Year of birth: ";
     tempYob = enterYear();
@@ -22,7 +24,8 @@ void Service::addScientist(vector<Scientist>& vec)
             tempYod = "Alive";
 
     cout << "Gender: ";
-    tempGender = enterGender();
+    //tempGender = enterGender();
+    cin >> tempGender;
         if(tempGender == "m")
             tempGender = "M";
         else if(tempGender == "f")
@@ -153,10 +156,11 @@ string Service::enterName()
         cin.ignore();
         getline(cin, tempName);
 
-        for(unsigned int i=0; i<tempName.size();i++)    {
-            if(isalpha(tempName[i]) == 0)
+        for(unsigned int i=0; i<tempName.size();i++)
+        {
+            if((isalpha(tempName[i]) == 0))
             {
-                notName=true;
+                notName=false;
                 cout << "Only characters accepted, please try again:\n";
                 break;
             }
@@ -167,6 +171,8 @@ string Service::enterName()
             }
         }
     }while(notName);
+
+    return tempName;
 }
 
 string Service::enterYear()
