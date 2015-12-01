@@ -9,6 +9,7 @@
 #include <string>
 #include <sstream>
 #include <ctype.h>
+#include <cctype>
 
 class Service
 {

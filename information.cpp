@@ -31,27 +31,27 @@ void Information::instructions(vector<Scientist>& vec){
 
 // let the user pick the choices and calls the next function
 void Information::choices(vector<Scientist>& vec){
-    int number;
+    char number;
     cin >> number;
     cout << endl;
     switch (number) {
-    case 1:
+    case'1':
         choiceChange(vec);
         break;
-    case 2:
+    case'2':
         choiceSort(vec);
         break;
-    case 3:
+    case'3':
         choiceSearch(vec);
          break;
-    case 4:
+    case'4':
         {
             return;
         }
-    default:
+    default:{
         cout << "This is invalid choice!! " << endl;
         choices(vec);
-        break;
+        break;}
     }
 }
 
@@ -95,17 +95,17 @@ void Information::choiceSearch(vector<Scientist>& vec){
 // If the user wants to add, delete og change anything he pickes one here
 void Information::addDelete(vector<Scientist>& vec){
     Service serv;
-    int number;
+    char number;
     string nameToDelete = "";
     cin >> number;
     cout << endl;
     switch (number) {
-        case 1:{
+        case'1':{
             addScientist(vec);
             cout << endl << "--Scientist added to database!--" << endl;
             instructions(vec);
             break;}
-        case 2:
+        case'2':
             cout << "Enter the full name of a scientist to remove:" << endl;
             cin.ignore(4, '\n');
             getline(cin, nameToDelete);
@@ -113,7 +113,7 @@ void Information::addDelete(vector<Scientist>& vec){
             cout << nameToDelete << " has now been removed." << endl;
             instructions(vec);
             break;
-        case 3:
+        case'3':
             instructions(vec);
             break;
         default:
@@ -128,42 +128,42 @@ void Information::addDelete(vector<Scientist>& vec){
 void Information::order(vector<Scientist> vec)
 {
     Service serv;
-    int number;
+    char number;
     vector<string> temp;
     cin >> number;
     cout << endl;
     switch (number) {
-    case 1:
+    case'1':
         cout << "List sorted in alphabetical order:" << endl;
         temp = serv.sortVector(vec, false, 1);
         matchName(vec, temp);
         instructions(vec);
         break;
-    case 2:
+    case'2':
         cout << "List sorted in reverse alphabetical order:" << endl;
         temp = serv.sortVector(vec, true, 2);
         matchName(vec, temp);
         instructions(vec);
         break;
-    case 3:
+    case'3':
         cout << "List sorted ascendingly by year of birth:" << endl;
         temp = serv.sortVector(vec, false, 3);
         matchYob(vec, temp);
         instructions(vec);
         break;
-    case 4:
+    case'4':
         cout << "List sorted descendingly by year of birth:" << endl;
         temp = serv.sortVector(vec, true, 4);
         matchYob(vec, temp);
         instructions(vec);
         break;
-    case 5:
+    case'5':
         cout << "List sorted by gender (Female first):" << endl;
         temp = serv.sortVector(vec, false, 5);
         matchGender(vec, temp);
         instructions(vec);
         break;
-    case 6:
+    case'6':
         instructions(vec);
         break;
     default:
@@ -178,13 +178,13 @@ void Information::order(vector<Scientist> vec)
 void Information::search(vector<Scientist> vec)
 {
     Service serv;
-    int number;
+    char number;
     vector<string> temp;
     string searchStr;
     cin >> number;
     cout << endl;
     switch (number) {
-    case 1:
+    case'1':
         cout << "Enter a name to search for: " << endl;
         cin >> searchStr;
         cout << "Search results: " << endl;
@@ -192,7 +192,7 @@ void Information::search(vector<Scientist> vec)
         matchName(vec, temp);
         instructions(vec);
         break;
-    case 2:
+    case'2':
         cout << "Enter a year of birth to search for: " << endl;
         cin >> searchStr;
         cout << "Search results: " << endl;
@@ -200,7 +200,7 @@ void Information::search(vector<Scientist> vec)
         matchYob(vec, temp);
         instructions(vec);
         break;
-    case 3:                                         // VIRKAR EKKI, VANTAR matchAge()
+    case'3':                                         // VIRKAR EKKI, VANTAR matchAge()
         cout << "Enter an age to search for: " << endl;
         cin >> searchStr;
         cout << "Search results: " << endl;
@@ -208,7 +208,7 @@ void Information::search(vector<Scientist> vec)
         matchAge(vec, temp);
         instructions(vec);
         break;
-    case 4:
+    case'4':
         cout << "Enter either 'M' or 'F' to search by gender:" << endl;
         cin >> searchStr;
         cout << "Search results: " << endl;
@@ -216,7 +216,7 @@ void Information::search(vector<Scientist> vec)
         matchGender(vec, temp);
         instructions(vec);
         break;
-    case 5:
+    case'5':
         instructions(vec);
         break;
     default:
@@ -233,6 +233,7 @@ void Information::addScientist(vector<Scientist>& vec){
     Service serv;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
     cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
+    cout << "In gender, enter 'M' for male or 'F' for female"<< endl;
 
     serv.addScientist(vec);
 }

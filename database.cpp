@@ -47,11 +47,15 @@ void database::writeFile(vector<Scientist> vec){ //This function writes into the
         exit(1);
     }
 
-    for(unsigned int i = 0; i < vec.size(); i++){
-        outs << vec[i].getName() << ",";
+    outs << vec[0].getName() << ",";
+    outs << vec[0].getYob() << ",";
+    outs << vec[0].getYod() << ",";
+    outs << vec[0].getGender();
+    for(unsigned int i = 1; i < vec.size(); i++){
+        outs << endl << vec[i].getName() << ",";
         outs << vec[i].getYob() << ",";
         outs << vec[i].getYod() << ",";
-        outs << vec[i].getGender() << endl;
+        outs << vec[i].getGender();
     }
 
     outs.close();
