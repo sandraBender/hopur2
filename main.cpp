@@ -12,10 +12,10 @@ int main()
     database dataguymanstuff;
     vector<Scientist> vec;
     dataguymanstuff.readFile(vec);
+    Information info;
+    info.displayOpening();
 
     do {
-        Information info;
-        info.displayOpening();
         info.instructions(vec);
         cout << "Do you wish to continue? (Y/N)" << endl;
         cin >> contYN;
