@@ -116,7 +116,7 @@ void Information::addDelete(vector<Scientist>& vec){
             instructions(vec);
             break;
         default:
-            cout << "This is invalid choice! " << endl;
+            cout << "This is invalid choice! Please try again!" << endl;
             addDelete(vec);
             break;
         }
@@ -159,7 +159,7 @@ void Information::order(vector<Scientist> vec)
     case'5':
         cout << "List sorted by gender (Female first):" << endl;
         temp = serv.sortVector(vec, false, 5);
-        matchGender(vec, temp);
+        matchGender(vec, temp, 0);
         instructions(vec);
         break;
     case'6':
@@ -212,7 +212,7 @@ void Information::search(vector<Scientist> vec)
         cin >> searchStr;
         cout << endl << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 4);
-        matchGender(vec, temp);
+        matchGender(vec, temp, 1);
         instructions(vec);
         break;
     case'5':
@@ -287,22 +287,36 @@ void Information::matchYob(vector<Scientist> sc, vector<string> str)
     }
 }
 
-
 // Match the search/sorted gender vector to vector of Scientists
-void Information::matchGender(vector<Scientist> sc, vector<string> str)
+void Information::matchGender(vector<Scientist> sc, vector<string> str, int sortORfind)
 {
     if (str.empty())
     {
         cout << endl << "Your search string did not match any gender!" << endl;
         return;
     }
-    for(size_t i = 0; i < str.size(); i++)
+    if (sortORfind)
     {
-        for (size_t j = 0; j < sc.size(); j++)
+        for (size_t i = 0; i < sc.size(); i++)
         {
-            if (str[i].compare(sc[j].getGender()) == 0)
+            if (sc[i].getGender().find(str[0]) == 0)
             {
-                cout << sc[j] << endl;
+                cout << endl << sc[i] << endl;
+            }
+        }
+    }
+
+
+    else if(!sortORfind)
+    {
+        for(size_t i = 0; i < sc.size(); i++)
+        {
+            for (size_t j = 0; j < str.size(); j++)
+            {
+                if (sc[i].getGender().compare(str[j]) == 0)
+                {
+                    cout << sc[j] << endl;
+                }
             }
         }
     }

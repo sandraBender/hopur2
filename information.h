@@ -25,7 +25,7 @@ public:
     void displaySearch(vector<Scientist> vec);
     void matchName(vector<Scientist> sc, vector<string> str);
     void matchYob(vector<Scientist> sc, vector<string> str);
-    void matchGender(vector<Scientist> sc, vector<string> str);
+    void matchGender(vector<Scientist> sc, vector<string> str, int sortORfind);
     void matchAge(vector<Scientist> sc, vector<string> str);
 };
 
