@@ -21,4 +21,4 @@ HEADERS += \
 
 DISTFILES += \
     input.csv \
-    output.csv
+    ../build-Verklegt-1-Unnamed-Debug/output.csv
