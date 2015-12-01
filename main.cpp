@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    char contYN;
+    //char contYN;
     database dataguymanstuff;
     vector<Scientist> vec;
     dataguymanstuff.readFile(vec);

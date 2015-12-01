@@ -10,9 +10,27 @@ void Service::addScientist(vector<Scientist>& vec)
     string tempYod, tempName, tempYob, tempGender;
     string alive = "0";
 
-    cout << "Name: ";
-    cin.ignore();
-    getline(cin, tempName);
+    bool notName = true;
+    do
+    {
+        cout << "Name: ";
+        cin.ignore();
+        getline(cin, tempName);
+
+        for(unsigned int i=0; i<tempName.size();i++)
+        {
+            if(isalpha(tempName[i]) == 0)
+            {
+                notName=true;
+            }
+
+            else
+            {
+                notName = false;
+                break;
+            }
+        }
+    }while(notName);
 
     cout << "Year of birth: ";
     cin >> tempYob;

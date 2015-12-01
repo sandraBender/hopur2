@@ -23,7 +23,7 @@ void Information::instructions(vector<Scientist>& vec){
          << "Press 1 to make changes to the list " << endl
          << "Press 2 to display the list " << endl
          << "Press 3 to search" << endl
-         << "Press 4 to quit"<< endl;
+         << "Press 4 to quit and save"<< endl;
 
     choices(vec);
 }
@@ -44,8 +44,12 @@ void Information::choices(vector<Scientist>& vec){
         choiceSearch(vec);
          break;
     case 4:
-        exit(1);
-        return;
+        {
+            database dinst;
+            dinst.writeFile(vec);
+            exit(1);
+            break;
+        }
     default:
         cout << "This is invalid choice!! " << endl;
         choices(vec);

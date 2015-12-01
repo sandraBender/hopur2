@@ -12,8 +12,9 @@ void database::readFile(vector<Scientist>& vec) // This function reads the file
   ifstream datas;
 
   //datas.open("/Users/sindrirafn/hopur2/input.csv"); //Breyta path
+  //datas.open("c:/temp/input.csv"); ABO
 
-  datas.open("/Users/sindrirafn/hopur2/input.csv");
+  datas.open("c:/temp/input.csv");
 
 
   if(datas.fail())
@@ -24,27 +25,22 @@ void database::readFile(vector<Scientist>& vec) // This function reads the file
   while(!datas.eof())
   {
     getline(datas, n, ',');
-
     getline(datas, b, ',');
-
     getline(datas, d, ',');
-
     getline(datas, g, '\n');
 
     //nota cin í stadinn f getline
-
 
     Scientist temp(n, b, d, g);
 
     vec.push_back(temp);
    }
-
    datas.close();
 }
 
 void database::writeFile(vector<Scientist> vec){ //This function writes into the file
     ofstream outs;
-    outs.open("/Users/sindrirafn/hopur2/input.csv"); //Breyta path
+    outs.open("c:/temp/output.csv"); //Breyta path
 
     if(outs.fail()) {
         cout << "Error when writing to file" << endl;
@@ -56,16 +52,15 @@ void database::writeFile(vector<Scientist> vec){ //This function writes into the
         outs << vec[i].getYob() << ",";
         outs << vec[i].getYod() << ",";
         outs << vec[i].getGender() << endl;
-
-
     }
 
     outs.close();
+
 }
 
 void database::writeFileApp(Scientist temp){ //This function appends to the file
 
-    ofstream outs("c:/temp/output.csv", ios::out | ios::app); //Breyta path
+    ofstream outs("c:/temp/input.csv", ios::out | ios::app); //Breyta path
 
     if(outs.fail()) {
         cout << "Error when writing to file" << endl;
