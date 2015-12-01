@@ -52,9 +52,9 @@ void database::writeFile(vector<Scientist> vec){ //This function writes into the
     }
 
     for(unsigned int i = 0; i < vec.size(); i++){
-        outs << vec[i].getName() << ", ";
-        outs << vec[i].getYob() << ", ";
-        outs << vec[i].getYod() << ", ";
+        outs << vec[i].getName() << ",";
+        outs << vec[i].getYob() << ",";
+        outs << vec[i].getYod() << ",";
         outs << vec[i].getGender() << endl;
 
 
