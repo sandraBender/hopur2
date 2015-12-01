@@ -138,6 +138,7 @@ void Information::order(vector<Scientist> vec)
         matchYob(vec, temp);
         break;
     case 5:
+        cout << "List sorted by gender (Female first):" << endl;
         temp = serv.sortVector(vec, false, 5);
         matchGender(vec, temp);
         break;
@@ -230,8 +231,8 @@ void Information::matchGender(vector<Scientist> sc, vector<string> str)
     {
         for (size_t j = 0; j < sc.size(); j++)
         {
-            size_t found = str[i].find(sc[j].getYob());
-            if (found != -1)
+            //size_t found = str[i].find(sc[j].getYob());
+            if (str[i].compare(sc[j].getGender()) == 0)
             {
                 cout << sc[j] << endl;
             }
