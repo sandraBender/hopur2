@@ -62,8 +62,8 @@ void Information::choiceChange(vector<Scientist>& vec){
 // If the user wants to see the hole list, this function askes in what way
 void Information::choiceSort(vector<Scientist>& vec){
     cout << "How do you want the list to be displayed?" << endl
-         << "Press 1 for ascending order A-Z " << endl
-         << "Press 2 for descending order Z-A " << endl
+         << "Press 1 for alphabetical order A-Z " << endl
+         << "Press 2 for reverse alphabetical order Z-A " << endl
          << "Press 3 to order by birth year (ascending)" << endl
          << "Press 4 to order by birth year (descending)" << endl
          << "Press 5 to arrange by gender" << endl
@@ -73,10 +73,9 @@ void Information::choiceSort(vector<Scientist>& vec){
 // If the user wants to search for something this function askes what to search for
 void Information::choiceSearch(vector<Scientist>& vec){
     cout << "What do you want to search for ?" << endl
-         << "Press 1 if you want to search for name" << endl
-         << "Press 2 if you want to search for a certain year" << endl
-         << "Press 3 if you want to look for specific achievement" << endl
-         << "Press 4 if you want to go back " << endl;
+         << "Press 1 to search by name" << endl
+         << "Press 2 to search by birthyear" << endl
+         << "Press 3 if you want to go back " << endl;
     search(vec);
 }
 // If the user wants to add, delete og change anything he pickes one here
@@ -119,12 +118,12 @@ void Information::order(vector<Scientist> vec)
     cin >> number;
     switch (number) {
     case 1:
-        cout << "List sorted ascendingly by name:" << endl;
+        cout << "List sorted in alphabetical order:" << endl;
         temp = serv.sortVector(vec, false, 1);
         matchName(vec, temp);
         break;
     case 2:
-        cout << "List sorted descendingly by name:" << endl;
+        cout << "List sorted in reverse alphabetical order:" << endl;
         temp = serv.sortVector(vec, true, 2);
         matchName(vec, temp);
         break;
@@ -139,7 +138,7 @@ void Information::order(vector<Scientist> vec)
         matchYob(vec, temp);
         break;
     case 5:
-        temp = serv.sortVector(vec, NULL, 5);
+        temp = serv.sortVector(vec, false, 5);
         matchGender(vec, temp);
         break;
     case 6:
@@ -169,13 +168,12 @@ void Information::search(vector<Scientist>& vec)
         break;
     case 2:
         break;
-    case 3:
-        //kalla á search fallið
-        break;
-    case 4:
-       // instructions(vec);
-        break;
+    case 3:{
+        instructions(vec);
+        break;}
     default:
+        cout << "This is invalid choice " << endl;
+        search(vec);
         break;
     }
 }
