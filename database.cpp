@@ -6,39 +6,35 @@ database::database()
 
 }
 
-void database::readFile(vector<Scientist>& vec) // This function reads the file
+// This function reads the file
+void database::readFile(vector<Scientist>& vec)
 {
   string n, b, d, g;
   ifstream datas;
 
-  datas.open("input.csv"); //Breyta path
-  //datas.open("c:/temp/input.csv"); ABO
-  //datas.open("C:/Users/FLX/Desktop/hopur2/input.csv");
-  //datas.open("c:/temp/input.csv");
-
+  datas.open("input.csv");
 
   if(datas.fail())
   {
-      cout << "Error, file could not be opened" << endl;
-      exit(1);
+         cout << "Error, file could not be opened" << endl;
+         exit(1);
   }
-  while(!datas.eof())
+   while(!datas.eof())
   {
-    getline(datas, n, ',');
-    getline(datas, b, ',');
-    getline(datas, d, ',');
-    getline(datas, g, '\n');
+        getline(datas, n, ',');
+        getline(datas, b, ',');
+        getline(datas, d, ',');
+        getline(datas, g, '\n');
 
-    //nota cin í stadinn f getline
+        Scientist temp(n, b, d, g);
 
-    Scientist temp(n, b, d, g);
-
-    vec.push_back(temp);
+        vec.push_back(temp);
    }
    datas.close();
 }
 
-void database::writeFile(vector<Scientist> vec){ //This function writes into the file
+//This function writes into the file
+void database::writeFile(vector<Scientist> vec){
     ofstream outs;
     outs.open("output.csv"); //Breyta path
 
@@ -62,20 +58,3 @@ void database::writeFile(vector<Scientist> vec){ //This function writes into the
 
 }
 
-/*void database::writeFileApp(Scientist temp){ //This function appends to the file
-
-    ofstream outs("/Users/sandrabender/hopur2/output.csv", ios::out | ios::app); //Breyta path
-
-    if(outs.fail()) {
-        cout << "Error when writing to file" << endl;
-        exit(1);
-    }
-
-    outs << temp.getName() << ", "
-         << temp.getYob() << ", "
-         << temp.getYod() << ", "
-         << temp.getGender() << endl;
-
-    outs.close();
-}
-*/
