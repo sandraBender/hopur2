@@ -13,7 +13,7 @@ void database::readFile(vector<Scientist>& vec) // This function reads the file
 
   //datas.open("c:/temp/input.csv"); //Breyta path
 
-  datas.open("C:/temp/input.csv"); //Erling
+  datas.open("C:/temp/input.csv");
 
 
   if(datas.fail())
