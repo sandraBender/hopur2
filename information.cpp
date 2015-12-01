@@ -11,8 +11,7 @@ void Information::displayOpening(){
     cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
          << "- - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - -" << endl
          << "  This program keeps information about computer scientists " << endl
-         << "         You can add a new scientist to the list " << endl
-         << "             You can make changes to the list " << endl
+         << "       You can add  or remove a scientist from the list" << endl
          << "   You can change the order in which the list is diplayed" << endl
          << "              And you can search through the list  " << endl;
 }
@@ -41,6 +40,7 @@ void Information::choices(vector<Scientist>& vec){
         choiceSearch(vec);
          break;
     case 4:
+        exit(1);
         return;
     default:
         cout << "This is invalid choice!! " << endl;
@@ -54,10 +54,9 @@ void Information::choiceChange(vector<Scientist>& vec){
     cout << "Here you can add to the list and edit/delete existing information." << endl
          << "What do you want to do? " << endl
          << "Press 1 to add a person " << endl
-         << "Press 2 to delete " << endl
-         << "Press 3 to edit" << endl
-         << "Press 4 to go back" << endl;
-    addDeleCha(vec);
+         << "Press 2 to delete" << endl
+         << "Press 3 to go back" << endl;
+    addDelete(vec);
 }
 // If the user wants to see the hole list, this function askes in what way
 void Information::choiceSort(vector<Scientist>& vec){
@@ -81,14 +80,14 @@ void Information::choiceSearch(vector<Scientist>& vec){
     search(vec);
 }
 // If the user wants to add, delete og change anything he pickes one here
-void Information::addDeleCha(vector<Scientist>& vec){
+void Information::addDelete(vector<Scientist>& vec){
     Service serv;
     int number;
     string nameToDelete = "";
     cin >> number;
     switch (number) {
         case 1:{
-            addScientist(vec); //TODO: Eyða þessu og bæta við serv.addScientist(vec)!!
+            addScientist(vec);
             cout << endl << "--Scientist added to database!--" << endl;
             instructions(vec);
             break;}
@@ -100,14 +99,11 @@ void Information::addDeleCha(vector<Scientist>& vec){
             cout << nameToDelete << " has now been removed." << endl;
             break;
         case 3:
-            //TODO: kalla á edit fallið
-            break;
-        case 4:
             instructions(vec);
             break;
         default:
             cout << "This is invalid choice! " << endl;
-            addDeleCha(vec);
+            addDelete(vec);
             break;
         }
     }
@@ -273,4 +269,22 @@ void Information::matchAge(vector<Scientist> sc, vector<string> str)
             }
         }
     }
+}
+
+void Information::contYN(vector<Scientist> vec){
+    char YorN;
+    cout << "Do you wish to continue? (Y/N)" << endl;
+    cin >> YorN;
+        switch(YorN){
+            case'y':
+                instructions(vec);
+            case'Y':
+                instructions(vec);
+            case'n':
+                exit(1);
+            case'N':
+                exit(1);
+            default:{
+                cout << YorN << " is not a valid option." << endl;
+                contYN(vec);}}
 }

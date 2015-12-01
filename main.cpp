@@ -14,13 +14,7 @@ int main()
     dataguymanstuff.readFile(vec);
     Information info;
     info.displayOpening();
-
-
-    do {
-        info.instructions(vec);
-        cout << "Do you wish to continue? (Y/N)" << endl;
-        cin >> contYN;
-    } while(contYN == 'Y' || contYN == 'y');
+    info.instructions(vec);
 
 
     dataguymanstuff.writeFile(vec);

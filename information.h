@@ -15,7 +15,7 @@ public:
     void choices(vector<Scientist>& vec);
     void choiceChange(vector<Scientist>& vec);
     void choiceSort(vector<Scientist>& vec);
-    void addDeleCha(vector<Scientist>& vec);
+    void addDelete(vector<Scientist>& vec);
     void choiceSearch(vector<Scientist>& vec);
     void order(vector<Scientist> vec);
     void search(vector<Scientist> vec);
@@ -27,6 +27,7 @@ public:
     void matchYob(vector<Scientist> sc, vector<string> str);
     void matchGender(vector<Scientist> sc, vector<string> str);
     void matchAge(vector<Scientist> sc, vector<string> str);
+    void contYN(vector<Scientist> vec);
 };
 
 #endif // INFORMATION_H

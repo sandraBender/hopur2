@@ -24,6 +24,10 @@ void Service::addScientist(vector<Scientist>& vec)
 
     cout << "Gender: ";
     cin >> tempGender;
+        if(tempGender == "m")
+            tempGender = "M";
+        else if(tempGender == "f")
+                    tempGender = "F";
 
 
     Scientist temp(tempName,tempYob, tempYod, tempGender);
