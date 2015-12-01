@@ -13,11 +13,11 @@ class Service
 public:
     Service();
     void addScientist(vector<Scientist>& vec);
-    Scientist getScientist(int num);
+    //Scientist getScientist(int num);
     void displayAll(vector<Scientist> vec);
-    void sortByName(vector<Scientist> vec, bool desc);
+    vector<string> sortVector(vector<Scientist> vec, bool desc, int typeOfSort);
     void deleteScientist(vector<Scientist>& vec, string nameToDelete);
-    void searchByName(vector<Scientist> vec, string searchName);
+    vector<string> searchByName(vector<Scientist> vec, string searchStr);
 };
 
 #endif // SERVICE_H

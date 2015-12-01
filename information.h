@@ -23,6 +23,10 @@ public:
     void displayScientist(int num, vector<Scientist> vec);
     void displayAll(vector<Scientist> vec);
     void displaySearch(vector<Scientist> vec);
+    void matchName(vector<Scientist> sc, vector<string> str);
+    void matchYob(vector<Scientist> sc, vector<string> str);
+
+    void matchGender(vector<Scientist> sc, vector<string> str);
 };
 
 #endif // INFORMATION_H

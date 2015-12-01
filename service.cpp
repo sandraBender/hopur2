@@ -43,21 +43,44 @@ void Service::displayAll(vector<Scientist> vec)
     }
 }
 
-/*void Service::sortByName(vector<Scientist> vec, bool desc)
+vector<string> Service::sortVector(vector<Scientist> vec, bool desc, int typeOfSort)
 {
-    Information info;
-    vector<Scientist> temp;
-    for(size_t i = 0; i < vec.size(); i++) {
-        temp[i] = vec[i];
-    }
-
-    /*sort(temp.begin(), temp.end());
-    if (desc)
+    vector<string> temp;
+    if (typeOfSort == 1 || typeOfSort == 2)
     {
-        reverse(temp.begin(), temp.end());
+        for(size_t i = 0; i < vec.size(); i++) {
+            temp.push_back(vec[i].getName());
+        }
+        sort(temp.begin(), temp.end());
+        if (desc)
+        {
+            reverse(temp.begin(), temp.end());
+        }
     }
-    info.displayAll(temp);
-}*/
+    else if (typeOfSort == 3 || typeOfSort == 4)
+    {
+        for(size_t i = 0; i < vec.size(); i++) {
+            temp.push_back(vec[i].getYob());
+        }
+        sort(temp.begin(), temp.end());
+        if (desc)
+        {
+            reverse(temp.begin(), temp.end());
+        }
+    }
+    else if (typeOfSort == 5)
+    {
+        for(size_t i = 0; i < vec.size(); i++) {
+            temp.push_back(vec[i].getGender());
+        }
+        sort(temp.begin(), temp.end());
+        if (desc)
+        {
+            reverse(temp.begin(), temp.end());
+        }
+    }
+    return temp;
+}
 
 void Service::deleteScientist(vector<Scientist>& vec, string nameToDelete)
 {
@@ -71,14 +94,16 @@ void Service::deleteScientist(vector<Scientist>& vec, string nameToDelete)
     }
 }
 
-void Service::searchByName(vector<Scientist> vec, string searchName)
+vector<string> Service::searchByName(vector<Scientist> vec, string searchStr)
 {
-    Information info;
-    for(unsigned int i = 0; i < vec.size(); i++)
+    vector<string> temp;
+    for(size_t i = 0; i < vec.size(); i++)
     {
-        if (vec[i].getName().find(searchName) == 0)
+        size_t found = vec[i].getName().find(searchStr);
+        if (found != -1)
         {
-            info.displayScientist(i, vec);
+            temp.push_back(vec[i].getName());
         }
     }
+    return temp;
 }

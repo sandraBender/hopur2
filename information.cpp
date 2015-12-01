@@ -57,8 +57,8 @@ void Information::choiceChange(vector<Scientist>& vec){
 }
 void Information::choiceSort(vector<Scientist>& vec){
     cout << "How do you want the list to be displayed?" << endl
-         << "Press 1 for alphabetical order A-Z " << endl
-         << "Press 2 for reverse alphabetical order Z-A " << endl
+         << "Press 1 for ascending order A-Z " << endl
+         << "Press 2 for descending order Z-A " << endl
          << "Press 3 to order by birth year (ascending)" << endl
          << "Press 4 to order by birth year (descending)" << endl
          << "Press 5 to arrange by gender" << endl
@@ -67,35 +67,40 @@ void Information::choiceSort(vector<Scientist>& vec){
 }
 void Information::choiceSearch(vector<Scientist>& vec){
     cout << "What do you want to search for ?" << endl
-         << "press 1 if you want to search for name " << endl
+         << "Press 1 if you want to search for name" << endl
          << "Press 2 if you want to search for a certain year" << endl
          << "Press 3 if you want to look for specific achievement" << endl
          << "Press 4 if you want to go back " << endl;
     search(vec);
 }
 
-void Information::addDeleCha(vector<Scientist>& vec){ //Kommentað út í bili
+void Information::addDeleCha(vector<Scientist>& vec){
+    Service serv;
     int number;
+    string nameToDelete = "";
     cin >> number;
     switch (number) {
         case 1:{
-            addScientist(vec);
-            //hér þarf að skrifa í skrá database
+            addScientist(vec); //TODO: Eyða þessu og bæta við serv.addScientist(vec)!!
             cout << endl << "--Scientist added to database!--" << endl;
             instructions(vec);
             break;}
         case 2:
-            //kalla á delete fallið
+            cout << "Enter the full name of a scientist to remove:" << endl;
+            cin.ignore(4, '\n');
+            getline(cin, nameToDelete);
+            serv.deleteScientist(vec, nameToDelete);
+            cout << nameToDelete << " has now been removed." << endl;
             break;
         case 3:
-            //kalla á edit fallið
+            //TODO: kalla á edit fallið
             break;
         case 4:
             instructions(vec);
             break;
         default:
-           cout << "This is invalid choice! " << endl;
-           addDeleCha(vec);
+            cout << "This is invalid choice! " << endl;
+            addDeleCha(vec);
             break;
         }
     }
@@ -104,23 +109,33 @@ void Information::order(vector<Scientist> vec)
 {
     Service serv;
     int number;
+    vector<string> temp;
     cin >> number;
     switch (number) {
     case 1:
-        serv.displayAll(vec);
+        cout << "List sorted ascendingly by name:" << endl;
+        temp = serv.sortVector(vec, false, 1);
+        matchName(vec, temp);
         break;
     case 2:
-       serv.displayAll(vec);
+        cout << "List sorted descendingly by name:" << endl;
+        temp = serv.sortVector(vec, true, 2);
+        matchName(vec, temp);
         break;
     case 3:
-        serv.displayAll(vec);
-         break;
+        cout << "List sorted ascendingly by year of birth:" << endl;
+        temp = serv.sortVector(vec, false, 3);
+        matchYob(vec, temp);
+        break;
     case 4:
-        serv.displayAll(vec);
-         break;
+        cout << "List sorted descendingly by year of birth:" << endl;
+        temp = serv.sortVector(vec, true, 4);
+        matchYob(vec, temp);
+        break;
     case 5:
-        serv.displayAll(vec);
-         break;
+        temp = serv.sortVector(vec, NULL, 5);
+        matchGender(vec, temp);
+        break;
     case 6:
         instructions(vec);
         break;
@@ -130,15 +145,22 @@ void Information::order(vector<Scientist> vec)
         break;
     }
 }
-void Information::search(vector<Scientist>& vec){
+void Information::search(vector<Scientist>& vec)
+{
+    Service serv;
     int number;
+    vector<string> temp;
+    string searchStr;
     cin >> number;
     switch (number) {
     case 1:
-        //kalla á search fallið
+        cout << "Enter a search string: " << endl;
+        cin >> searchStr;
+        cout << "Search results: " << endl;
+        temp = serv.searchByName(vec, searchStr);
+        matchName(vec, temp);
         break;
     case 2:
-        //kalla á search fallið
         break;
     case 3:
         //kalla á search fallið
@@ -172,3 +194,48 @@ void Information::displaySearch(Service serv){ Kommentað út í bili
         cout << serv.SearchVec[i];
 }
 */
+
+void Information::matchName(vector<Scientist> sc, vector<string> str)
+{
+    for(size_t i = 0; i < str.size(); i++)
+    {
+        for (size_t j = 0; j < sc.size(); j++)
+        {
+            size_t found = str[i].find(sc[j].getName());
+            if (found != -1)
+            {
+                cout << sc[j] << endl;
+            }
+        }
+    }
+}
+
+void Information::matchYob(vector<Scientist> sc, vector<string> str)
+{
+    for(size_t i = 0; i < str.size(); i++)
+    {
+        for (size_t j = 0; j < sc.size(); j++)
+        {
+            size_t found = str[i].find(sc[j].getYob());
+            if (found != -1)
+            {
+                cout << sc[j] << endl;
+            }
+        }
+    }
+}
+
+void Information::matchGender(vector<Scientist> sc, vector<string> str)
+{
+    for(size_t i = 0; i < str.size(); i++)
+    {
+        for (size_t j = 0; j < sc.size(); j++)
+        {
+            size_t found = str[i].find(sc[j].getYob());
+            if (found != -1)
+            {
+                cout << sc[j] << endl;
+            }
+        }
+    }
+}

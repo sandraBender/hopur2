@@ -8,20 +8,20 @@ using namespace std;
 
 int main()
 {
+    char contYN;
     database dataguymanstuff;
     vector<Scientist> vec;
     dataguymanstuff.readFile(vec);
 
-    //Scientist sc("asd", "100", "100", "M");
-   // vec.push_back(sc);
-    Information info;
-    info.displayOpening();
-    info.instructions(vec);
+    do {
+        Information info;
+        info.displayOpening();
+        info.instructions(vec);
+        cout << "Do you wish to continue? (Y/N)" << endl;
+        cin >> contYN;
+    } while(contYN == 'Y' || contYN == 'y');
+
     dataguymanstuff.writeFile(vec);
-
-
-
-
 
     //Service serv;
     //info.addScientist(serv);
