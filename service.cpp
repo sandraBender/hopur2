@@ -90,15 +90,52 @@ void Service::deleteScientist(vector<Scientist>& vec, string nameToDelete)
     }
 }
 // searches for a name
-vector<string> Service::searchByName(vector<Scientist> vec, string searchStr)
+vector<string> Service::search(vector<Scientist> vec, string searchStr, int typeOfSearch)
 {
     vector<string> temp;
-    for(size_t i = 0; i < vec.size(); i++)
+    if (typeOfSearch == 1)
     {
-        size_t found = vec[i].getName().find(searchStr);
-        if (found != -1)
+        for(size_t i = 0; i < vec.size(); i++)
         {
-            temp.push_back(vec[i].getName());
+            size_t found = vec[i].getName().find(searchStr);
+            if (found != -1)
+            {
+                temp.push_back(vec[i].getName());
+            }
+        }
+    }
+    else if (typeOfSearch == 2)
+    {
+        for(size_t i = 0; i < vec.size(); i++)
+        {
+            size_t found = vec[i].getYob().find(searchStr);
+            if (found != -1)
+            {
+                temp.push_back(vec[i].getYob());
+            }
+        }
+    }
+    else if (typeOfSearch == 3)
+    {
+        for(size_t i = 0; i < vec.size(); i++)
+        {
+            string age = static_cast<ostringstream*>( &(ostringstream() << vec[i].getAge()) )->str();
+            size_t found = age.find(searchStr);
+            if (found != -1)
+            {
+                temp.push_back(age);
+            }
+        }
+    }
+    else if (typeOfSearch == 4)
+    {
+        for(size_t i = 0; i < vec.size(); i++)
+        {
+            size_t found = vec[i].getGender().find(searchStr);
+            if (found != -1)
+            {
+                temp.push_back(vec[i].getGender());
+            }
         }
     }
     return temp;

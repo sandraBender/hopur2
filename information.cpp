@@ -75,7 +75,9 @@ void Information::choiceSearch(vector<Scientist>& vec){
     cout << "What do you want to search for ?" << endl
          << "Press 1 to search by name" << endl
          << "Press 2 to search by birthyear" << endl
-         << "Press 3 if you want to go back " << endl;
+         << "Press 3 to search by age" << endl
+         << "Press 4 to search by gender" << endl
+         << "Press 5 if you want to go back " << endl;
     search(vec);
 }
 // If the user wants to add, delete og change anything he pickes one here
@@ -152,7 +154,7 @@ void Information::order(vector<Scientist> vec)
     }
 }
 //If the user wants to search for something, he pickes the way here
-void Information::search(vector<Scientist>& vec)
+void Information::search(vector<Scientist> vec)
 {
     Service serv;
     int number;
@@ -161,17 +163,36 @@ void Information::search(vector<Scientist>& vec)
     cin >> number;
     switch (number) {
     case 1:
-        cout << "Enter a search string: " << endl;
+        cout << "Enter a name to search for: " << endl;
         cin >> searchStr;
         cout << "Search results: " << endl;
-        temp = serv.searchByName(vec, searchStr);
+        temp = serv.search(vec, searchStr, 1);
         matchName(vec, temp);
         break;
     case 2:
+        cout << "Enter a year of birth to search for: " << endl;
+        cin >> searchStr;
+        cout << "Search results: " << endl;
+        temp = serv.search(vec, searchStr, 2);
+        matchYob(vec, temp);
         break;
-    case 3:{
+    case 3:                                         // VIRKAR EKKI, VANTAR matchAge()
+        cout << "Enter an age to search for: " << endl;
+        cin >> searchStr;
+        cout << "Search results: " << endl;
+        temp = serv.search(vec, searchStr, 3);
+        matchAge(vec, temp);
+        break;
+    case 4:
+        cout << "Enter either 'M' or 'F' to search by gender:" << endl;
+        cin >> searchStr;
+        cout << "Search results: " << endl;
+        temp = serv.search(vec, searchStr, 4);
+        matchGender(vec, temp);
+        break;
+    case 5:
         instructions(vec);
-        break;}
+        break;
     default:
         cout << "This is invalid choice " << endl;
         search(vec);
@@ -231,8 +252,22 @@ void Information::matchGender(vector<Scientist> sc, vector<string> str)
     {
         for (size_t j = 0; j < sc.size(); j++)
         {
-            //size_t found = str[i].find(sc[j].getYob());
             if (str[i].compare(sc[j].getGender()) == 0)
+            {
+                cout << sc[j] << endl;
+            }
+        }
+    }
+}
+
+void Information::matchAge(vector<Scientist> sc, vector<string> str)
+{
+    for(size_t i = 0; i < str.size(); i++)
+    {
+        for (size_t j = 0; j < sc.size(); j++)
+        {
+            string age = static_cast<ostringstream*>( &(ostringstream() << sc[j].getAge()) )->str();
+            if (str[i].compare(age) == 0)
             {
                 cout << sc[j] << endl;
             }

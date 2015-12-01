@@ -7,6 +7,7 @@
 #include "Information.h"
 #include <algorithm>
 #include <string>
+#include <sstream>
 
 class Service
 {
@@ -17,7 +18,7 @@ public:
     void displayAll(vector<Scientist> vec);
     vector<string> sortVector(vector<Scientist> vec, bool desc, int typeOfSort);
     void deleteScientist(vector<Scientist>& vec, string nameToDelete);
-    vector<string> searchByName(vector<Scientist> vec, string searchStr);
+    vector<string> search(vector<Scientist> vec, string searchStr, int typeOfSearch);
 };
 
 #endif // SERVICE_H
