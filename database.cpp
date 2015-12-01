@@ -13,7 +13,7 @@ void database::readFile(vector<Scientist>& vec) // This function reads the file
 
   datas.open("input.csv"); //Breyta path
   //datas.open("c:/temp/input.csv"); ABO
-    datas.open("C:/Users/FLX/Desktop/hopur2/input.csv");
+  //datas.open("C:/Users/FLX/Desktop/hopur2/input.csv");
   //datas.open("c:/temp/input.csv");
 
 
