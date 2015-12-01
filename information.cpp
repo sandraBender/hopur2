@@ -15,6 +15,8 @@ void Information::displayOpening(){
          << "   You can change the order in which the list is diplayed" << endl
          << "              And you can search through the list  " << endl;
 }
+
+
  // This function askes for the first choices
 void Information::instructions(vector<Scientist>& vec){
     cout << endl << "What do you want to do? " << endl
@@ -25,6 +27,8 @@ void Information::instructions(vector<Scientist>& vec){
 
     choices(vec);
 }
+
+
 // let the user pick the choices and calls the next function
 void Information::choices(vector<Scientist>& vec){
     int number;
@@ -47,8 +51,9 @@ void Information::choices(vector<Scientist>& vec){
         choices(vec);
         break;
     }
-
 }
+
+
 // If the users wants to change something this function askes what kind of change
 void Information::choiceChange(vector<Scientist>& vec){
     cout << "Here you can add to the list and edit/delete existing information." << endl
@@ -58,6 +63,8 @@ void Information::choiceChange(vector<Scientist>& vec){
          << "Press 3 to go back" << endl;
     addDelete(vec);
 }
+
+
 // If the user wants to see the hole list, this function askes in what way
 void Information::choiceSort(vector<Scientist>& vec){
     cout << "How do you want the list to be displayed?" << endl
@@ -69,6 +76,8 @@ void Information::choiceSort(vector<Scientist>& vec){
          << "Press 6 to go back "  << endl;
     order(vec);
 }
+
+
 // If the user wants to search for something this function askes what to search for
 void Information::choiceSearch(vector<Scientist>& vec){
     cout << "What do you want to search for ?" << endl
@@ -79,6 +88,8 @@ void Information::choiceSearch(vector<Scientist>& vec){
          << "Press 5 if you want to go back " << endl;
     search(vec);
 }
+
+
 // If the user wants to add, delete og change anything he pickes one here
 void Information::addDelete(vector<Scientist>& vec){
     Service serv;
@@ -97,6 +108,7 @@ void Information::addDelete(vector<Scientist>& vec){
             getline(cin, nameToDelete);
             serv.deleteScientist(vec, nameToDelete);
             cout << nameToDelete << " has now been removed." << endl;
+            instructions(vec);
             break;
         case 3:
             instructions(vec);
@@ -107,6 +119,8 @@ void Information::addDelete(vector<Scientist>& vec){
             break;
         }
     }
+
+
 // If the user wants to sort the list he tells the program in what kind of way here.
 void Information::order(vector<Scientist> vec)
 {
@@ -119,26 +133,31 @@ void Information::order(vector<Scientist> vec)
         cout << "List sorted in alphabetical order:" << endl;
         temp = serv.sortVector(vec, false, 1);
         matchName(vec, temp);
+        instructions(vec);
         break;
     case 2:
         cout << "List sorted in reverse alphabetical order:" << endl;
         temp = serv.sortVector(vec, true, 2);
         matchName(vec, temp);
+        instructions(vec);
         break;
     case 3:
         cout << "List sorted ascendingly by year of birth:" << endl;
         temp = serv.sortVector(vec, false, 3);
         matchYob(vec, temp);
+        instructions(vec);
         break;
     case 4:
         cout << "List sorted descendingly by year of birth:" << endl;
         temp = serv.sortVector(vec, true, 4);
         matchYob(vec, temp);
+        instructions(vec);
         break;
     case 5:
         cout << "List sorted by gender (Female first):" << endl;
         temp = serv.sortVector(vec, false, 5);
         matchGender(vec, temp);
+        instructions(vec);
         break;
     case 6:
         instructions(vec);
@@ -149,6 +168,8 @@ void Information::order(vector<Scientist> vec)
         break;
     }
 }
+
+
 //If the user wants to search for something, he pickes the way here
 void Information::search(vector<Scientist> vec)
 {
@@ -164,6 +185,7 @@ void Information::search(vector<Scientist> vec)
         cout << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 1);
         matchName(vec, temp);
+        instructions(vec);
         break;
     case 2:
         cout << "Enter a year of birth to search for: " << endl;
@@ -171,6 +193,7 @@ void Information::search(vector<Scientist> vec)
         cout << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 2);
         matchYob(vec, temp);
+        instructions(vec);
         break;
     case 3:                                         // VIRKAR EKKI, VANTAR matchAge()
         cout << "Enter an age to search for: " << endl;
@@ -178,6 +201,7 @@ void Information::search(vector<Scientist> vec)
         cout << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 3);
         matchAge(vec, temp);
+        instructions(vec);
         break;
     case 4:
         cout << "Enter either 'M' or 'F' to search by gender:" << endl;
@@ -185,6 +209,7 @@ void Information::search(vector<Scientist> vec)
         cout << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 4);
         matchGender(vec, temp);
+        instructions(vec);
         break;
     case 5:
         instructions(vec);
@@ -194,12 +219,15 @@ void Information::search(vector<Scientist> vec)
         search(vec);
         break;
     }
+
 }
+
+
 // gives the instructions about adding a scientist
 void Information::addScientist(vector<Scientist>& vec){
     Service serv;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
-    cout << "If he/she is still alive put in ‘0’ in 'Year of death'" << endl;
+    cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
 
     serv.addScientist(vec);
 }
@@ -226,6 +254,8 @@ void Information::matchName(vector<Scientist> sc, vector<string> str)
         }
     }
 }
+
+
 // checks if the Year of birth is in the list
 void Information::matchYob(vector<Scientist> sc, vector<string> str)
 {
@@ -241,6 +271,8 @@ void Information::matchYob(vector<Scientist> sc, vector<string> str)
         }
     }
 }
+
+
 // Checkes if the gender is in the list
 void Information::matchGender(vector<Scientist> sc, vector<string> str)
 {
@@ -255,6 +287,8 @@ void Information::matchGender(vector<Scientist> sc, vector<string> str)
         }
     }
 }
+
+
 
 void Information::matchAge(vector<Scientist> sc, vector<string> str)
 {
@@ -271,20 +305,3 @@ void Information::matchAge(vector<Scientist> sc, vector<string> str)
     }
 }
 
-void Information::contYN(vector<Scientist> vec){
-    char YorN;
-    cout << "Do you wish to continue? (Y/N)" << endl;
-    cin >> YorN;
-        switch(YorN){
-            case'y':
-                instructions(vec);
-            case'Y':
-                instructions(vec);
-            case'n':
-                exit(1);
-            case'N':
-                exit(1);
-            default:{
-                cout << YorN << " is not a valid option." << endl;
-                contYN(vec);}}
-}

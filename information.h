@@ -27,7 +27,6 @@ public:
     void matchYob(vector<Scientist> sc, vector<string> str);
     void matchGender(vector<Scientist> sc, vector<string> str);
     void matchAge(vector<Scientist> sc, vector<string> str);
-    void contYN(vector<Scientist> vec);
 };
 
 #endif // INFORMATION_H

@@ -44,7 +44,7 @@ void database::readFile(vector<Scientist>& vec) // This function reads the file
 
 void database::writeFile(vector<Scientist> vec){ //This function writes into the file
     ofstream outs;
-    outs.open("/Users/sindrirafn/hopur2/output.csv"); //Breyta path
+    outs.open("/Users/sindrirafn/hopur2/input.csv"); //Breyta path
 
     if(outs.fail()) {
         cout << "Error when writing to file" << endl;
