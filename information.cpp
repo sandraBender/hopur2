@@ -271,7 +271,7 @@ void Information::matchYob(vector<Scientist> sc, vector<string> str)
 {
     if (str.empty())
     {
-        cout << endl << "Your search string did not match any name!" << endl;
+        cout << endl << "Your search string did not match any year of birth!" << endl;
         return;
     }
     for(size_t i = 0; i < str.size(); i++)
@@ -290,6 +290,8 @@ void Information::matchYob(vector<Scientist> sc, vector<string> str)
 // Match the search/sorted gender vector to vector of Scientists
 void Information::matchGender(vector<Scientist> sc, vector<string> str, int sortORfind)
 {
+    string fe = "F";
+    string ma = "M";
     if (str.empty())
     {
         cout << endl << "Your search string did not match any gender!" << endl;
@@ -305,20 +307,39 @@ void Information::matchGender(vector<Scientist> sc, vector<string> str, int sort
             }
         }
     }
-
-
     else if(!sortORfind)
     {
-        for(size_t i = 0; i < sc.size(); i++)
+        for (size_t i = 0; i < sc.size(); i++)
         {
-            for (size_t j = 0; j < str.size(); j++)
+            if (sc[i].getGender().compare(fe) == 0)
             {
-                if (sc[i].getGender().compare(str[j]) == 0)
+                cout << sc[i];
+            }
+        }
+        for (size_t i = 0; i < sc.size(); i++)
+        {
+            if (sc[i].getGender().compare(ma) == 0)
+            {
+                cout << sc[i];
+            }
+        }
+
+        /*
+        for(size_t i = 0; i < str.size(); i++)
+        {
+            for (size_t j = 0; j < sc.size(); j++)
+            {
+                size_t found = str[i].find(sc[j].getGender());
+                if (found != -1)
+                {
+                    cout << sc[j] << endl;
+                }
+                if (str[i].compare(sc[j].getGender()) == 0)
                 {
                     cout << sc[j] << endl;
                 }
             }
-        }
+        }*/
     }
 }
 
