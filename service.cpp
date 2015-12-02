@@ -8,7 +8,7 @@ Service::Service()
 void Service::addScientist(vector<Scientist>& vec)
 {
     string tempYod, tempName, tempYob, tempGender;
-    string alive = "0";
+    const string alive = "0";
 
     cout << "Name: ";
     //tempName = enterName();
