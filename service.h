@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include "database.h"
-#include "Information.h"
 #include <algorithm>
 #include <string>
 #include <sstream>

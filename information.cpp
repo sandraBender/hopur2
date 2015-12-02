@@ -1,6 +1,4 @@
 #include "information.h"
-#include <iostream>
-using namespace std;
 
 Information::Information()
 {

@@ -1,8 +1,6 @@
 #include <iostream>
 #include "scientist.h"
-#include "database.h"
 #include "information.h"
-#include "service.h"
 
 using namespace std;
 
