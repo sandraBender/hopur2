@@ -11,9 +11,10 @@ void Service::addScientist(vector<Scientist>& vec)
     const string alive = "0";
 
     cout << "Name: ";
-    //tempName = enterName();
+    tempName = enterName();
     cin.ignore();
     getline(cin, tempName);
+
 
     cout << "Year of birth: ";
     tempYob = enterYear();
@@ -29,7 +30,7 @@ void Service::addScientist(vector<Scientist>& vec)
         if(tempGender == "m")
             tempGender = "M";
         else if(tempGender == "f")
-                    tempGender = "F";
+            tempGender = "F";
 
 
     Scientist temp(tempName,tempYob, tempYod, tempGender);
@@ -147,7 +148,7 @@ vector<string> Service::search(vector<Scientist> vec, string searchStr, int type
     return temp;
 }
 
-string Service::enterName()
+string Service::enterName() // Fengum þetta ekki til að virka :(
 {
     string tempName;
     bool notName = true;
@@ -158,16 +159,15 @@ string Service::enterName()
 
         for(unsigned int i=0; i<tempName.size();i++)
         {
-            if((isalpha(tempName[i]) == 0))
+            if((isalpha(tempName[i]) == 0) && tempName[i] == ' ')
             {
-                notName=false;
+                notName = true;
                 cout << "Only characters accepted, please try again:\n";
                 break;
             }
-
             else
             {
-                notName = false;
+               notName = false;
             }
         }
     }while(notName);
@@ -231,13 +231,13 @@ string Service::enterGender()
 
     return tempGender;
 }
-
+// reads the file
 void Service::readFile(vector<Scientist>& vec)
 {
     database db;
     db.readFile(vec);
 }
-
+// writes the file into the file
 void Service::writeFile(vector<Scientist> vec)
 {
     database db;

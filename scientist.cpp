@@ -79,19 +79,3 @@ void Scientist::operator=(const Scientist& s)
     gender = s.gender;
     age = s.age;
 }
-
-void Scientist::editScientist(vector<Scientist>& vec, string nameToEdit, string name, string yearOfBirth, string yearOfDeath, string gender, int age)
-{
-    for(size_t i = 0; i < vec.size(); i++)
-    {
-        if (vec[i].name.compare(nameToEdit) == 0)
-        {
-            vec[i].name = name;
-            vec[i].age = age;
-            vec[i].yearOfBirth = yearOfBirth;
-            vec[i].yearOfDeath = yearOfDeath;
-            vec[i].gender = gender;
-            return;
-        }
-    }
-}
