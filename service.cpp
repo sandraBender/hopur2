@@ -231,3 +231,15 @@ string Service::enterGender()
 
     return tempGender;
 }
+
+void Service::readFile(vector<Scientist>& vec)
+{
+    database db;
+    db.readFile(vec);
+}
+
+void Service::writeFile(vector<Scientist> vec)
+{
+    database db;
+    db.writeFile(vec);
+}

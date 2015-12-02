@@ -8,15 +8,13 @@ using namespace std;
 
 int main()
 {
-    database data;
-    vector<Scientist> vec;
-    data.readFile(vec);
     Information info;
+    vector<Scientist> vec;
+
+    info.readFile(vec);
     info.displayOpening();
     info.instructions(vec);
-
-
-    data.writeFile(vec);
+    info.writeFile(vec);
 
    return 0;
 }

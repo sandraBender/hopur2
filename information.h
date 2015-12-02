@@ -27,6 +27,8 @@ public:
     void matchYob(vector<Scientist> sc, vector<string> str);
     void matchGender(vector<Scientist> sc, vector<string> str, int sortORfind);
     void matchAge(vector<Scientist> sc, vector<string> str);
+    void readFile(vector<Scientist>& vec);
+    void writeFile(vector<Scientist> vec);
 };
 
 #endif // INFORMATION_H

@@ -24,6 +24,8 @@ public:
     string enterName();
     string enterYear();
     string enterGender();
+    void readFile(vector<Scientist>& vec);
+    void writeFile(vector<Scientist> vec);
 };
 
 #endif // SERVICE_H

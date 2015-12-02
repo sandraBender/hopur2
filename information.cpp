@@ -323,23 +323,6 @@ void Information::matchGender(vector<Scientist> sc, vector<string> str, int sort
                 cout << sc[i];
             }
         }
-
-        /*
-        for(size_t i = 0; i < str.size(); i++)
-        {
-            for (size_t j = 0; j < sc.size(); j++)
-            {
-                size_t found = str[i].find(sc[j].getGender());
-                if (found != -1)
-                {
-                    cout << sc[j] << endl;
-                }
-                if (str[i].compare(sc[j].getGender()) == 0)
-                {
-                    cout << sc[j] << endl;
-                }
-            }
-        }*/
     }
 }
 
@@ -365,3 +348,14 @@ void Information::matchAge(vector<Scientist> sc, vector<string> str)
     }
 }
 
+void Information::readFile(vector<Scientist>& vec)
+{
+    Service serv;
+    serv.readFile(vec);
+}
+
+void Information::writeFile(vector<Scientist> vec)
+{
+    Service serv;
+    serv.writeFile(vec);
+}
