@@ -12,11 +12,14 @@ void Information::displayOpening(){
          << "       You can add  or remove a scientist from the list" << endl
          << "   You can change the order in which the list is diplayed" << endl
          << "              And you can search through the list  " << endl;
+    vector<Scientist> vec;
+    instructions(vec);
 }
 
 
  // This function askes for the first choices
 void Information::instructions(vector<Scientist>& vec){
+    readFile(vec);
     cout << endl << "What do you want to do? " << endl
          << "Press 1 to make changes to the list." << endl
          << "Press 2 to display the list." << endl
@@ -44,6 +47,7 @@ void Information::choices(vector<Scientist>& vec){
          break;
     case'4':
         {
+        writeFile(vec);
             return;
         }
     default:{
