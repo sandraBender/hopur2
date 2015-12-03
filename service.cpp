@@ -11,7 +11,7 @@ void Service::addScientist(vector<Scientist>& vec)
     const string alive = "0";
 
     cout << "Name: ";
-    tempName = enterName();
+    //tempName = enterName();
     cin.ignore();
     getline(cin, tempName);
 
