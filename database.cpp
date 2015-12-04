@@ -1,12 +1,11 @@
 #include "database.h"
 
 
-
-
 database::database()
 {
 
 }
+//This function accesses the database
 void database::getDatabase(){
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -17,12 +16,8 @@ void database::getDatabase(){
     if (!db.open())  {
         cout << "Error, database was not opened!";
     }
-
-
-
-
-
     QSqlQuery query(db);
+
 
 
 

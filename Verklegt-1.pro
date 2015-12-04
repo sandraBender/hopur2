@@ -11,13 +11,15 @@ SOURCES += main.cpp \
     database.cpp \
     information.cpp \
     service.cpp \
-    scientist.cpp
+    scientist.cpp \
+    computer.cpp
 
 HEADERS += \
     information.h \
     database.h \
     service.h \
-    scientist.h
+    scientist.h \
+    computer.h
 
 DISTFILES += \
     input.csv \
