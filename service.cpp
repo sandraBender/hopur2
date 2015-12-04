@@ -235,11 +235,11 @@ string Service::enterGender()
 void Service::readFile(vector<Scientist>& vec)
 {
     database db;
-    db.readFile(vec);
+    //db.readFile(vec);
 }
 // writes the file into the file
 void Service::writeFile(vector<Scientist> vec)
 {
     database db;
-    db.writeFile(vec);
+    //db.writeFile(vec);
 }

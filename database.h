@@ -7,15 +7,18 @@
 #include "scientist.h"
 #include <fstream>
 #include <cstdlib>
+#include <QCoreApplication>
+#include <QtSql>
 
 
 class database
 {
 public:
     database();
-    void readFile(vector<Scientist>& vec);
+    void getDatabase();
+    /*void readFile(vector<Scientist>& vec);
     void writeFile(vector<Scientist> vec);
-    void writeFileApp(Scientist temp);
+    void writeFileApp(Scientist temp);*/
 };
 
 #endif // DATABASE_H

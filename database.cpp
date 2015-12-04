@@ -1,11 +1,23 @@
 #include "database.h"
 
+
+
+
 database::database()
 {
 
 }
+void database::getDatabase(){
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbName= "Database";
+    db.setDatabaseName(dbName);
 
-// This function reads the file
+    db.open();
+    QSqlQuery query(db);
+}
+
+/*// This function reads the file
 void database::readFile(vector<Scientist>& vec)
 {
   string n, b, d, g;
@@ -55,5 +67,5 @@ void database::writeFile(vector<Scientist> vec){
 
     outs.close();
 
-}
+}*/
 
