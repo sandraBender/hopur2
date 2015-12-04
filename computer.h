@@ -12,19 +12,20 @@ using namespace std;
 class Computer {
     public:
         Computer();
-        Computer(string Name, string yearInvented, bool wasmaade);
+        Computer(string Name, string yearInvented, bool wasmaade, string Type);
         friend ostream& operator <<(ostream& outs, Computer comp);
         void operator =(const Computer& t);
         string getName();
-        string getyearInvented();
-        bool getwasmade();
-        string wasMade(bool yesOrNo);
+        string getYearInvented();
+        bool getBuildOrNot();
+        string buildorNot(bool yesOrNo);
+        string getType();
 
     private:
         string name;
         string yearInvented;
-        bool wasmade;
-
+        bool buildOrNot;
+        string type;
 };
 
 

@@ -5,18 +5,20 @@ Computer::Computer()
 
 }
 //
-Computer::Computer(string Name, string yearinvented, bool wasmaade)
+Computer::Computer(string Name, string yearinvented, bool build, string Type)
 {
     name = Name;
     yearInvented = yearinvented;
-    wasmade = wasmaade;
+    buildOrNot = build;
+    type = Type;
 }
 
 ostream& operator <<(ostream& outs, Computer comp)
 {
     outs << "Name: " << comp.getName() << endl;
-    outs << "Year Invented: " << comp.getyearInvented() << endl;
-    outs << "The computer was: " << comp.wasMade(comp.getwasmade()) << " built" << endl;
+    outs << "Year Invented: " << comp.getYearInvented() << endl;
+    outs << "The computer was " << comp.buildorNot(comp.getBuildOrNot()) << " built" << endl;
+    outs << "The type of the computer:  " << comp.getType() << endl;
 
     return outs;
 
@@ -27,7 +29,7 @@ void Computer::operator =(const Computer& c)
     {
         name = c.name;
         yearInvented = c.yearInvented;
-        wasmade = c.wasmade;
+        buildOrNot = c.buildOrNot;
     }
 
 
@@ -38,16 +40,16 @@ string Computer::getName()
     return name;
 }
 
-string Computer::getyearInvented()
+string Computer::getYearInvented()
 {
     return yearInvented;
 }
 
-bool Computer::getwasmade()
+bool Computer::getBuildOrNot()
 {
-    return wasmade;
+    return buildOrNot;
 }
-string Computer::wasMade(bool yesOrNo)
+string Computer::buildorNot(bool yesOrNo)
 {
     switch (yesOrNo)
     {
@@ -56,4 +58,8 @@ string Computer::wasMade(bool yesOrNo)
         default:
             return "";
     }
+}
+string Computer::getType()
+{
+    return type;
 }
