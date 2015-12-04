@@ -1,8 +1,4 @@
-#include <iostream>
-#include "scientist.h"
 #include "information.h"
-
-using namespace std;
 
 int main()
 {
