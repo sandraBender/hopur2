@@ -14,8 +14,26 @@ void database::getDatabase(){
     db.setDatabaseName(dbName);
 
     db.open();
+    if (!db.open())  {
+        cout << "Error, database was not opened!";
+    }
+
+
+
+
+
     QSqlQuery query(db);
+
+
+
+    db.close();
 }
+
+
+
+
+
+
 
 /*// This function reads the file
 void database::readFile(vector<Scientist>& vec)

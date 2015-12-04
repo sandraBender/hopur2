@@ -49,15 +49,11 @@ int Scientist::checkAge()
     int intYob = atoi(yearOfBirth.c_str());
 
     if (intYod == 0)
-    {
         age =  2015 - intYob;
-    }
     else
-    {
-        age = intYod - intYob;
-        age = abs(age);
-    }
-    return age;
+        age = intYob - intYod;
+
+    return abs(age);
 }
 
 ostream& operator <<(ostream& outs, Scientist sci)
