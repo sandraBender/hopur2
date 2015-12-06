@@ -17,7 +17,7 @@ ostream& operator <<(ostream& outs, Computer comp)
 {
     outs << "Name: " << comp.getName() << endl;
     outs << "Year Invented: " << comp.getYearInvented() << endl;
-    outs << "The computer was " << comp.getBuildOrNot() << " built" << endl;
+    outs << "The computer was " << comp.builtOrNot(comp.getBuiltOrNot()) << " built" << endl;
     outs << "The type of the computer:  " << comp.getType() << endl;
 
     return outs;
@@ -40,12 +40,12 @@ string Computer::getYearInvented()
     return yearInvented;
 }
 
-bool Computer::getBuildOrNot()
+bool Computer::getBuiltOrNot()
 {
     return buildOrNot;
 }
 
-string Computer::buildorNot(bool yesOrNo)
+string Computer::builtOrNot(bool yesOrNo)
 {
     switch (yesOrNo)
     {

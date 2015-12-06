@@ -17,10 +17,9 @@ class Computer {
         void operator =(const Computer& t);
         string getName();
         string getYearInvented();
-        bool getBuildOrNot();
-        string buildorNot(bool yesOrNo);
+        bool getBuiltOrNot();
+        string builtOrNot(bool yesOrNo);
         string getType();
-
     private:
         string name;
         string yearInvented;
