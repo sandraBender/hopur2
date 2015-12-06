@@ -17,7 +17,7 @@ public:
     //void addScientist(vector<Scientist>& vec);
     //Scientist getScientist(int num);
     void displayAll(vector<Scientist> vec);
-    //vector<string> sortVector(vector<Scientist> vec, bool desc, int typeOfSort);
+    void sort(vector<Scientist>& vec, QString command);
     //void deleteScientist(vector<Scientist>& vec, string nameToDelete);
     //vector<string> search(vector<Scientist> vec, string searchStr, int typeOfSearch);
     //string enterName();

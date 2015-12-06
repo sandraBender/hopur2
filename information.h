@@ -32,6 +32,8 @@ public:
     void matchAge(vector<Scientist> sc, vector<string> str);
     void readFile(vector<Scientist>& vec);
     void writeFile(vector<Scientist> vec);
+private:
+    QString command;
 };
 
 #endif // INFORMATION_H

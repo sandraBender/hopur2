@@ -155,49 +155,44 @@ void Information::addDelete(vector<Scientist>& vec){
 void Information::order(vector<Scientist> vec)
 {
     Service serv;
+
     char number;
     vector<string> temp;
     cin >> number;
     cout << endl;
     switch (number) {
     case'1':{
-        QString command = "SELECT * FROM Scientists ORDER BY name";
-        database data;
-        data.getDatabase();
-        data.createSciVec(vec, command);
         cout << "List sorted in alphabetical order:" << endl;
-        //temp = serv.sortVector(vec, false, 1);
-        //matchName(vec, temp);
-
-        serv.displayAll(vec);
-        instructions();
+        command = "SELECT * FROM Scientists ORDER BY name";
+        serv.sort(vec, command);
+        compSciOrLink();
         break;}
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl;
-        //temp = serv.sortVector(vec, true, 2);
-        matchName(vec, temp);
-        instructions();
+        command = "SELECT * FROM Scientists ORDER BY name DESC";
+        serv.sort(vec, command);
+        compSciOrLink();
         break;
     case'3':
         cout << "List sorted ascendingly by year of birth:" << endl;
-        //temp = serv.sortVector(vec, false, 3);
-        matchYob(vec, temp);
-        instructions();
+        command = "SELECT * FROM Scientists ORDER BY YearOfBirth";
+        serv.sort(vec, command);
+        compSciOrLink();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl;
-        //temp = serv.sortVector(vec, true, 4);
-        matchYob(vec, temp);
-        instructions();
+        command = "SELECT * FROM Scientists ORDER BY YearOfBirth DESC";
+        serv.sort(vec, command);
+        compSciOrLink();
         break;
     case'5':
         cout << "List sorted by gender (Female first):" << endl;
-        //temp = serv.sortVector(vec, false, 5);
-        matchGender(vec, temp, 0);
-        instructions();
+        command = "SELECT * FROM Scientists ORDER BY gender";
+        serv.sort(vec, command);
+        compSciOrLink();
         break;
     case'6':
-        instructions();
+        compSciOrLink();
         break;
     default:
         cout << "This is invalid choice " << endl;

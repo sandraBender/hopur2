@@ -24,6 +24,7 @@ void database::getDatabase(){
 
 void database::createSciVec(vector<Scientist>& vec, QString command){
 
+getDatabase();
 vector<Scientist> tempVec;
 QSqlQueryModel model;
   model.setQuery(command);
@@ -35,6 +36,23 @@ QSqlQueryModel model;
          QString gender = model.record(i).value("Gender").toString();
          Scientist temp(name, yob, yod, gender);
          tempVec.push_back(temp);
+  }
+    vec = tempVec;
+    }
+
+void database::createCompVec(vector<Computer>& vec, QString command){
+
+
+vector<Computer> tempVec;
+QSqlQueryModel model;
+  model.setQuery(command);
+
+    for (int i = 0; i < model.rowCount(); ++i) {
+         QString name = model.record(i).value("Name").toString();
+         int yob = model.record(i).value("BuildYear").toInt();
+         QString type = model.record(i).value("Type").toString();
+         //Computer temp(name, yob, yod, gender);
+         //tempVec.push_back(temp);
   }
     vec = tempVec;
     }

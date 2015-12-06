@@ -20,6 +20,7 @@ public:
     void getDatabase();
     void printList(QString command);
     void createSciVec(vector<Scientist>& vec, QString command);
+    void createCompVec(vector<Computer>& vec, QString command);
     /*void readFile(vector<Scientist>& vec);
     void writeFile(vector<Scientist> vec);
     void writeFileApp(Scientist temp);*/

@@ -7,25 +7,27 @@
 #include <cmath>
 #include <stdlib.h>
 //#include "scientist.h"
+#include <QCoreApplication>
+#include <QtSql>
 
 using namespace std;
 
 class Computer {
 public:
         Computer();
-        Computer(string Name, string yearInvented, bool Built, string Type);
+        Computer(QString Name, int yearInvented, bool Built, QString Type);
         friend ostream& operator <<(ostream& outs, Computer comp);
         void operator =(const Computer& t);
-        string getName();
-        string getYearInvented();
+        QString getName();
+        int getYearInvented();
         bool getBuiltOrNot();
-        string built(bool yesOrNo);
-        string getType();
+        QString built(bool yesOrNo);
+        QString getType();
     private:
-        string name;
-        string yearInvented;
+        QString name;
+        int yearInvented;
         bool builtOrNot;
-        string type;
+        QString type;
 };
 
 

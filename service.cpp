@@ -37,7 +37,9 @@ void Service::addScientist(vector<Scientist>& vec)
     Scientist temp(tempName,tempYob, tempYod, tempGender);
 
     vec.push_back(temp);
-}*/
+}
+*/
+
 // print out the scientists
 void Service::displayAll(vector<Scientist> vec)
 {
@@ -46,46 +48,17 @@ void Service::displayAll(vector<Scientist> vec)
         cout << vec[i] << endl;
     }
 }
-/*
+
 // sorts the list
-vector<string> Service::sortVector(vector<Scientist> vec, bool desc, int typeOfSort)
+void Service::sort(vector<Scientist>& vec, QString command)
 {
-    vector<string> temp;
-    if (typeOfSort == 1 || typeOfSort == 2)
-    {
-        for(size_t i = 0; i < vec.size(); i++) {
-            temp.push_back(vec[i].getName());
-        }
-        sort(temp.begin(), temp.end());
-        if (desc)
-        {
-            reverse(temp.begin(), temp.end());
-        }
-    }
-    else if (typeOfSort == 3 || typeOfSort == 4)
-    {
-        for(size_t i = 0; i < vec.size(); i++) {
-            temp.push_back(vec[i].getYob());
-        }
-        sort(temp.begin(), temp.end());
-        if (desc)
-        {
-            reverse(temp.begin(), temp.end());
-        }
-    }
-    else if (typeOfSort == 5)
-    {
-        for(size_t i = 0; i < vec.size(); i++) {
-            temp.push_back(vec[i].getGender());
-        }
-        sort(temp.begin(), temp.end());
-        if (desc)
-        {
-            reverse(temp.begin(), temp.end());
-        }
-    }
-    return temp;
+    database data;
+    data.createSciVec(vec, command);
+    displayAll(vec);
+
 }
+
+/*
 // delete scientist from the list
 void Service::deleteScientist(vector<Scientist>& vec, string nameToDelete)
 {
@@ -234,14 +207,15 @@ string Service::enterGender()
     return tempGender;
 }
 // reads the file
-void Service::readFile(vector<Scientist>& vec)
+void Service::getData(vector<Scientist>& vec)
 {
     database db;
-    //db.readFile(vec);
+    db.getDatabase();
+    db.createSciVec();
 }
 // writes the file into the file
 void Service::writeFile(vector<Scientist> vec)
 {
     database db;
-    //db.writeFile(vec);
-    */
+    //db.writeFile(vec);*/
+
