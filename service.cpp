@@ -5,10 +5,9 @@ Service::Service()
 
 }
 //adds scientists to the list
-void Service::addScientist(QString name, int yob, int yod, QString gender)
+void Service::addScientist(QString name, QString yob, QString yod, QString gender)
 {   
-    QString command = "INSERT INTO Scientists(Name, YearOfBirth, YearOfDeath, Gender) VALUES('"
-            + name + "'," + yob + "," + yod + ",'" + gender + "')";
+    QString command = "INSERT INTO Scientists (Name, YearOfBirth, YearOfDeath, Gender) VALUES ('" + name + "'," + yob + "," + yod + ",'" + gender + "')";
     database data;
     data.addData(command);
 }

@@ -14,7 +14,7 @@ class Service
 {
 public:
     Service();
-    void addScientist(QString name, int yob, int yod, QString gender);
+    void addScientist(QString name, QString yob, QString yod, QString gender);
     //Scientist getScientist(int num);
     void displayAll(vector<Scientist> vec);
     void sort(vector<Scientist>& vec, QString command);

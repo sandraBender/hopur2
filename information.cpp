@@ -174,19 +174,19 @@ void Information::order(vector<Scientist> vec)
         break;
     case'3':
         cout << "List sorted ascendingly by year of birth:" << endl;
-        command = "SELECT * FROM Scientists ORDER BY YearOfBirth";
+        command = "SELECT * FROM Scientists ORDER BY YearOfBirth, name";
         serv.sort(vec, command);
         compSciOrLink();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl;
-        command = "SELECT * FROM Scientists ORDER BY YearOfBirth DESC";
+        command = "SELECT * FROM Scientists ORDER BY YearOfBirth DESC, name";
         serv.sort(vec, command);
         compSciOrLink();
         break;
     case'5':
         cout << "List sorted by gender (Female first):" << endl;
-        command = "SELECT * FROM Scientists ORDER BY gender";
+        command = "SELECT * FROM Scientists ORDER BY gender, name";
         serv.sort(vec, command);
         compSciOrLink();
         break;
@@ -256,8 +256,7 @@ void Information::addScientist(){
     
     QTextStream qtin(stdin);
     
-    QString name, gender;
-    int yod, yob;
+    QString name, gender, yod, yob;
     const string alive = "0";
 
     cout << "Name: ";
@@ -266,11 +265,11 @@ void Information::addScientist(){
 
 
     cout << "Year of birth: ";
-        cin >> yob;
+    qtin >> yob;
     
 
     cout << "Year of death: ";
-        cin >> yod;
+    qtin >> yod;
  
 
     cout << "Gender: ";
