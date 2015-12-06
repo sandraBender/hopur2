@@ -8,10 +8,11 @@ Information::Information()
 void Information::displayOpening(){
     cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
          << "- - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - -" << endl
-         << "  This program keeps information about computer scientists " << endl
-         << "       You can add  or remove a scientist from the list" << endl
-         << "   You can change the order in which the list is diplayed" << endl
-         << "              And you can search through the list  " << endl;
+         << "  This program keeps information about computers or  scientists " << endl
+         << "              You can add  or remove from the lists" << endl
+         << "   You can change the order in which the lists is diplayed" << endl
+         << "         You can link computer and scientist together"
+         << "             And you can search through the list  " << endl;
     compSciOrLink();
 }
 void Information::compSciOrLink(){
