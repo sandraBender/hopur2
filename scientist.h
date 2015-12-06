@@ -6,29 +6,30 @@
 #include <vector>
 #include <cmath>
 #include <stdlib.h>
-#include "Computer.h"
+#include <QCoreApplication>
+#include <QtSql>
 
 using namespace std;
 
 class Scientist {
     public:
         Scientist();
-        Scientist(string Name, string YearOfBirth, string YearOfDeath, string Gender);
+        Scientist(QString Name, int YearOfBirth, int YearOfDeath, QString Gender);
         friend ostream& operator <<(ostream& outs, Scientist sci);
         void operator =(const Scientist& t);
-        string getName();
-        string getGender();
+        QString getName();
+        QString getGender();
         int getAge();
-        string getYob();
-        string getYod();
+        int getYob();
+        int getYod();
         int checkAge();
         void editScientist(vector<Scientist>& vec, string nameToEdit, string name, string yearOfBirth, string yearOfDeath, string gender, int age);
     private:
-        string name;
-        string gender;
+        QString name;
+        QString gender;
         int age;
-        string yearOfBirth;
-        string yearOfDeath;
+        int yearOfBirth;
+        int yearOfDeath;
 };
 
 

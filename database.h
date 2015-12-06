@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include <QCoreApplication>
 #include <QtSql>
+#include "computer.h"
+
 
 
 class database
@@ -17,6 +19,7 @@ public:
     database();
     void getDatabase();
     void printList(QString command);
+    void createSciVec(vector<Scientist>& vec, QString command);
     /*void readFile(vector<Scientist>& vec);
     void writeFile(vector<Scientist> vec);
     void writeFileApp(Scientist temp);*/

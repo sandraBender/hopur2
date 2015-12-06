@@ -1,6 +1,6 @@
 #include "Scientist.h"
 
-Scientist::Scientist(string Name, string YearOfBirth, string YearOfDeath, string Gender)
+Scientist::Scientist(QString Name, int YearOfBirth, int YearOfDeath, QString Gender)
 {
     name = Name;
     gender = Gender;
@@ -13,17 +13,17 @@ Scientist::Scientist()
 {
     name = "";
     gender = "";
-    yearOfBirth = "";
-    yearOfDeath = "";
+    yearOfBirth = 0;
+    yearOfDeath = 0;
     age = 0;
 }
 
-string Scientist::getName()
+QString Scientist::getName()
 {
     return name;
 }
 
-string Scientist::getGender()
+QString Scientist::getGender()
 {
     return gender;
 }
@@ -33,36 +33,34 @@ int Scientist::getAge()
     return age;
 }
 
-string Scientist::getYob()
+int Scientist::getYob()
 {
     return yearOfBirth;
 }
 
-string Scientist::getYod()
+int Scientist::getYod()
 {
     return yearOfDeath;
 }
 // Checkes the age of the scientists
 int Scientist::checkAge()
 {
-    int intYod = atoi(yearOfDeath.c_str());
-    int intYob = atoi(yearOfBirth.c_str());
 
-    if (intYod == 0)
-        age =  2015 - intYob;
+    if (yearOfDeath == 0)
+        age =  2015 - yearOfBirth;
     else
-        age = intYob - intYod;
+        age = yearOfBirth - yearOfDeath;
 
     return abs(age);
 }
 
 ostream& operator <<(ostream& outs, Scientist sci)
 {
-    outs << "Name: " << sci.getName() << endl;
-    outs << "Year of birth: " << sci.getYob() << endl;
-    outs << "Year of death: " << sci.getYod() << endl;
-    outs << "Gender: " << sci.getGender() << endl;
-    outs << "Age: " << sci.getAge() << endl;
+    qDebug() << "Name: " << sci.getName() << endl;
+    qDebug() << "Year of birth: " << sci.getYob() << endl;
+    qDebug() << "Year of death: " << sci.getYod() << endl;
+    qDebug() << "Gender: " << sci.getGender() << endl;
+    qDebug() << "Age: " << sci.getAge() << endl;
 
     return outs;
 }

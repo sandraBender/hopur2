@@ -136,7 +136,7 @@ void Information::addDelete(vector<Scientist>& vec){
             cout << "Enter the full name of a scientist to remove:" << endl;
             cin.ignore(4, '\n');
             getline(cin, nameToDelete);
-            serv.deleteScientist(vec, nameToDelete);
+            //serv.deleteScientist(vec, nameToDelete);
             cout << nameToDelete << " has now been removed." << endl;
             instructions();
             break;
@@ -160,33 +160,39 @@ void Information::order(vector<Scientist> vec)
     cin >> number;
     cout << endl;
     switch (number) {
-    case'1':
+    case'1':{
+        QString command = "SELECT * FROM Scientists ORDER BY name";
+        database data;
+        data.getDatabase();
+        data.createSciVec(vec, command);
         cout << "List sorted in alphabetical order:" << endl;
-        temp = serv.sortVector(vec, false, 1);
-        matchName(vec, temp);
+        //temp = serv.sortVector(vec, false, 1);
+        //matchName(vec, temp);
+
+        serv.displayAll(vec);
         instructions();
-        break;
+        break;}
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl;
-        temp = serv.sortVector(vec, true, 2);
+        //temp = serv.sortVector(vec, true, 2);
         matchName(vec, temp);
         instructions();
         break;
     case'3':
         cout << "List sorted ascendingly by year of birth:" << endl;
-        temp = serv.sortVector(vec, false, 3);
+        //temp = serv.sortVector(vec, false, 3);
         matchYob(vec, temp);
         instructions();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl;
-        temp = serv.sortVector(vec, true, 4);
+        //temp = serv.sortVector(vec, true, 4);
         matchYob(vec, temp);
         instructions();
         break;
     case'5':
         cout << "List sorted by gender (Female first):" << endl;
-        temp = serv.sortVector(vec, false, 5);
+        //temp = serv.sortVector(vec, false, 5);
         matchGender(vec, temp, 0);
         instructions();
         break;
@@ -215,7 +221,7 @@ void Information::search(vector<Scientist> vec)
         cout << "Enter a name to search for: " << endl;
         cin >> searchStr;
         cout << endl << "Search results: " << endl;
-        temp = serv.search(vec, searchStr, 1);
+        //temp = serv.search(vec, searchStr, 1);
         matchName(vec, temp);
         instructions();
         break;
@@ -223,7 +229,7 @@ void Information::search(vector<Scientist> vec)
         cout << "Enter a year of birth to search for: " << endl;
         cin >> searchStr;
         cout << endl << "Search results: " << endl;
-        temp = serv.search(vec, searchStr, 2);
+        //temp = serv.search(vec, searchStr, 2);
         matchYob(vec, temp);
         instructions();
         break;
@@ -231,7 +237,7 @@ void Information::search(vector<Scientist> vec)
         cout << "Enter an age to search for: " << endl;
         cin >> searchStr;
         cout << endl << "Search results: " << endl;
-        temp = serv.search(vec, searchStr, 3);
+        //temp = serv.search(vec, searchStr, 3);
         matchAge(vec, temp);
         instructions();
         break;
@@ -239,7 +245,7 @@ void Information::search(vector<Scientist> vec)
         cout << "Enter either 'M' or 'F' to search by gender:" << endl;
         cin >> searchStr;
         cout << endl << "Search results: " << endl;
-        temp = serv.search(vec, searchStr, 4);
+        //temp = serv.search(vec, searchStr, 4);
         matchGender(vec, temp, 1);
         instructions();
         break;
@@ -262,7 +268,7 @@ void Information::addScientist(vector<Scientist>& vec){
     cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
     cout << "In gender, enter 'M' for male or 'F' for female"<< endl;
 
-    serv.addScientist(vec);
+    //serv.addScientist(vec);
 }
 
 // Prints out the scientists
@@ -284,8 +290,8 @@ void Information::matchName(vector<Scientist> sc, vector<string> str)
     {
         for (size_t j = 0; j < sc.size(); j++)
         {
-            size_t found = str[i].find(sc[j].getName());
-            if (found != -1)
+      //      size_t found = str[i].find(sc[j].getName());
+        //    if (found != -1)
             {
                 cout << sc[j] << endl;
             }
@@ -329,7 +335,7 @@ void Information::matchGender(vector<Scientist> sc, vector<string> str, int sort
     {
         for (size_t i = 0; i < sc.size(); i++)
         {
-            if (sc[i].getGender().find(str[0]) == 0)
+          //  if (sc[i].getGender().find(str[0]) == 0)
             {
                 cout << endl << sc[i] << endl;
             }
@@ -339,14 +345,14 @@ void Information::matchGender(vector<Scientist> sc, vector<string> str, int sort
     {
         for (size_t i = 0; i < sc.size(); i++)
         {
-            if (sc[i].getGender().compare(fe) == 0)
+            //if (sc[i].getGender().compare(fe) == 0)
             {
                 cout << sc[i];
             }
         }
         for (size_t i = 0; i < sc.size(); i++)
         {
-            if (sc[i].getGender().compare(ma) == 0)
+            //if (sc[i].getGender().compare(ma) == 0)
             {
                 cout << sc[i];
             }
@@ -379,11 +385,11 @@ void Information::matchAge(vector<Scientist> sc, vector<string> str)
 void Information::readFile(vector<Scientist>& vec)
 {
     Service serv;
-    serv.readFile(vec);
+    //serv.readFile(vec);
 }
 
 void Information::writeFile(vector<Scientist> vec)
 {
     Service serv;
-    serv.writeFile(vec);
+    //serv.writeFile(vec);
 }

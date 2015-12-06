@@ -22,18 +22,33 @@ void database::getDatabase(){
 
 
 
-void database::printList(QString command){
+void database::createSciVec(vector<Scientist>& vec, QString command){
 
+vector<Scientist> tempVec;
+QSqlQueryModel model;
+  model.setQuery(command);
 
-QSqlQuery query(command);
+    for (int i = 0; i < model.rowCount(); ++i) {
+         QString name = model.record(i).value("Name").toString();
+         int yob = model.record(i).value("YearOfBirth").toInt();
+         int yod = model.record(i).value("YearOfDeath").toInt();
+         QString gender = model.record(i).value("Gender").toString();
+         Scientist temp(name, yob, yod, gender);
+         tempVec.push_back(temp);
+  }
+    vec = tempVec;
+    }
 
 //query.exec("SELECT * FROM Scientists");
-while (query.next()) {
-            QString name = query.value(1).toString();
+
+/*for(unsigned int i = 0; i <  )
+    while (query.next()) {
+            temp[] = query.value(1).toString();
             int yob = query.value(2).toInt();
             int yod = query.value(3).toInt();
             QString gender = query.value(4).toString();
 
-            qDebug() << name << yob << yod << gender;}
-}
+            qDebug() << name << yob << yod << gender;}*/
+
+
 

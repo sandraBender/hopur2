@@ -4,6 +4,7 @@ Service::Service()
 {
 
 }
+/*
 // adds scientists to the list
 void Service::addScientist(vector<Scientist>& vec)
 {
@@ -36,7 +37,7 @@ void Service::addScientist(vector<Scientist>& vec)
     Scientist temp(tempName,tempYob, tempYod, tempGender);
 
     vec.push_back(temp);
-}
+}*/
 // print out the scientists
 void Service::displayAll(vector<Scientist> vec)
 {
@@ -45,6 +46,7 @@ void Service::displayAll(vector<Scientist> vec)
         cout << vec[i] << endl;
     }
 }
+/*
 // sorts the list
 vector<string> Service::sortVector(vector<Scientist> vec, bool desc, int typeOfSort)
 {
@@ -242,4 +244,4 @@ void Service::writeFile(vector<Scientist> vec)
 {
     database db;
     //db.writeFile(vec);
-}
+    */
