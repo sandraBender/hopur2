@@ -12,8 +12,10 @@ class Information
 public:
     Information();
     void displayOpening();
-    void instructions(vector<Scientist>& vec);
-    void choices(vector<Scientist>& vec);
+    void instructions();
+    void compSciOrLink();
+    void compSciOrLinkChoice();
+    void choices();
     void choiceChange(vector<Scientist>& vec);
     void choiceSort(vector<Scientist>& vec);
     void addDelete(vector<Scientist>& vec);

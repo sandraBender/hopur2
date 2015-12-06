@@ -12,26 +12,51 @@ void Information::displayOpening(){
          << "       You can add  or remove a scientist from the list" << endl
          << "   You can change the order in which the list is diplayed" << endl
          << "              And you can search through the list  " << endl;
-    vector<Scientist> vec;
-    instructions(vec);
+    compSciOrLink();
+}
+void Information::compSciOrLink(){
+    cout << endl << "Do you want to work with computers, scientists og link them together? " << endl
+         << "Press 1 for computer " << endl
+         << "Press 2 for Scientist " << endl
+         << "Press 3 for linking " << endl;
+    compSciOrLinkChoice();
+}
+void Information::compSciOrLinkChoice(){
+    char number;
+    cin >> number;
+    cout << endl;
+    switch (number) {
+    case'1':
+        instructions();
+        break;
+    case '2':
+        instructions();
+        choices();
+        break;
+    case '3':
+        //kallar á linking fallið
+        break;
+    default:{
+        cout << "This is invalid choice!! " << endl;
+        compSciOrLink();
+        break;}
+    }
+
 }
 
-
  // This function askes for the first choices
-void Information::instructions(vector<Scientist>& vec){
-    readFile(vec);
+void Information::instructions(){
     cout << endl << "What do you want to do? " << endl
          << "Press 1 to make changes to the list." << endl
          << "Press 2 to display the list." << endl
          << "Press 3 to search." << endl
          << "Press 4 to quit and save."<< endl;
-
-    choices(vec);
 }
 
 
 // let the user pick the choices and calls the next function
-void Information::choices(vector<Scientist>& vec){
+void Information::choices(){
+    vector<Scientist> vec;
     char number;
     cin >> number;
     cout << endl;
@@ -52,7 +77,7 @@ void Information::choices(vector<Scientist>& vec){
         }
     default:{
         cout << "This is invalid choice!! " << endl;
-        choices(vec);
+        choices();
         break;}
     }
 }
@@ -104,7 +129,7 @@ void Information::addDelete(vector<Scientist>& vec){
         case'1':{
             addScientist(vec);
             cout << endl << "--Scientist added to database!--" << endl;
-            instructions(vec);
+            instructions();
             break;}
         case'2':
             cout << "Enter the full name of a scientist to remove:" << endl;
@@ -112,10 +137,10 @@ void Information::addDelete(vector<Scientist>& vec){
             getline(cin, nameToDelete);
             serv.deleteScientist(vec, nameToDelete);
             cout << nameToDelete << " has now been removed." << endl;
-            instructions(vec);
+            instructions();
             break;
         case'3':
-            instructions(vec);
+            instructions();
             break;
         default:
             cout << "This is invalid choice! Please try again!" << endl;
@@ -138,34 +163,34 @@ void Information::order(vector<Scientist> vec)
         cout << "List sorted in alphabetical order:" << endl;
         temp = serv.sortVector(vec, false, 1);
         matchName(vec, temp);
-        instructions(vec);
+        instructions();
         break;
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl;
         temp = serv.sortVector(vec, true, 2);
         matchName(vec, temp);
-        instructions(vec);
+        instructions();
         break;
     case'3':
         cout << "List sorted ascendingly by year of birth:" << endl;
         temp = serv.sortVector(vec, false, 3);
         matchYob(vec, temp);
-        instructions(vec);
+        instructions();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl;
         temp = serv.sortVector(vec, true, 4);
         matchYob(vec, temp);
-        instructions(vec);
+        instructions();
         break;
     case'5':
         cout << "List sorted by gender (Female first):" << endl;
         temp = serv.sortVector(vec, false, 5);
         matchGender(vec, temp, 0);
-        instructions(vec);
+        instructions();
         break;
     case'6':
-        instructions(vec);
+        instructions();
         break;
     default:
         cout << "This is invalid choice " << endl;
@@ -191,7 +216,7 @@ void Information::search(vector<Scientist> vec)
         cout << endl << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 1);
         matchName(vec, temp);
-        instructions(vec);
+        instructions();
         break;
     case'2':
         cout << "Enter a year of birth to search for: " << endl;
@@ -199,7 +224,7 @@ void Information::search(vector<Scientist> vec)
         cout << endl << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 2);
         matchYob(vec, temp);
-        instructions(vec);
+        instructions();
         break;
     case'3':                                         // VIRKAR EKKI, VANTAR matchAge()
         cout << "Enter an age to search for: " << endl;
@@ -207,7 +232,7 @@ void Information::search(vector<Scientist> vec)
         cout << endl << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 3);
         matchAge(vec, temp);
-        instructions(vec);
+        instructions();
         break;
     case'4':
         cout << "Enter either 'M' or 'F' to search by gender:" << endl;
@@ -215,10 +240,10 @@ void Information::search(vector<Scientist> vec)
         cout << endl << "Search results: " << endl;
         temp = serv.search(vec, searchStr, 4);
         matchGender(vec, temp, 1);
-        instructions(vec);
+        instructions();
         break;
     case'5':
-        instructions(vec);
+        instructions();
         break;
     default:
         cout << endl << "This is invalid choice!" << endl;
