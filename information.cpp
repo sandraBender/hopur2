@@ -63,7 +63,7 @@ void Information::choices(){
     cout << endl;
     switch (number) {
     case'1':
-        choiceChange(vec);
+        choiceChange();
         break;
     case'2':
         choiceSort(vec);
@@ -85,12 +85,12 @@ void Information::choices(){
 
 
 // If the users wants to change something this function askes what kind of change
-void Information::choiceChange(vector<Scientist>& vec){
+void Information::choiceChange(){
     cout << "Here you can add or remove from the list." << endl
          << "Press 1 to add a person." << endl
          << "Press 2 to delete." << endl
          << "Press 3 to go back." << endl;
-    addDelete(vec);
+    addDelete();
 }
 
 
@@ -119,10 +119,11 @@ void Information::choiceSearch(vector<Scientist>& vec){
 
 
 // If the user wants to add, delete og change anything he pickes one here
-void Information::addDelete(vector<Scientist>& vec){
+void Information::addDelete(){
     Service serv;
     char number;
     string nameToDelete = "";
+    QString table = "Scientists";
     cin >> number;
     cout << endl;
     switch (number) {
@@ -131,20 +132,27 @@ void Information::addDelete(vector<Scientist>& vec){
             cout << endl << "--Scientist added to database!--" << endl;
             compSciOrLink();
             break;}
-        case'2':
+    case'2':{
             cout << "Enter the full name of a scientist to remove:" << endl;
-            cin.ignore(4, '\n');
-            getline(cin, nameToDelete);
-            //serv.deleteScientist(vec, nameToDelete);
-            cout << nameToDelete << " has now been removed." << endl;
-            instructions();
-            break;
+            cin.ignore();
+            getline(cin,nameToDelete);
+            QString name = QString::fromStdString(nameToDelete);
+            cout << "Are you sure you want to delete this Scientist (y/n)? This can not be undone" << endl;
+                    char choice;
+                    cin >> choice;
+                    if(choice == 'y'){
+                        serv.deleteScientist(table, name);
+                        cout << nameToDelete << " has now been removed." << endl;}
+                    else
+                        choiceChange();
+            compSciOrLink();
+            break;}
         case'3':
             instructions();
             break;
         default:
             cout << "This is invalid choice! Please try again!" << endl;
-            addDelete(vec);
+            addDelete();
             break;
         }
     }
@@ -207,13 +215,17 @@ void Information::search(vector<Scientist> vec)
     QTextStream qtin(stdin);
     Service serv;
     char number;
+    string namesearch;
     QString searchStr;
     cin >> number;
     cout << endl;
     switch (number) {
     case'1':{
         cout << "Enter a name to search for: " << endl;
-        qtin >> searchStr;
+        cin.ignore();
+        getline(cin,namesearch);
+        searchStr = QString::fromStdString(namesearch);
+
         command = "SELECT * FROM Scientists WHERE name LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl;
         serv.sort(vec, command);
@@ -261,7 +273,10 @@ void Information::addScientist(){
 
     cout << "Name: ";
     cin.ignore();
-    qtin >> name;
+    string tempname;
+    getline(cin,tempname);
+    name = QString::fromStdString(tempname);
+
 
 
     cout << "Year of birth: ";

@@ -9,7 +9,7 @@ void Service::addScientist(QString name, QString yob, QString yod, QString gende
 {   
     QString command = "INSERT INTO Scientists (Name, YearOfBirth, YearOfDeath, Gender) VALUES ('" + name + "'," + yob + "," + yod + ",'" + gender + "')";
     database data;
-    data.addData(command);
+    data.editData(command);
 }
 
 
@@ -23,7 +23,7 @@ void Service::displayAll(vector<Scientist> vec)
 }
 
 // sorts the list
-void Service::sort(vector<Scientist>& vec, QString command)
+void Service::sort(vector<Scientist>& vec, QString command) //Setja if-setningu til ad vilja a milli sci og comp
 {
     database data;
     data.createSciVec(vec, command);
@@ -31,21 +31,14 @@ void Service::sort(vector<Scientist>& vec, QString command)
 
 }
 
-
-/*
 // delete scientist from the list
-void Service::deleteScientist(vector<Scientist>& vec, string nameToDelete)
+void Service::deleteScientist(QString table, QString name)
 {
-    for(size_t i = 0; i < vec.size(); i++)
-    {
-        if (vec[i].getName().compare(nameToDelete) == 0)
-        {
-            vec.erase(vec.begin() + i);
-            return;
-        }
-    }
+    QString command = "DELETE FROM " + table +" WHERE name = '" + name + "'";
+    database data;
+    data.editData(command);
 }
-
+/*
 
 // reads the file
 void Service::getData(vector<Scientist>& vec)

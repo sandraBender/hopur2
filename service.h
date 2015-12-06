@@ -18,11 +18,8 @@ public:
     //Scientist getScientist(int num);
     void displayAll(vector<Scientist> vec);
     void sort(vector<Scientist>& vec, QString command);
-    //void deleteScientist(vector<Scientist>& vec, string nameToDelete);
+    void deleteScientist(QString table, QString name);
     //vector<string> search(vector<Scientist> vec, string searchStr, int typeOfSearch);
-    //string enterName();
-    //string enterYear();
-    //string enterGender();
     //void readFile(vector<Scientist>& vec);
     //void writeFile(vector<Scientist> vec);
 };

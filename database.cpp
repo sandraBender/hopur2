@@ -61,7 +61,7 @@ QSqlQueryModel model;
     db.close();
     }
 
-void database::addData(QString command){
+void database::editData(QString command){
     getDatabase();
     QSqlQuery query;
     query.exec(command);
