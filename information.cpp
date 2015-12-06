@@ -112,9 +112,8 @@ void Information::choiceSearch(vector<Scientist>& vec){
     cout << "What do you want to search for?" << endl
          << "Press 1 to search by name." << endl
          << "Press 2 to search by birth year." << endl
-         << "Press 3 to search by age." << endl
-         << "Press 4 to search by gender." << endl
-         << "Press 5 if you want to go back." << endl;
+         << "Press 3 to search by gender." << endl
+         << "Press 4 if you want to go back." << endl;
     search(vec);
 }
 
@@ -205,47 +204,39 @@ void Information::order(vector<Scientist> vec)
 //If the user wants to search for something, he pickes the way here
 void Information::search(vector<Scientist> vec)
 {
+    QTextStream qtin(stdin);
     Service serv;
     char number;
-    vector<string> temp;
-    string searchStr;
+    QString searchStr;
     cin >> number;
     cout << endl;
     switch (number) {
-    case'1':
+    case'1':{
         cout << "Enter a name to search for: " << endl;
-        cin >> searchStr;
+        qtin >> searchStr;
+        command = "SELECT * FROM Scientists WHERE name LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl;
-        //temp = serv.search(vec, searchStr, 1);
-        matchName(vec, temp);
-        instructions();
-        break;
-    case'2':
+        serv.sort(vec, command);
+        compSciOrLink();
+        break;}
+    case'2':{
         cout << "Enter a year of birth to search for: " << endl;
-        cin >> searchStr;
+        qtin >> searchStr;
+        command = "SELECT * FROM Scientists WHERE YearOfBirth LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl;
-        //temp = serv.search(vec, searchStr, 2);
-        matchYob(vec, temp);
-        instructions();
-        break;
-    case'3':                                         // VIRKAR EKKI, VANTAR matchAge()
-        cout << "Enter an age to search for: " << endl;
-        cin >> searchStr;
-        cout << endl << "Search results: " << endl;
-        //temp = serv.search(vec, searchStr, 3);
-        matchAge(vec, temp);
-        instructions();
-        break;
-    case'4':
+        serv.sort(vec, command);
+        compSciOrLink();
+        break;}
+    case'3':{
         cout << "Enter either 'M' or 'F' to search by gender:" << endl;
-        cin >> searchStr;
+        qtin >> searchStr;
+        command = "SELECT * FROM Scientists WHERE gender LIKE " + searchStr;
         cout << endl << "Search results: " << endl;
-        //temp = serv.search(vec, searchStr, 4);
-        matchGender(vec, temp, 1);
-        instructions();
-        break;
-    case'5':
-        instructions();
+        serv.sort(vec, command);
+        compSciOrLink();
+        break;}
+    case'4':
+        compSciOrLink();
         break;
     default:
         cout << endl << "This is invalid choice!" << endl;

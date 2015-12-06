@@ -38,6 +38,8 @@ QSqlQueryModel model;
          tempVec.push_back(temp);
   }
     vec = tempVec;
+    QSqlDatabase db;
+    db.close();
     }
 
 void database::createCompVec(vector<Computer>& vec, QString command){
@@ -55,7 +57,10 @@ QSqlQueryModel model;
          //tempVec.push_back(temp);
   }
     vec = tempVec;
+    QSqlDatabase db;
+    db.close();
     }
+
 
 //query.exec("SELECT * FROM Scientists");
 
