@@ -22,5 +22,4 @@ HEADERS += \
     computer.h
 
 DISTFILES += \
-    input.csv \
-    ../build-Verklegt-1-Unnamed-Debug/output.csv
+    database.sqlite \
