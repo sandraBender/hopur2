@@ -16,6 +16,7 @@ class database
 public:
     database();
     void getDatabase();
+    void printList(QString command);
     /*void readFile(vector<Scientist>& vec);
     void writeFile(vector<Scientist> vec);
     void writeFileApp(Scientist temp);*/
