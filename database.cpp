@@ -61,6 +61,14 @@ QSqlQueryModel model;
     db.close();
     }
 
+void database::addData(QString command){
+    getDatabase();
+    QSqlQuery query;
+    query.exec(command);
+    QSqlDatabase db;
+    db.close();
+
+}
 
 //query.exec("SELECT * FROM Scientists");
 

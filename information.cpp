@@ -73,7 +73,7 @@ void Information::choices(){
          break;
     case'4':
         {
-        writeFile(vec);
+        //writeFile(vec);
             return;
         }
     default:{
@@ -127,9 +127,9 @@ void Information::addDelete(vector<Scientist>& vec){
     cout << endl;
     switch (number) {
         case'1':{
-            addScientist(vec);
+            addScientist();
             cout << endl << "--Scientist added to database!--" << endl;
-            instructions();
+            compSciOrLink();
             break;}
         case'2':
             cout << "Enter the full name of a scientist to remove:" << endl;
@@ -248,13 +248,40 @@ void Information::search(vector<Scientist> vec)
 
 
 // gives the instructions about adding a scientist
-void Information::addScientist(vector<Scientist>& vec){
+void Information::addScientist(){
     Service serv;
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
     cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
     cout << "In gender, enter 'M' for male or 'F' for female"<< endl;
+    
+    QTextStream qtin(stdin);
+    
+    QString name, gender;
+    int yod, yob;
+    const string alive = "0";
 
-    //serv.addScientist(vec);
+    cout << "Name: ";
+    cin.ignore();
+    qtin >> name;
+
+
+    cout << "Year of birth: ";
+        cin >> yob;
+    
+
+    cout << "Year of death: ";
+        cin >> yod;
+ 
+
+    cout << "Gender: ";
+    qtin >> gender;
+        if(gender == "m")
+            gender = "M";
+        else if(gender == "f")
+            gender = "F";
+    
+    
+    serv.addScientist(name, yob, yod, gender);
 }
 
 // Prints out the scientists
@@ -264,118 +291,5 @@ void Information::displayAll(vector<Scientist> vec){
         cout << vec[i];
         cout << endl;}
 }
-// Match the search/sorted name vector to vector of Scientists
-void Information::matchName(vector<Scientist> sc, vector<string> str)
-{
-    if (str.empty())
-    {
-        cout << endl << "Your search string did not match any name!" << endl;
-        return;
-    }
-    for(size_t i = 0; i < str.size(); i++)
-    {
-        for (size_t j = 0; j < sc.size(); j++)
-        {
-      //      size_t found = str[i].find(sc[j].getName());
-        //    if (found != -1)
-            {
-                cout << sc[j] << endl;
-            }
-        }
-    }
-}
 
 
-// Match the search/sorted year of birth vector to vector of Scientists
-void Information::matchYob(vector<Scientist> sc, vector<string> str)
-{
-    if (str.empty())
-    {
-        cout << endl << "Your search string did not match any year of birth!" << endl;
-        return;
-    }
-    for(size_t i = 0; i < str.size(); i++)
-    {
-        for (size_t j = 0; j < sc.size(); j++)
-        {
-            size_t found = str[i].find(sc[j].getYob());
-            if (found != -1)
-            {
-                cout << sc[j] << endl;
-            }
-        }
-    }
-}
-
-// Match the search/sorted gender vector to vector of Scientists
-void Information::matchGender(vector<Scientist> sc, vector<string> str, int sortORfind)
-{
-    string fe = "F";
-    string ma = "M";
-    if (str.empty())
-    {
-        cout << endl << "Your search string did not match any gender!" << endl;
-        return;
-    }
-    if (sortORfind)
-    {
-        for (size_t i = 0; i < sc.size(); i++)
-        {
-          //  if (sc[i].getGender().find(str[0]) == 0)
-            {
-                cout << endl << sc[i] << endl;
-            }
-        }
-    }
-    else if(!sortORfind)
-    {
-        for (size_t i = 0; i < sc.size(); i++)
-        {
-            //if (sc[i].getGender().compare(fe) == 0)
-            {
-                cout << sc[i];
-            }
-        }
-        for (size_t i = 0; i < sc.size(); i++)
-        {
-            //if (sc[i].getGender().compare(ma) == 0)
-            {
-                cout << sc[i];
-            }
-        }
-    }
-}
-
-
-// Match the search/sorted age vector to vector of Scientists
-void Information::matchAge(vector<Scientist> sc, vector<string> str)
-{
-    if (str.empty())
-    {
-        cout << endl << "Your search string did not match any age!" << endl;
-        return;
-    }
-    for(size_t i = 0; i < str.size(); i++)
-    {
-        for (size_t j = 0; j < sc.size(); j++)
-        {
-            string age = static_cast<ostringstream*>( &(ostringstream() << sc[j].getAge()) )->str();
-            if (str[i].compare(age) == 0)
-            {
-                cout << sc[j] << endl;
-            }
-        }
-    }
-}
-
-void Information::readFile(vector<Scientist>& vec)
-{
-    Service serv;
-    //serv.readFile(vec);
-}
-
-void Information::writeFile(vector<Scientist> vec)
-{
-    Service serv;
-    //serv.writeFile(vec);
-}
