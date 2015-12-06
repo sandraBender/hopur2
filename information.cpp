@@ -137,7 +137,7 @@ void Information::addDelete(){
             cin.ignore();
             getline(cin,nameToDelete);
             QString name = QString::fromStdString(nameToDelete);
-            cout << "Are you sure you want to delete this Scientist (y/n)? This can not be undone" << endl;
+            cout << "Are you sure you want to delete this Scientist (This can not be undone) (y/n)?" << endl;
                     char choice;
                     cin >> choice;
                     if(choice == 'y'){
