@@ -2,8 +2,10 @@
 
 int main()
 {
-    Information info;
-    info.displayOpening();
+    database data;
+    data.getDatabase();
+    //Information info;
+    //info.displayOpening();
 
    return 0;
 }
