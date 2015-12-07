@@ -11,6 +11,12 @@ void Service::addScientist(string name, string yob, string yod, string gender)
     database data;
     data.editData(command);
 }
+void Service::addComputer(string name, string buildYear, string type)
+{
+    string command = "INSERT INTO Computers (Name, BuildYear, Type) VALUES ('" + name + "'," + buildYear + "," + type + "')";
+    database data;
+    data.editData(command);
+}
 
 
 /*// print out the scientists --------------> Information á að sjá um cout
@@ -31,12 +37,13 @@ void Service::sort(vector<Scientist>& vec, string command) //Setja if-setningu t
 }
 
 // delete scientist from the list
-void Service::deleteScientist(string table, string name)
+void Service::deleteData(string table, string name)
 {
     string command = "DELETE FROM " + table +" WHERE name = '" + name + "'";
     database data;
     data.editData(command);
 }
+
 /*
 
 // reads the file
