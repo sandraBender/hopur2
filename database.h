@@ -18,13 +18,9 @@ class database
 public:
     database();
     void getDatabase();
-    //void printList(QString command);
     void createSciVec(vector<Scientist>& vec, string command);
     void createCompVec(vector<Computer>& vec, string command);
     void editData(string command);
-    /*void readFile(vector<Scientist>& vec);
-    void writeFile(vector<Scientist> vec);
-    void writeFileApp(Scientist temp);*/
 };
 
 #endif // DATABASE_H

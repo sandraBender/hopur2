@@ -55,8 +55,7 @@ void Information::instructions()
     cout << endl << "What do you want to do? " << endl
          << "Press 1 to make changes to the list." << endl
          << "Press 2 to display the list." << endl
-         << "Press 3 to search." << endl
-         << "Press 4 to quit and save."<< endl;
+         << "Press 3 to search." << endl;
 }
 
 
@@ -88,11 +87,6 @@ void Information::choices(char num)         //        1 == computer
             choiceSearch(num);
 
         break;
-    case'4':
-        {
-        //writeFile(vec);
-            return;
-        }
     default:{
         cout << "This is invalid choice!! " << endl;
         choices(num);
@@ -132,7 +126,7 @@ void Information::choiceSort(char number)
          << "Press 4 to order by birth year (descending)." << endl
          << "Press 5 to arrange by gender." << endl
          << "Press 6 to go back."  << endl;
-         orderComp();
+         orderSci();
     }
     else if (number == '1'){
         cout << "How do you want the list to be displayed?" << endl
@@ -141,7 +135,7 @@ void Information::choiceSort(char number)
              << "Press 3 to order by build year (ascending)." << endl
              << "Press 4 to order by build year (descending)." << endl
              << "Press 5 to go back."  << endl;
-              orderSci();
+              orderComp();
         }
 }
 
@@ -192,7 +186,7 @@ void Information::addDeleteSci()
                     char choice;
                     cin >> choice;
                     if(choice == 'y'){
-                        serv.deleteScientist(table, nameToDelete);
+                        serv.deleteData(table, nameToDelete);
                         cout << nameToDelete << " has now been removed." << endl;}
                     else
                         choiceChangeSci();
@@ -213,7 +207,7 @@ void Information::addDeleteComp()
     Service serv;
     char number;
     string nameToDelete = "";
-    string table = "Computer";
+    string table = "Computers";
     cin >> number;
     cout << endl;
     switch (number) {
@@ -230,16 +224,15 @@ void Information::addDeleteComp()
                     char choice;
                     cin >> choice;
                     if(choice == 'y'){
-                        //serv.deleteScientist(table, nameToDelete);      eyða tölvu
-                        cout << "This function has not been made";
-                        //cout << nameToDelete << " has now been removed." << endl;
+                        serv.deleteData(table, nameToDelete);
+                        cout << nameToDelete << " has now been removed." << endl;
                     }
                     else
                         choiceChangeComp();
             compSciOrLink();
             break;}
         case'3':
-            //Breyta computer hér
+            choiceChangeComp();
             break;
         default:
             cout << "This is invalid choice! Please try again!" << endl;
@@ -313,30 +306,30 @@ void Information::orderComp()
     switch (number) {
     case'1':{
         cout << "List sorted in alphabetical order:" << endl << endl;
-        command = "SELECT * FROM Scientists ORDER BY name ASC";
-        //serv.sort(vec, command);
-        //displayAll(vec);
+        command = "SELECT * FROM Computers ORDER BY name ASC";
+        serv.sortCom(vec, command);
+        displayAllComputers(vec);
         compSciOrLink();
         break;}
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl << endl;
-        command = "SELECT * FROM Computer ORDER BY name DESC";
-        //serv.sort(vec, command);
-        //displayAll(vec);
+        command = "SELECT * FROM Computers ORDER BY name DESC";
+        serv.sortCom(vec, command);
+        displayAllComputers(vec);
         compSciOrLink();
         break;
     case'3':
         cout << "List sorted ascendingly by build year:" << endl << endl;
-        command = "SELECT * FROM Computer ORDER BY BuildYear ASC, name";
-        //serv.sort(vec, command);
-        //displayAll(vec);
+        command = "SELECT * FROM Computers ORDER BY BuildYear ASC, name";
+        serv.sortCom(vec, command);
+        displayAllComputers(vec);
         compSciOrLink();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl << endl;
-        command = "SELECT * FROM Computer ORDER BY BuildYear ASC, name";
-        //serv.sort(vec, command);
-        //displayAll(vec);
+        command = "SELECT * FROM Computers ORDER BY BuildYear DESC, name";
+        serv.sortCom(vec, command);
+        displayAllComputers(vec);
         compSciOrLink();
         break;
     case'5':
@@ -400,8 +393,49 @@ void Information::searchSci()
 
 void Information::searchComp()
 {
-    cout << endl <<  "Atention this function has not been made :( " << endl;
-     compSciOrLink();
+    Service serv;
+    vector<Computer> vec;
+    char number;
+    string searchStr;
+    cin >> number;
+    cout << endl;
+    switch (number) {
+    case'1':{
+        cout << "Enter a Computer to search for: " << endl;
+        cin.ignore();
+        getline(cin,searchStr);
+        command = "SELECT * FROM Computers WHERE name LIKE '%" + searchStr + "%'";
+        cout << endl << "Search results: " << endl << endl;
+        serv.sortCom(vec, command);
+        displayAllComputers(vec);
+        compSciOrLink();
+        break;}
+    case'2':{
+        cout << "Enter a buildyear to search for: " << endl;
+        cin >> searchStr;
+        command = "SELECT * FROM Computers WHERE buildYear LIKE '%" + searchStr + "%'";
+        cout << endl << "Search results: " << endl << endl;
+        serv.sortCom(vec, command);
+        displayAllComputers(vec);
+        compSciOrLink();
+        break;}
+    case'3':{
+        cout << "Enter a type to search for: " << endl;
+        cin >> searchStr;
+        command = "SELECT * FROM Computers WHERE type LIKE " + searchStr;
+        cout << endl << "Search results: " << endl << endl;
+        serv.sortCom(vec, command);
+        displayAllComputers(vec);
+        compSciOrLink();
+        break;}
+    case'4':
+        compSciOrLink();
+        break;
+    default:
+        cout << endl << "This is invalid choice!" << endl;
+        searchSci();
+        break;
+    }
 
 }
 
@@ -452,10 +486,9 @@ void Information::addComputer()
         string type
   */
 
-    string name, toc;
-    int yearBuilt;
+    string name, toc, yearBuilt;
     char number;
-    bool built = 1;
+    string built = "1";
 
     cout << "Name: ";
     cin.ignore();
@@ -463,12 +496,12 @@ void Information::addComputer()
 
 
 
-        cout << "Year built, (0 if not built):  ";
-        cin >> yearBuilt;
-            if (yearBuilt == 0)
-                {
-                     built = 0;
-                 }
+    cout << "Year built, (0 if not built):  ";
+    cin >> yearBuilt;
+    if (yearBuilt == "0")
+          {
+            built = "0";
+          }
 
 
 
@@ -481,7 +514,7 @@ void Information::addComputer()
         toc = typeOfComputer(number);
         }   while (number != '1' & number != '2' & number != '3');
 
-    // serv.addComputer
+   serv.addComputer(name, yearBuilt, built, toc);
 }
 
 // Prints out the scientists

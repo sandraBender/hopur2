@@ -44,6 +44,7 @@ void database::createSciVec(vector<Scientist>& vec, string command)
 
 void database::createCompVec(vector<Computer>& vec, string command)
 {
+    getDatabase();
     QSqlQueryModel model;
     QString command1 = QString::fromStdString(command);
     model.setQuery(command1);
@@ -70,17 +71,3 @@ void database::editData(string command)
     db.close();
 
 }
-
-//query.exec("SELECT * FROM Scientists");
-
-/*for(unsigned int i = 0; i <  )
-    while (query.next()) {
-            temp[] = query.value(1).toString();
-            int yob = query.value(2).toInt();
-            int yod = query.value(3).toInt();
-            QString gender = query.value(4).toString();
-
-            qDebug() << name << yob << yod << gender;}*/
-
-
-

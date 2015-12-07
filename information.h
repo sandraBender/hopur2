@@ -4,6 +4,7 @@
 #include "Service.h"
 #include <string>
 #include <iostream>
+#include "computer.h"
 
 using namespace std;
 
