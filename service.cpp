@@ -11,9 +11,9 @@ void Service::addScientist(string name, string yob, string yod, string gender)
     database data;
     data.editData(command);
 }
-void Service::addComputer(string name, string buildYear, string type)
+void Service::addComputer(string name, string buildYear, string builtOrNot, string type)
 {
-    string command = "INSERT INTO Computers (Name, BuildYear, Type) VALUES ('" + name + "'," + buildYear + "," + type + "')";
+    string command = "INSERT INTO Computers (Name, BuildYear, Type) VALUES ('" + name + "','" + buildYear + "'','" + builtOrNot + "'','" + type + "')";
     database data;
     data.editData(command);
 }
