@@ -1,6 +1,6 @@
 #include "Scientist.h"
 
-Scientist::Scientist(QString Name, int YearOfBirth, int YearOfDeath, QString Gender)
+Scientist::Scientist(string Name, int YearOfBirth, int YearOfDeath, string Gender)
 {
     name = Name;
     gender = Gender;
@@ -18,12 +18,12 @@ Scientist::Scientist()
     age = 0;
 }
 
-QString Scientist::getName()
+string Scientist::getName()
 {
     return name;
 }
 
-QString Scientist::getGender()
+string Scientist::getGender()
 {
     return gender;
 }
@@ -56,11 +56,11 @@ int Scientist::checkAge()
 
 ostream& operator <<(ostream& outs, Scientist sci)
 {
-    qDebug() << "Name: " << sci.getName() << endl;
-    qDebug() << "Year of birth: " << sci.getYob() << endl;
-    qDebug() << "Year of death: " << sci.getYod() << endl;
-    qDebug() << "Gender: " << sci.getGender() << endl;
-    qDebug() << "Age: " << sci.getAge() << endl;
+    outs << "Name: " << sci.getName() << endl;
+    outs << "Year of birth: " << sci.getYob() << endl;
+    outs << "Year of death: " << sci.getYod() << endl;
+    outs << "Gender: " << sci.getGender() << endl;
+    outs << "Age: " << sci.getAge() << endl;
 
     return outs;
 }

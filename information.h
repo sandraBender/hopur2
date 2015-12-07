@@ -17,11 +17,11 @@ public:
     void compSciOrLinkChoice();
     void choices();
     void choiceChange();
-    void choiceSort(vector<Scientist>& vec);
+    void choiceSort();
     void addDelete();
-    void choiceSearch(vector<Scientist>& vec);
-    void order(vector<Scientist> vec);
-    void search(vector<Scientist> vec);
+    void choiceSearch();
+    void order();
+    void search();
     void addScientist();
     void displayScientist(int num, vector<Scientist> vec);
     void displayAll(vector<Scientist> vec);

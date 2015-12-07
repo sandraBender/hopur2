@@ -13,22 +13,21 @@ void Service::addScientist(QString name, QString yob, QString yod, QString gende
 }
 
 
-// print out the scientists
+/*// print out the scientists --------------> Information á að sjá um cout
 void Service::displayAll(vector<Scientist> vec)
 {
     cout << endl;
     for(unsigned int i = 0; i < vec.size(); i++){
         cout << vec[i] << endl;
     }
-}
+}*/
 
 // sorts the list
 void Service::sort(vector<Scientist>& vec, QString command) //Setja if-setningu til ad vilja a milli sci og comp
 {
     database data;
     data.createSciVec(vec, command);
-    displayAll(vec);
-
+    //displayAll(vec);
 }
 
 // delete scientist from the list

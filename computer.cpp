@@ -5,7 +5,7 @@ Computer::Computer()
 
 }
 
-Computer::Computer(QString Name, int YearInvented, bool Built, QString Type)
+Computer::Computer(string Name, int YearInvented, bool Built, string Type)
 {
     name = Name;
     yearInvented = YearInvented;
@@ -15,10 +15,10 @@ Computer::Computer(QString Name, int YearInvented, bool Built, QString Type)
 
 ostream& operator <<(ostream& outs, Computer comp)
 {
-    qDebug() << "Name: " << comp.getName() << endl;
-    qDebug() << "Year Invented: " << comp.getYearInvented() << endl;
-    qDebug() << "The computer was " << comp.built(comp.getBuiltOrNot()) << " built" << endl;
-    qDebug() << "The type of the computer:  " << comp.getType() << endl;
+    outs << "Name: " << comp.getName() << endl;
+    outs << "Year Invented: " << comp.getYearInvented() << endl;
+    outs << "The computer was " << comp.built(comp.getBuiltOrNot()) << " built" << endl;
+    outs << "The type of the computer:  " << comp.getType() << endl;
 
     return outs;
 }
@@ -30,7 +30,7 @@ void Computer::operator =(const Computer& c)
     builtOrNot = c.builtOrNot;
 }
 
-QString Computer::getName()
+string Computer::getName()
 {
     return name;
 }
@@ -45,7 +45,7 @@ bool Computer::getBuiltOrNot()
     return builtOrNot;
 }
 
-QString Computer::built(bool yesOrNo)
+string Computer::built(bool yesOrNo)
 {
     switch (yesOrNo)
     {
@@ -55,7 +55,7 @@ QString Computer::built(bool yesOrNo)
             return "";
     }
 }
-QString Computer::getType()
+string Computer::getType()
 {
     return type;
 }

@@ -6,8 +6,8 @@ database::database()
 
 }
 //This function accesses the database
-void database::getDatabase(){
-
+void database::getDatabase()
+{
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbName = "database.sqlite";
@@ -22,46 +22,43 @@ void database::getDatabase(){
 
 
 
-void database::createSciVec(vector<Scientist>& vec, QString command){
-
-getDatabase();
-vector<Scientist> tempVec;
-QSqlQueryModel model;
-  model.setQuery(command);
+void database::createSciVec(vector<Scientist>& vec, QString command)
+{
+    getDatabase();
+    QSqlQueryModel model;
+    model.setQuery(command);
 
     for (int i = 0; i < model.rowCount(); ++i) {
-         QString name = model.record(i).value("Name").toString();
+         string name = model.record(i).value("Name").toString().toUtf8().constData();
          int yob = model.record(i).value("YearOfBirth").toInt();
          int yod = model.record(i).value("YearOfDeath").toInt();
-         QString gender = model.record(i).value("Gender").toString();
+         string gender = model.record(i).value("Gender").toString().toUtf8().constData();
          Scientist temp(name, yob, yod, gender);
-         tempVec.push_back(temp);
-  }
-    vec = tempVec;
-    QSqlDatabase db;
-    db.close();
+         vec.push_back(temp);
     }
 
-void database::createCompVec(vector<Computer>& vec, QString command){
+    QSqlDatabase db;
+    db.close();
+}
 
-
-vector<Computer> tempVec;
-QSqlQueryModel model;
-  model.setQuery(command);
+void database::createCompVec(vector<Computer>& vec, QString command)
+{
+    QSqlQueryModel model;
+    model.setQuery(command);
 
     for (int i = 0; i < model.rowCount(); ++i) {
-         QString name = model.record(i).value("Name").toString();
+         /*string name = model.record(i).value("Name").toString();
          int yob = model.record(i).value("BuildYear").toInt();
          QString type = model.record(i).value("Type").toString();
-         //Computer temp(name, yob, yod, gender);
-         //tempVec.push_back(temp);
-  }
-    vec = tempVec;
+         Computer temp(name, yob, yod, gender);
+         vec.push_back(temp);*/
+    }
     QSqlDatabase db;
     db.close();
-    }
+}
 
-void database::editData(QString command){
+void database::editData(QString command)
+{
     getDatabase();
     QSqlQuery query;
     query.exec(command);

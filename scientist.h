@@ -14,19 +14,19 @@ using namespace std;
 class Scientist {
     public:
         Scientist();
-        Scientist(QString Name, int YearOfBirth, int YearOfDeath, QString Gender);
+        Scientist(string Name, int YearOfBirth, int YearOfDeath, string Gender);
         friend ostream& operator <<(ostream& outs, Scientist sci);
         void operator =(const Scientist& t);
-        QString getName();
-        QString getGender();
+        string getName();
+        string getGender();
         int getAge();
         int getYob();
         int getYod();
         int checkAge();
         void editScientist(vector<Scientist>& vec, string nameToEdit, string name, string yearOfBirth, string yearOfDeath, string gender, int age);
     private:
-        QString name;
-        QString gender;
+        string name;
+        string gender;
         int age;
         int yearOfBirth;
         int yearOfDeath;
