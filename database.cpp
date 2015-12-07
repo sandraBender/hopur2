@@ -22,11 +22,12 @@ void database::getDatabase()
 
 
 
-void database::createSciVec(vector<Scientist>& vec, QString command)
+void database::createSciVec(vector<Scientist>& vec, string command)
 {
     getDatabase();
     QSqlQueryModel model;
-    model.setQuery(command);
+    QString command1 = QString::fromStdString(command);
+    model.setQuery(command1);
 
     for (int i = 0; i < model.rowCount(); ++i) {
          string name = model.record(i).value("Name").toString().toUtf8().constData();
@@ -41,10 +42,11 @@ void database::createSciVec(vector<Scientist>& vec, QString command)
     db.close();
 }
 
-void database::createCompVec(vector<Computer>& vec, QString command)
+void database::createCompVec(vector<Computer>& vec, string command)
 {
     QSqlQueryModel model;
-    model.setQuery(command);
+    QString command1 = QString::fromStdString(command);
+    model.setQuery(command1);
 
     for (int i = 0; i < model.rowCount(); ++i) {
          /*string name = model.record(i).value("Name").toString();
@@ -57,11 +59,12 @@ void database::createCompVec(vector<Computer>& vec, QString command)
     db.close();
 }
 
-void database::editData(QString command)
+void database::editData(string command)
 {
     getDatabase();
     QSqlQuery query;
-    query.exec(command);
+    QString command1 = QString::fromStdString(command);
+    query.exec(command1);
     QSqlDatabase db;
     db.close();
 

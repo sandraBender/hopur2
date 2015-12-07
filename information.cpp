@@ -132,7 +132,7 @@ void Information::addDelete()
     Service serv;
     char number;
     string nameToDelete = "";
-    QString table = "Scientists";
+    string table = "Scientists";
     cin >> number;
     cout << endl;
     switch (number) {
@@ -145,19 +145,18 @@ void Information::addDelete()
             cout << "Enter the full name of a scientist to remove:" << endl;
             cin.ignore();
             getline(cin,nameToDelete);
-            QString name = QString::fromStdString(nameToDelete);
             cout << "Are you sure you want to delete this Scientist (This can not be undone) (y/n)?" << endl;
                     char choice;
                     cin >> choice;
                     if(choice == 'y'){
-                        serv.deleteScientist(table, name);
+                        serv.deleteScientist(table, nameToDelete);
                         cout << nameToDelete << " has now been removed." << endl;}
                     else
                         choiceChange();
             compSciOrLink();
             break;}
         case'3':
-            instructions();
+            choiceChange();
             break;
         default:
             cout << "This is invalid choice! Please try again!" << endl;
@@ -226,20 +225,17 @@ void Information::order()
 //If the user wants to search for something, he pickes the way here
 void Information::search()
 {
-    QTextStream qtin(stdin);
     Service serv;
     vector<Scientist> vec;
     char number;
-    string namesearch;
-    QString searchStr;
+    string searchStr;
     cin >> number;
     cout << endl;
     switch (number) {
     case'1':{
         cout << "Enter a name to search for: " << endl;
         cin.ignore();
-        getline(cin,namesearch);
-        searchStr = QString::fromStdString(namesearch);
+        getline(cin,searchStr);
         command = "SELECT * FROM Scientists WHERE name LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
         serv.sort(vec, command);
@@ -248,7 +244,7 @@ void Information::search()
         break;}
     case'2':{
         cout << "Enter a year of birth to search for: " << endl;
-        qtin >> searchStr;
+        cin >> searchStr;
         command = "SELECT * FROM Scientists WHERE YearOfBirth LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
         serv.sort(vec, command);
@@ -257,7 +253,7 @@ void Information::search()
         break;}
     case'3':{
         cout << "Enter either 'M' or 'F' to search by gender:" << endl;
-        qtin >> searchStr;
+        cin >> searchStr;
         command = "SELECT * FROM Scientists WHERE gender LIKE " + searchStr;
         cout << endl << "Search results: " << endl << endl;
         serv.sort(vec, command);
@@ -282,30 +278,27 @@ void Information::addScientist()
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
     cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
     cout << "In gender, enter 'M' for male or 'F' for female"<< endl;
+
     
-    QTextStream qtin(stdin);
-    
-    QString name, gender, yod, yob;
+    string name, gender, yod, yob;
     const string alive = "0";
 
     cout << "Name: ";
     cin.ignore();
-    string tempname;
-    getline(cin,tempname);
-    name = QString::fromStdString(tempname);
+    getline(cin,name);
 
 
 
     cout << "Year of birth: ";
-    qtin >> yob;
+    cin >> yob;
     
 
     cout << "Year of death: ";
-    qtin >> yod;
+    cin >> yod;
  
 
     cout << "Gender: ";
-    qtin >> gender;
+    cin >> gender;
         if(gender == "m")
             gender = "M";
         else if(gender == "f")

@@ -28,7 +28,7 @@ public:
     void displaySearch(vector<Scientist> vec);
 
 private:
-    QString command;
+    string command;
 };
 
 #endif // INFORMATION_H
