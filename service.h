@@ -15,10 +15,11 @@ class Service
 public:
     Service();
     void addScientist(string name, string yob, string yod, string gender);
+    void addComputer(string name, string buildYear, string builtOrNot, string type);
     //Scientist getScientist(int num);
     void displayAll(vector<Scientist> vec);
     void sort(vector<Scientist>& vec, string command);
-    void deleteScientist(string table, string name);
+    void deleteData(string table, string name);
     //vector<string> search(vector<Scientist> vec, string searchStr, int typeOfSearch);
     //void readFile(vector<Scientist>& vec);
     //void writeFile(vector<Scientist> vec);
