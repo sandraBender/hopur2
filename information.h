@@ -15,17 +15,24 @@ public:
     void instructions();
     void compSciOrLink();
     void compSciOrLinkChoice();
-    void choices();
-    void choiceChange();
-    void choiceSort();
-    void addDelete();
-    void choiceSearch();
-    void order();
-    void search();
+    void choices(char num);
+    void choiceChangeSci();
+    void choiceChangeComp();
+    void choiceSort(char number);
+    void addDeleteSci();
+    void addDeleteComp();
+    void choiceSearch(char number);
+    void orderSci();
+    void orderComp();
+    void searchSci();
+    void searchComp();
     void addScientist();
+    void addComputer();
     void displayScientist(int num, vector<Scientist> vec);
-    void displayAll(vector<Scientist> vec);
+    void displayAllScientists(vector<Scientist> vec);
+    void displayAllComputers(vector<Computer> vec);
     void displaySearch(vector<Scientist> vec);
+    string typeOfComputer(char choice);
 
 private:
     string command;

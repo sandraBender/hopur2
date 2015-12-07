@@ -32,10 +32,11 @@ void Information::compSciOrLinkChoice()
     switch (number) {
     case'1':
         instructions();
+        choices(number);
         break;
     case '2':
         instructions();
-        choices();
+        choices(number); //scientis
         break;
     case '3':
         //kallar á linking fallið
@@ -60,7 +61,7 @@ void Information::instructions()
 
 
 // let the user pick the choices and calls the next function
-void Information::choices()
+void Information::choices(char num)         //        1 == computer
 {
     //vector<Scientist> vec;
     char number;
@@ -68,13 +69,24 @@ void Information::choices()
     cout << endl;
     switch (number) {
     case'1':
-        choiceChange();
+        if (num == '1')
+            choiceChangeComp();
+        else if (num == '2')
+            choiceChangeSci();
         break;
     case'2':
-        choiceSort();
+        if (num == '1')
+            choiceSort(num);
+        else if (num == '2')
+            choiceSort(num);
+
         break;
     case'3':
-        choiceSearch();
+        if (num == '1')
+            choiceSearch(num);
+        else if (num == '2')
+            choiceSearch(num);
+
         break;
     case'4':
         {
@@ -83,26 +95,36 @@ void Information::choices()
         }
     default:{
         cout << "This is invalid choice!! " << endl;
-        choices();
+        choices(num);
         break;}
     }
 }
 
 
 // If the users wants to change something this function askes what kind of change
-void Information::choiceChange()
+void Information::choiceChangeSci()
 {
     cout << "Here you can add or remove from the list." << endl
          << "Press 1 to add a person." << endl
-         << "Press 2 to delete." << endl
+         << "Press 2 to delete a person." << endl
          << "Press 3 to go back." << endl;
-    addDelete();
+    addDeleteSci();
+}
+
+void Information::choiceChangeComp()
+{
+    cout << "Here you can add or remove from the list." << endl
+         << "Press 1 to add a computer." << endl
+         << "Press 2 to delete a computer." << endl
+         << "Press 3 to go back." << endl;
+    addDeleteComp();   // gera fall fyrir computer
 }
 
 
 // If the user wants to see the hole list, this function askes in what way
-void Information::choiceSort()
+void Information::choiceSort(char number)
 {
+    if (number == '2'){
     cout << "How do you want the list to be displayed?" << endl
          << "Press 1 for alphabetical order A-Z." << endl
          << "Press 2 for reverse alphabetical order Z-A." << endl
@@ -110,24 +132,45 @@ void Information::choiceSort()
          << "Press 4 to order by birth year (descending)." << endl
          << "Press 5 to arrange by gender." << endl
          << "Press 6 to go back."  << endl;
-    order();
+         orderComp();
+    }
+    else if (number == '1'){
+        cout << "How do you want the list to be displayed?" << endl
+             << "Press 1 for alphabetical order A-Z." << endl
+             << "Press 2 for reverse alphabetical order Z-A." << endl
+             << "Press 3 to order by build year (ascending)." << endl
+             << "Press 4 to order by build year (descending)." << endl
+             << "Press 5 to go back."  << endl;
+              orderSci();
+        }
 }
 
 
 // If the user wants to search for something this function askes what to search for
-void Information::choiceSearch()
+void Information::choiceSearch(char number)
 {
-    cout << "What do you want to search for?" << endl
+    if (number == '1')
+    {
+        cout << "What do you want to search for?" << endl
+         << "Press 1 to search by name." << endl
+         << "Press 2 to search by build year." << endl
+         << "Press 3 if you want to go back." << endl;
+        searchComp();
+    }
+    else if (number == '2')
+    {
+        cout << "What do you want to search for?" << endl
          << "Press 1 to search by name." << endl
          << "Press 2 to search by birth year." << endl
          << "Press 3 to search by gender." << endl
          << "Press 4 if you want to go back." << endl;
-    search();
+        searchSci();
+    }
 }
 
 
 // If the user wants to add, delete og change anything he pickes one here
-void Information::addDelete()
+void Information::addDeleteSci()
 {
     Service serv;
     char number;
@@ -152,22 +195,61 @@ void Information::addDelete()
                         serv.deleteScientist(table, nameToDelete);
                         cout << nameToDelete << " has now been removed." << endl;}
                     else
-                        choiceChange();
+                        choiceChangeSci();
             compSciOrLink();
             break;}
         case'3':
-            choiceChange();
+            choiceChangeSci();
             break;
         default:
             cout << "This is invalid choice! Please try again!" << endl;
-            addDelete();
+            addDeleteSci();
             break;
     }
 }
 
+void Information::addDeleteComp()
+{
+    Service serv;
+    char number;
+    string nameToDelete = "";
+    string table = "Computer";
+    cin >> number;
+    cout << endl;
+    switch (number) {
+        case'1':{
+            addComputer();
+            cout << endl << "--Computer added to database!--" << endl;
+            compSciOrLink();
+            break;}
+        case'2':{
+            cout << "Enter the full name of a Computer to remove:" << endl;
+            cin.ignore();
+            getline(cin,nameToDelete);
+            cout << "Are you sure you want to delete this Computer (This can not be undone) (y/n)?" << endl;
+                    char choice;
+                    cin >> choice;
+                    if(choice == 'y'){
+                        //serv.deleteScientist(table, nameToDelete);      eyða tölvu
+                        cout << "This function has not been made";
+                        //cout << nameToDelete << " has now been removed." << endl;
+                    }
+                    else
+                        choiceChangeComp();
+            compSciOrLink();
+            break;}
+        case'3':
+            //Breyta computer hér
+            break;
+        default:
+            cout << "This is invalid choice! Please try again!" << endl;
+            addDeleteSci();
+            break;
+ }
+}
 
 // If the user wants to sort the list he tells the program in what kind of way here.
-void Information::order()
+void Information::orderSci()
 {
     Service serv;
     vector<Scientist> vec;
@@ -179,51 +261,97 @@ void Information::order()
         cout << "List sorted in alphabetical order:" << endl << endl;
         command = "SELECT * FROM Scientists ORDER BY name";
         serv.sort(vec, command);
-        displayAll(vec);
+        displayAllScientists(vec);
         compSciOrLink();
         break;}
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl << endl;
         command = "SELECT * FROM Scientists ORDER BY name DESC";
         serv.sort(vec, command);
-        displayAll(vec);
+        displayAllScientists(vec);
         compSciOrLink();
         break;
     case'3':
         cout << "List sorted ascendingly by year of birth:" << endl << endl;
         command = "SELECT * FROM Scientists ORDER BY YearOfBirth, name";
         serv.sort(vec, command);
-        displayAll(vec);
+        displayAllScientists(vec);
         compSciOrLink();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl << endl;
         command = "SELECT * FROM Scientists ORDER BY YearOfBirth DESC, name";
         serv.sort(vec, command);
-        displayAll(vec);
+        displayAllScientists(vec);
         compSciOrLink();
         break;
     case'5':
         cout << "List sorted by gender (Female first):" << endl << endl;
         command = "SELECT * FROM Scientists ORDER BY gender, name";
         serv.sort(vec, command);
-        displayAll(vec);
+        displayAllScientists(vec);
         compSciOrLink();
         break;
     case'6':
         instructions();
-        choices();
+        choices('2');
         break;
     default:
         cout << "This is invalid choice " << endl;
-        order();
+        orderSci();
         break;
     }
 }
 
+void Information::orderComp()
+{
+    Service serv;
+    vector<Computer> vec;
+    char number;
+    cin >> number;
+    cout << endl;
+    switch (number) {
+    case'1':{
+        cout << "List sorted in alphabetical order:" << endl << endl;
+        command = "SELECT * FROM Scientists ORDER BY name ASC";
+        //serv.sort(vec, command);
+        //displayAll(vec);
+        compSciOrLink();
+        break;}
+    case'2':
+        cout << "List sorted in reverse alphabetical order:" << endl << endl;
+        command = "SELECT * FROM Computer ORDER BY name DESC";
+        //serv.sort(vec, command);
+        //displayAll(vec);
+        compSciOrLink();
+        break;
+    case'3':
+        cout << "List sorted ascendingly by build year:" << endl << endl;
+        command = "SELECT * FROM Computer ORDER BY BuildYear ASC, name";
+        //serv.sort(vec, command);
+        //displayAll(vec);
+        compSciOrLink();
+        break;
+    case'4':
+        cout << "List sorted descendingly by year of birth:" << endl << endl;
+        command = "SELECT * FROM Computer ORDER BY BuildYear ASC, name";
+        //serv.sort(vec, command);
+        //displayAll(vec);
+        compSciOrLink();
+        break;
+    case'5':
+        instructions();
+        choices('1');
+        break;
+    default:
+        cout << "This is invalid choice " << endl;
+        orderComp();
+        break;
+    }
+}
 
 //If the user wants to search for something, he pickes the way here
-void Information::search()
+void Information::searchSci()
 {
     Service serv;
     vector<Scientist> vec;
@@ -239,7 +367,7 @@ void Information::search()
         command = "SELECT * FROM Scientists WHERE name LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
         serv.sort(vec, command);
-        displayAll(vec);
+        displayAllScientists(vec);
         compSciOrLink();
         break;}
     case'2':{
@@ -248,7 +376,7 @@ void Information::search()
         command = "SELECT * FROM Scientists WHERE YearOfBirth LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
         serv.sort(vec, command);
-        displayAll(vec);
+        displayAllScientists(vec);
         compSciOrLink();
         break;}
     case'3':{
@@ -257,7 +385,7 @@ void Information::search()
         command = "SELECT * FROM Scientists WHERE gender LIKE " + searchStr;
         cout << endl << "Search results: " << endl << endl;
         serv.sort(vec, command);
-        displayAll(vec);
+        displayAllScientists(vec);
         compSciOrLink();
         break;}
     case'4':
@@ -265,11 +393,17 @@ void Information::search()
         break;
     default:
         cout << endl << "This is invalid choice!" << endl;
-        search();
+        searchSci();
         break;
     }
 }
 
+void Information::searchComp()
+{
+    cout << endl <<  "Atention this function has not been made :( " << endl;
+     compSciOrLink();
+
+}
 
 // gives the instructions about adding a scientist
 void Information::addScientist()
@@ -307,11 +441,80 @@ void Information::addScientist()
     
     serv.addScientist(name, yob, yod, gender);
 }
+void Information::addComputer()
+{
+    Service serv;
+    cout << "Enter information about the computer whom you wish to add" << endl;
+    cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
+    /*  string name;
+        int yearInvented;
+        bool builtOrNot;
+        string type
+  */
+
+    string name, toc;
+    int yearBuilt;
+    char number;
+    bool built = 1;
+
+    cout << "Name: ";
+    cin.ignore();
+    getline(cin,name);
+
+
+
+        cout << "Year built, (0 if not built):  ";
+        cin >> yearBuilt;
+            if (yearBuilt == 0)
+                {
+                     built = 0;
+                 }
+
+
+
+    cout << "Type of computer:  " << endl
+         << "1. Electronical"<< endl
+         << "2. Mechanical"<< endl
+         << "3. Transitor"<< endl;
+    do{
+        cin >> number;
+        toc = typeOfComputer(number);
+        }   while (number != '1' & number != '2' & number != '3');
+
+    // serv.addComputer
+}
 
 // Prints out the scientists
-void Information::displayAll(vector<Scientist> vec)
+void Information::displayAllScientists(vector<Scientist> vec)
 {
     for(unsigned int i = 0; i < vec.size(); i++){
         cout << vec[i] << endl;
     }
 }
+// Prints out the computers
+void Information::displayAllComputers(vector<Computer> vec)
+{
+    for(unsigned int i = 0; i < vec.size(); i++){
+        cout << vec[i] << endl;
+    }
+}
+string Information::typeOfComputer(char choice)
+{
+    string type;
+    switch (choice) {
+        case'1':{
+                    type = "Electronical";
+            break;}
+        case'2':{
+                type = "Mechanical";
+            break;}
+        case'3':
+                type = "Transitor";
+            break;
+        default:
+            cout << "This is invalid choice! Please try again!" << endl;
+            break;
+    }
+    return type;
+}
+
