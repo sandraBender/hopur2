@@ -49,11 +49,12 @@ void database::createCompVec(vector<Computer>& vec, string command)
     model.setQuery(command1);
 
     for (int i = 0; i < model.rowCount(); ++i) {
-         /*string name = model.record(i).value("Name").toString();
-         int yob = model.record(i).value("BuildYear").toInt();
-         QString type = model.record(i).value("Type").toString();
-         Computer temp(name, yob, yod, gender);
-         vec.push_back(temp);*/
+         string name = model.record(i).value("Name").toString().toUtf8().constData();
+         int yearBuilt = model.record(i).value("BuildYear").toInt();
+         bool built  = model.record(i).value("BuiltOrNot").toBool();
+         string type = model.record(i).value("Type").toString().toUtf8().constData();
+         Computer temp(name, yearBuilt, built, type);
+         vec.push_back(temp);
     }
     QSqlDatabase db;
     db.close();
