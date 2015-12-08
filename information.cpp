@@ -538,7 +538,7 @@ void Information::deleteStuff(char number){
     vector<Computer> CompVec;
     Service serv;
     string nameToDelete;
-    char numToDelete;
+    int numToDelete;
     char choice;
 
     if(number == 1){
