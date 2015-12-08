@@ -7,26 +7,37 @@ Information::Information()
 //This function print out the opening instructions
 void Information::displayOpening()
 {
+    //opnun á database
+    Service serv;
+    bool connect = 0;
+    connect = serv.connect();
+    if (!connect)
+    {
+        cout << "Error database not opened!";
+        exit(0);
+    }
+
     cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
          << "- - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - -" << endl
          << "  This program keeps information about computers or  scientists " << endl
          << "              You can add  or remove from the lists" << endl
          << "   You can change the order in which the lists is diplayed" << endl
-         << "         You can link computer and scientist together" << endl
+         << "         You can link computer and scientist together"
          << "             And you can search through the list  " << endl;
     compSciOrLink();
 }
 void Information::compSciOrLink()
 {
     cout << endl << "Do you want to work with computers, scientists og link them together? " << endl
-         << "Press 1 for Computers " << endl
-         << "Press 2 for Scientists " << endl
-         << "Press 3 to link " << endl
-         << "Press 4 to quit "<< endl;
+         << "Press 1 for computer " << endl
+         << "Press 2 for Scientist " << endl
+         << "Press 3 for linking " << endl
+         << "Press 4 if you want to quit" << endl;
     compSciOrLinkChoice();
 }
 void Information::compSciOrLinkChoice()
 {
+    Service serv;
     char number;
     cin >> number;
     cout << endl;
@@ -41,10 +52,15 @@ void Information::compSciOrLinkChoice()
         break;
     case '3':
         //kallar á linking fallið
+        cout << "Has not been made.....yet >:-)";
+        compSciOrLink();
         break;
-    case '4':{
-        //close database fall
-        exit(1);}
+   case '4':
+        //serv.disconnect();
+        displayClosing();
+        exit(0);
+
+        break;
     default:{
         cout << "This is invalid choice!! " << endl;
         compSciOrLink();
@@ -522,7 +538,7 @@ void Information::deleteStuff(char number){
     vector<Computer> CompVec;
     Service serv;
     string nameToDelete;
-    int numToDelete;
+    char numToDelete;
     char choice;
 
     if(number == 1){
@@ -583,3 +599,19 @@ void Information::deleteStuff(char number){
                      choiceChangeComp();
         }
     }
+
+void Information::displayClosing()
+{
+    Service serv;
+    bool connected = 1;
+
+    connected = serv.disconnect();
+    if (!connected){
+        cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
+             << "- - - - - -   Thank you for using this program   - - - - - - -" << endl
+             << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
+            << "\t \t Database successfully closed!" << endl
+            << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl;
+    }
+    exit (0);
+}

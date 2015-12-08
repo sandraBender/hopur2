@@ -43,3 +43,19 @@ void Service::deleteData(char number, string name)
     database data;
     data.deleteSC(number, name);
 }
+
+bool Service::connect()
+{
+    database data;
+    return data.getDatabase();
+
+
+}
+bool Service::disconnect()
+{
+    database data;
+    return data.closeDatabase();
+}
+
+
+

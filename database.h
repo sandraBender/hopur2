@@ -17,7 +17,7 @@ class database
 {
 public:
     database();
-    void getDatabase();
+    bool getDatabase();
     void createSciVec(vector<Scientist>& vec, QString command);
     void createCompVec(vector<Computer>& vec, QString command);
     void editData(string name, string yob, string yod, string gender);
@@ -27,8 +27,7 @@ public:
     void searchSci(vector<Scientist>& vec, string searchStr ,char number);
     void searchCom(vector<Computer>& vec, string searchStr ,char number);
     void deleteSC(char number, string name);
-
-    void closeData();
+    bool closeDatabase();
 };
 
 #endif // DATABASE_H

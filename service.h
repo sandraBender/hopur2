@@ -21,6 +21,8 @@ public:
     void search(vector<Scientist>& vec, string searchStr ,char number);
     void search(vector<Computer>& vec, string searchStr ,char number);
     void deleteData(char number, string name);
+    bool connect();
+    bool disconnect();
 };
 
 #endif // SERVICE_H
