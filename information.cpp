@@ -183,7 +183,7 @@ void Information::addDeleteSci()
             compSciOrLink();
             break;}
         case'3':
-            choiceChangeSci();
+            compSciOrLink();
             break;
         default:
             cout << "This is invalid choice! Please try again!" << endl;
@@ -211,7 +211,7 @@ void Information::addDeleteComp()
             compSciOrLink();
             break;}
         case'3':
-            choiceChangeComp();
+            compSciOrLink();
             break;
         default:
             cout << "This is invalid choice! Please try again!" << endl;
