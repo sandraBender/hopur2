@@ -12,16 +12,17 @@ void Information::displayOpening()
          << "  This program keeps information about computers or  scientists " << endl
          << "              You can add  or remove from the lists" << endl
          << "   You can change the order in which the lists is diplayed" << endl
-         << "         You can link computer and scientist together"
+         << "         You can link computer and scientist together" << endl
          << "             And you can search through the list  " << endl;
     compSciOrLink();
 }
 void Information::compSciOrLink()
 {
     cout << endl << "Do you want to work with computers, scientists og link them together? " << endl
-         << "Press 1 for computer " << endl
-         << "Press 2 for Scientist " << endl
-         << "Press 3 for linking " << endl;
+         << "Press 1 for Computers " << endl
+         << "Press 2 for Scientists " << endl
+         << "Press 3 to link " << endl
+         << "Press 4 to quit "<< endl;
     compSciOrLinkChoice();
 }
 void Information::compSciOrLinkChoice()
@@ -41,6 +42,9 @@ void Information::compSciOrLinkChoice()
     case '3':
         //kallar á linking fallið
         break;
+    case '4':{
+        //close database fall
+        exit(1);}
     default:{
         cout << "This is invalid choice!! " << endl;
         compSciOrLink();
@@ -518,7 +522,7 @@ void Information::deleteStuff(char number){
     vector<Computer> CompVec;
     Service serv;
     string nameToDelete;
-    char numToDelete;
+    int numToDelete;
     char choice;
 
     if(number == 1){

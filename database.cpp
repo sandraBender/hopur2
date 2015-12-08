@@ -76,27 +76,26 @@ void database::closeData(){
 }
 void database::sortSci(vector<Scientist>& vec, char number){
     QString command;
-    database data;
     switch (number) {
     case '1':
         command = "SELECT * FROM Scientists ORDER BY name";
-        data.createSciVec(vec, command);
+        createSciVec(vec, command);
         break;
     case '2':
         command = "SELECT * FROM Scientists ORDER BY name DESC";
-        data.createSciVec(vec, command);
+        createSciVec(vec, command);
         break;
     case '3':
         command = "SELECT * FROM Scientists ORDER BY YearOfBirth ASC, name";
-        data.createSciVec(vec, command);
+        createSciVec(vec, command);
         break;
     case '4':
         command = "SELECT * FROM Scientists ORDER BY YearOfBirth DESC, name";
-        data.createSciVec(vec, command);
+        createSciVec(vec, command);
         break;
     case '5':
         command = "SELECT * FROM Scientists ORDER BY gender, name";
-        data.createSciVec(vec, command);
+        createSciVec(vec, command);
         break;
     default:
         cout << "Nothing happend!! " << endl;
@@ -105,23 +104,22 @@ void database::sortSci(vector<Scientist>& vec, char number){
 }
 void database::sortCom(vector<Computer>& vec, char number){
     QString command;
-    database data;
     switch (number) {
     case '1':
         command = "SELECT * FROM Computers ORDER BY name ASC";
-        data.createCompVec(vec, command);
+        createCompVec(vec, command);
         break;
     case '2':
         command = command = "SELECT * FROM Computers ORDER BY name DESC";;
-        data.createCompVec(vec, command);
+        createCompVec(vec, command);
         break;
     case '3':
         command = command = "SELECT * FROM Computers ORDER BY BuildYear ASC, name";
-        data.createCompVec(vec, command);
+        createCompVec(vec, command);
         break;
     case '4':
         command = "SELECT * FROM Computers ORDER BY BuildYear DESC, name";
-        data.createCompVec(vec, command);
+        createCompVec(vec, command);
         break;
     default:
         cout << "Nothing happend!! " << endl;
@@ -130,22 +128,22 @@ void database::sortCom(vector<Computer>& vec, char number){
 }
 void database::searchSci(vector<Scientist>& vec, string searchStr ,char number){
     QString command;
-    database data;
+
     switch (number) {
     case '1':{
         string temp = "SELECT * FROM Scientists WHERE name LIKE '%" + searchStr + "%'";
         command = QString::fromStdString(temp);
-        data.createSciVec(vec, command);}
+        createSciVec(vec, command);}
         break;
     case '2':{
         string temp = "SELECT * FROM Scientists WHERE YearOfBirth LIKE '%" + searchStr + "%'";
         command = QString::fromStdString(temp);
-        data.createSciVec(vec, command);}
+        createSciVec(vec, command);}
         break;
     case '3':{
         string temp = "SELECT * FROM Scientists WHERE gender LIKE " + searchStr;
         command = QString::fromStdString(temp);
-        data.createSciVec(vec, command);
+        createSciVec(vec, command);
         break;}
     default:
         cout << "Nothing happend!! " << endl;
@@ -154,22 +152,21 @@ void database::searchSci(vector<Scientist>& vec, string searchStr ,char number){
 }
 void database::searchCom(vector<Computer>& vec, string searchStr ,char number){
     QString command;
-    database data;
     switch (number) {
     case '1':{
         string temp = "SELECT * FROM Computers WHERE name LIKE '%" + searchStr + "%'";
         command = QString::fromStdString(temp);
-        data.createCompVec(vec, command);}
-        break;
+        createCompVec(vec, command);
+        break;}
     case '2':{
         string temp = "SELECT * FROM Computers WHERE buildYear LIKE '%" + searchStr + "%'";
         command = QString::fromStdString(temp);
-        data.createCompVec(vec, command);}
-        break;
+        createCompVec(vec, command);
+        break;}
     case '3':{
         string temp = "SELECT * FROM Computers WHERE type LIKE '%" + searchStr + "%'";
         command = QString::fromStdString(temp);
-        data.createCompVec(vec, command);
+        createCompVec(vec, command);
         break;}
     default:
         cout << "Nothing happend!! " << endl;
