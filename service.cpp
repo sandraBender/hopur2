@@ -19,18 +19,20 @@ void Service::addComputer(string name, string buildYear, string builtOrNot, stri
 }
 
 // sorts the list
-void Service::sort(vector<Scientist>& vec, string command) //Setja if-setningu til ad vilja a milli sci og comp
+void Service::sort(vector<Scientist>& vec, string command)
 {
     database data;
     data.createSciVec(vec, command);
     //displayAll(vec);
 }
-void Service::sortCom(vector<Computer>& vec, string command) //Setja if-setningu til ad vilja a milli sci og comp
+
+void Service::sort(vector<Computer>& vec, string command)
 {
     database data;
     data.createCompVec(vec, command);
-    //displayAll(vec);
+
 }
+
 // delete scientist from the list
 void Service::deleteData(string table, string name)
 {

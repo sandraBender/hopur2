@@ -30,10 +30,11 @@ public:
     void addScientist();
     void addComputer();
     void displayScientist(int num, vector<Scientist> vec);
-    void displayAllScientists(vector<Scientist> vec);
-    void displayAllComputers(vector<Computer> vec);
+    void displayAll(vector<Scientist> vec);
+    void displayAll(vector<Computer> vec);
     void displaySearch(vector<Scientist> vec);
     string typeOfComputer(char choice);
+    void deleteStuff(string table);
 
 private:
     string command;
