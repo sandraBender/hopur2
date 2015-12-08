@@ -24,7 +24,6 @@ void database::getDatabase()
 
 void database::createSciVec(vector<Scientist>& vec, string command)
 {
-    getDatabase();
     QSqlQueryModel model;
     QString command1 = QString::fromStdString(command);
     model.setQuery(command1);
@@ -38,13 +37,10 @@ void database::createSciVec(vector<Scientist>& vec, string command)
          vec.push_back(temp);
     }
 
-    QSqlDatabase db;
-    db.close();
 }
 
 void database::createCompVec(vector<Computer>& vec, string command)
 {
-    getDatabase();
     QSqlQueryModel model;
     QString command1 = QString::fromStdString(command);
     model.setQuery(command1);
@@ -57,17 +53,19 @@ void database::createCompVec(vector<Computer>& vec, string command)
          Computer temp(name, yearBuilt, built, type);
          vec.push_back(temp);
     }
-    QSqlDatabase db;
-    db.close();
 }
 
 void database::editData(string command)
 {
-    getDatabase();
     QSqlQuery query;
     QString command1 = QString::fromStdString(command);
     query.exec(command1);
+
+
+}
+
+void database::closeData(){
+
     QSqlDatabase db;
     db.close();
-
 }

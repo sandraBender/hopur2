@@ -21,6 +21,7 @@ public:
     void createSciVec(vector<Scientist>& vec, string command);
     void createCompVec(vector<Computer>& vec, string command);
     void editData(string command);
+    void closeData();
 };
 
 #endif // DATABASE_H

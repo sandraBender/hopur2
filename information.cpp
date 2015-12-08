@@ -542,14 +542,18 @@ void Information::deleteStuff(string table){
         command = "SELECT * FROM " + table + " WHERE Name LIKE '%" + nameToDelete + "%'";
         cout << endl << "Search results: " << endl << endl;
         serv.sort(SciVec, command);
-        if(SciVec.size() == 0){
-            cout << "No matches" << endl;
-            deleteStuff(table);}
+            if(SciVec.size() == 0){
+                cout << "No matches" << endl;
+                deleteStuff(table);}
         for(unsigned int i = 0; i < SciVec.size(); i++)
             cout << i+1 << endl << SciVec[i] << endl;
         cout << "Enter the number of the scientist you wish to remove: " << endl;
         cin >> numToDelete;
+            if(numToDelete > SciVec.size()){
+                cout << "That is an invalid choice" << endl;
+                deleteStuff(table);}
         numToDelete--;
+
         nameToDelete = SciVec[numToDelete].getName();
         cout << "Are you sure you want to delete " << nameToDelete << " from the database?";
         cout << endl << "This can not be undone! (y/n)?" << endl;
@@ -568,13 +572,16 @@ void Information::deleteStuff(string table){
         command = "SELECT * FROM " + table + " WHERE Name LIKE '%" + nameToDelete + "%'";
         cout << endl << "Search results: " << endl << endl;
         serv.sort(CompVec, command);
-        if(CompVec.size() == 0){
-            cout << "No matches" << endl;
-            deleteStuff(table);}
+            if(CompVec.size() == 0){
+                cout << "No matches" << endl;
+                deleteStuff(table);}
         for(unsigned int i = 0; i < CompVec.size(); i++)
             cout << i+1 << endl << CompVec[i] << endl;
         cout << "Enter the number of the computer you wish to remove: " << endl;
         cin >> numToDelete;
+            if(numToDelete > CompVec.size()){
+                cout << "That is an invalid choice" <<  endl;
+                deleteStuff(table);}
         numToDelete--;
         nameToDelete = CompVec[numToDelete].getName();
         cout << "Are you sure you want to delete " << nameToDelete << " from the database?";
