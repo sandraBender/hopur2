@@ -148,7 +148,8 @@ void Information::choiceSearch(char number)
         cout << "What do you want to search for?" << endl
          << "Press 1 to search by name." << endl
          << "Press 2 to search by build year." << endl
-         << "Press 3 if you want to go back." << endl;
+         << "Press 3 to search by type." << endl
+        << "Press 4 if you want to go back." << endl;
         searchComp();
     }
     else if (number == '2')
@@ -585,10 +586,5 @@ void Information::deleteStuff(string table){
                  }
                  else
                      choiceChangeComp();
+        }
     }
-    }
-
-
-
-
-
