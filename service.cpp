@@ -7,36 +7,39 @@ Service::Service()
 //adds scientists to the list
 void Service::addScientist(string name, string yob, string yod, string gender)
 {   
-    string command = "INSERT INTO Scientists (Name, YearOfBirth, YearOfDeath, Gender) VALUES ('" + name + "'," + yob + "," + yod + ",'" + gender + "')";
     database data;
-    data.editData(command);
+    data.editData(name, yob, yod, gender);
 }
 void Service::addComputer(string name, string buildYear, string builtOrNot, string type)
 {
-    string command = "INSERT INTO Computers (Name, BuildYear, builtOrNot, Type) VALUES ('" + name + "','" + buildYear + "','" + builtOrNot + "','" + type + "')";
     database data;
-    data.editData(command);
+    data.editDataComp(name, buildYear, builtOrNot, type);
 }
 
 // sorts the list
-void Service::sort(vector<Scientist>& vec, string command)
+void Service::sort(vector<Scientist>& vec, char number)
 {
     database data;
-    data.createSciVec(vec, command);
-    //displayAll(vec);
+    data.sortSci(vec, number);
 }
 
-void Service::sort(vector<Computer>& vec, string command)
+void Service::sort(vector<Computer>& vec, char number)
 {
     database data;
-    data.createCompVec(vec, command);
-
+    data.sortCom(vec, number);
+}
+void Service::search(vector<Scientist>& vec, string searchStr ,char number){
+    database data;
+    data.searchSci(vec, searchStr, number);
+}
+void Service::search(vector<Computer>& vec, string searchStr ,char number){
+    database data;
+    data.searchCom(vec, searchStr, number);
 }
 
 // delete scientist from the list
-void Service::deleteData(string table, string name)
+void Service::deleteData(char number, string name)
 {
-    string command = "DELETE FROM " + table +" WHERE Name = '" + name + "'";
     database data;
-    data.editData(command);
+    data.deleteSC(number, name);
 }

@@ -34,7 +34,7 @@ public:
     void displayAll(vector<Computer> vec);
     void displaySearch(vector<Scientist> vec);
     string typeOfComputer(char choice);
-    void deleteStuff(string table);
+    void deleteStuff(char number);
 
 private:
     string command;

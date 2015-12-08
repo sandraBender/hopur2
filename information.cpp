@@ -180,7 +180,7 @@ void Information::addDeleteSci()
             compSciOrLink();
             break;}
         case'2':{
-            deleteStuff(table);
+            deleteStuff(1);
             compSciOrLink();
             break;}
         case'3':
@@ -208,7 +208,7 @@ void Information::addDeleteComp()
             compSciOrLink();
             break;}
         case'2':{
-            deleteStuff(table);
+            deleteStuff(2);
             compSciOrLink();
             break;}
         case'3':
@@ -232,36 +232,32 @@ void Information::orderSci()
     switch (number) {
     case'1':{
         cout << "List sorted in alphabetical order:" << endl << endl;
-        command = "SELECT * FROM Scientists ORDER BY name";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;}
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl << endl;
-        command = "SELECT * FROM Scientists ORDER BY name DESC";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'3':
         cout << "List sorted ascendingly by year of birth:" << endl << endl;
-        command = "SELECT * FROM Scientists ORDER BY YearOfBirth, name";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl << endl;
-        command = "SELECT * FROM Scientists ORDER BY YearOfBirth DESC, name";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'5':
         cout << "List sorted by gender (Female first):" << endl << endl;
         command = "SELECT * FROM Scientists ORDER BY gender, name";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;
@@ -286,29 +282,25 @@ void Information::orderComp()
     switch (number) {
     case'1':{
         cout << "List sorted in alphabetical order:" << endl << endl;
-        command = "SELECT * FROM Computers ORDER BY name ASC";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;}
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl << endl;
-        command = "SELECT * FROM Computers ORDER BY name DESC";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'3':
         cout << "List sorted ascendingly by build year:" << endl << endl;
-        command = "SELECT * FROM Computers ORDER BY BuildYear ASC, name";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl << endl;
-        command = "SELECT * FROM Computers ORDER BY BuildYear DESC, name";
-        serv.sort(vec, command);
+        serv.sort(vec, number);
         displayAll(vec);
         compSciOrLink();
         break;
@@ -337,27 +329,24 @@ void Information::searchSci()
         cout << "Enter a name to search for: " << endl;
         cin.ignore();
         getline(cin,searchStr);
-        command = "SELECT * FROM Scientists WHERE name LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
-        serv.sort(vec, command);
+        serv.search(vec, searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
     case'2':{
         cout << "Enter a year of birth to search for: " << endl;
         cin >> searchStr;
-        command = "SELECT * FROM Scientists WHERE YearOfBirth LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
-        serv.sort(vec, command);
+        serv.search(vec, searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
     case'3':{
         cout << "Enter either 'M' or 'F' to search by gender:" << endl;
         cin >> searchStr;
-        command = "SELECT * FROM Scientists WHERE gender LIKE " + searchStr;
         cout << endl << "Search results: " << endl << endl;
-        serv.sort(vec, command);
+        serv.search(vec, searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
@@ -384,27 +373,24 @@ void Information::searchComp()
         cout << "Enter a Computer to search for: " << endl;
         cin.ignore();
         getline(cin,searchStr);
-        command = "SELECT * FROM Computers WHERE name LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
-        serv.sort(vec, command);
+        serv.search(vec, searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
     case'2':{
         cout << "Enter a buildyear to search for: " << endl;
         cin >> searchStr;
-        command = "SELECT * FROM Computers WHERE buildYear LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
-        serv.sort(vec, command);
+        serv.search(vec, searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
     case'3':{
         cout << "Enter a type to search for: " << endl;
         cin >> searchStr;
-        command = "SELECT * FROM Computers WHERE type LIKE '%" + searchStr + "%'";
         cout << endl << "Search results: " << endl << endl;
-        serv.sort(vec, command);
+        serv.search(vec, searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
@@ -527,31 +513,30 @@ string Information::typeOfComputer(char choice)
 }
 
 
-void Information::deleteStuff(string table){
+void Information::deleteStuff(char number){
     vector<Scientist> SciVec;
     vector<Computer> CompVec;
     Service serv;
     string nameToDelete;
-    int numToDelete;
+    char numToDelete;
     char choice;
 
-    if(table == "Scientists"){
+    if(number == 1){
         cout << "Enter the name of a scientist to remove:" << endl;
         cin.ignore();
         getline(cin,nameToDelete);
-        command = "SELECT * FROM " + table + " WHERE Name LIKE '%" + nameToDelete + "%'";
         cout << endl << "Search results: " << endl << endl;
-        serv.sort(SciVec, command);
+        serv.search(SciVec, nameToDelete, '1');
             if(SciVec.size() == 0){
                 cout << "No matches" << endl;
-                deleteStuff(table);}
+                deleteStuff(number);}
         for(unsigned int i = 0; i < SciVec.size(); i++)
             cout << i+1 << endl << SciVec[i] << endl;
         cout << "Enter the number of the scientist you wish to remove: " << endl;
         cin >> numToDelete;
             if(numToDelete > SciVec.size()){
                 cout << "That is an invalid choice" << endl;
-                deleteStuff(table);}
+                deleteStuff(number);}
         numToDelete--;
 
         nameToDelete = SciVec[numToDelete].getName();
@@ -559,7 +544,7 @@ void Information::deleteStuff(string table){
         cout << endl << "This can not be undone! (y/n)?" << endl;
                  cin >> choice;
                  if(choice == 'y'){
-                     serv.deleteData(table, nameToDelete);
+                     serv.deleteData(number, nameToDelete);
                      cout << nameToDelete << " has now been removed." << endl;
                  }
                  else
@@ -569,26 +554,25 @@ void Information::deleteStuff(string table){
         cout << "Enter the name of a computer to remove:" << endl;
         cin.ignore();
         getline(cin,nameToDelete);
-        command = "SELECT * FROM " + table + " WHERE Name LIKE '%" + nameToDelete + "%'";
         cout << endl << "Search results: " << endl << endl;
-        serv.sort(CompVec, command);
+        serv.search(CompVec, nameToDelete, '1');
             if(CompVec.size() == 0){
                 cout << "No matches" << endl;
-                deleteStuff(table);}
+                deleteStuff(number);}
         for(unsigned int i = 0; i < CompVec.size(); i++)
             cout << i+1 << endl << CompVec[i] << endl;
         cout << "Enter the number of the computer you wish to remove: " << endl;
         cin >> numToDelete;
             if(numToDelete > CompVec.size()){
                 cout << "That is an invalid choice" <<  endl;
-                deleteStuff(table);}
+                deleteStuff(number);}
         numToDelete--;
         nameToDelete = CompVec[numToDelete].getName();
         cout << "Are you sure you want to delete " << nameToDelete << " from the database?";
         cout << endl << "This can not be undone! (y/n)?" << endl;
                  cin >> choice;
                  if(choice == 'y'){
-                     serv.deleteData(table, nameToDelete);
+                     serv.deleteData(number, nameToDelete);
                      cout << nameToDelete << " has now been removed." << endl;
                  }
                  else
