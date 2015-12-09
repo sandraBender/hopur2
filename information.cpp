@@ -200,7 +200,7 @@ void Information::addDeleteSci()
             compSciOrLink();
             break;}
         case'2':{
-            deleteStuff(1);
+            deleteStuff('1');
             compSciOrLink();
             break;}
         case'3':
@@ -228,7 +228,7 @@ void Information::addDeleteComp()
             compSciOrLink();
             break;}
         case'2':{
-            deleteStuff(2);
+            deleteStuff('2');
             compSciOrLink();
             break;}
         case'3':
@@ -541,7 +541,7 @@ void Information::deleteStuff(char number){
     int numToDelete;
     char choice;
 
-    if(number == 1){
+    if(number == '1'){
         cout << "Enter the name of a scientist to remove:" << endl;
         cin.ignore();
         getline(cin,nameToDelete);
