@@ -230,12 +230,13 @@ vector<string> database::getRelations()
 {
     vector<string> vec;
     QSqlQueryModel model;
-    model.setQuery("SELECT S.Name, C.Name FROM SciCompLink SCL JOIN Scientists S on S.id = SCL.ScientistID JOIN Computers C on C.ID = SCL.ComputerID");
-
+    model.setQuery("SELECT S.Name FROM SciCompLink SCL JOIN Scientists S on S.id = SCL.ScientistID");
+    QSqlQueryModel model2;
+    model2.setQuery("SELECT C.Name FROM SciCompLink SCL JOIN Computers C on C.ID = SCL.ComputerID");
     for (int i = 0; i < model.rowCount(); ++i)
     {
          string nameSci = model.record(i).value("Name").toString().toUtf8().constData();
-         string nameComp = model.record(i).value("ID").toString().toUtf8().constData();
+         string nameComp = model2.record(i).value("Name").toString().toUtf8().constData();
          string temp = nameSci + "\t \t links to \t \t " + nameComp;
          vec.push_back(temp);
     }
