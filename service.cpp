@@ -17,24 +17,28 @@ void Service::addComputer(string name, string buildYear, string builtOrNot, stri
 }
 
 // sorts the list
-void Service::sort(vector<Scientist>& vec, char number)
+vector<Computer> Service::sortCom(char number)
 {
     database data;
-    data.sortSci(vec, number);
+    vector<Computer> vec = data.sortCom(number);
+    return vec;
 }
 
-void Service::sort(vector<Computer>& vec, char number)
+vector<Scientist> Service::sortSci(char number)
 {
     database data;
-    data.sortCom(vec, number);
+    vector<Scientist> vec = data.sortSci(number);
+    return vec;
 }
-void Service::search(vector<Scientist>& vec, string searchStr ,char number){
+vector<Computer> Service::searchCom(string searchStr ,char number){
     database data;
-    data.searchSci(vec, searchStr, number);
+    vector<Computer> vec = data.searchCom(searchStr, number);
+    return vec;
 }
-void Service::search(vector<Computer>& vec, string searchStr ,char number){
+vector<Scientist> Service::searchSci(string searchStr ,char number){
     database data;
-    data.searchCom(vec, searchStr, number);
+    vector<Scientist> vec = data.searchSci(searchStr, number);
+    return vec;
 }
 
 // delete scientist from the list
@@ -57,5 +61,15 @@ bool Service::disconnect()
     return data.closeDatabase();
 }
 
-
-
+void Service::addDeleteLink(string scientist, string computer, char number)
+{
+    database db;
+    if(number == '1')
+    {
+        db.addDeleteLink(scientist, computer, number);
+    }
+     else if(number == '2')
+    {
+        db.addDeleteLink(scientist, computer, number);
+    }
+}

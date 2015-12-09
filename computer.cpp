@@ -16,14 +16,9 @@ Computer::Computer(string Name, int YearInvented, bool Built, string Type)
 ostream& operator <<(ostream& outs, Computer comp)
 {
     outs << "Name: " << comp.getName() << endl;
-    if(comp.getYearInvented() != 0){
-        outs << "Year Invented: " << comp.getYearInvented() << endl;
-        outs << "The computer was " << comp.built(comp.getBuiltOrNot()) << " built" << endl;
-    }
-    else
-        outs << "The computer was " << comp.built(comp.getBuiltOrNot()) << " built" << endl;
-
-    outs << "The type of the computer:  " << comp.getType() << endl;
+    outs << "Year Invented: " << comp.getYearInvented() << endl;
+    outs << "The computer was" << comp.built(comp.getBuiltOrNot()) <<"built" << endl;
+    outs << "The type of the computer: " << comp.getType() << endl;
 
     return outs;
 }
@@ -55,9 +50,9 @@ string Computer::built(bool yesOrNo)
     switch (yesOrNo)
     {
         case 0:
-            return "not";
+            return " not ";
         default:
-            return "";
+            return " ";
     }
 }
 string Computer::getType()

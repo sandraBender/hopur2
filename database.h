@@ -18,16 +18,18 @@ class database
 public:
     database();
     bool getDatabase();
-    void createSciVec(vector<Scientist>& vec, QString command);
-    void createCompVec(vector<Computer>& vec, QString command);
+    vector<Scientist> createSciVec(QString command);
+    vector<Computer> createCompVec(QString command);
     void editData(string name, string yob, string yod, string gender);
     void editDataComp(string name, string buildYear, string builtOrNot, string type);
-    void sortSci(vector<Scientist> &vec, char number);
-    void sortCom(vector<Computer>& vec, char number);
-    void searchSci(vector<Scientist>& vec, string searchStr ,char number);
-    void searchCom(vector<Computer>& vec, string searchStr ,char number);
+    vector<Scientist> sortSci(char number);
+    vector<Computer> sortCom(char number);
+    vector<Scientist> searchSci(string searchStr ,char number);
+    vector<Computer> searchCom(string searchStr ,char number);
     void deleteSC(char number, string name);
     bool closeDatabase();
+    void addDeleteLink(string scientist, string computer, char number);
+    void linkChoice();
 };
 
 #endif // DATABASE_H

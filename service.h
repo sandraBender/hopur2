@@ -9,6 +9,7 @@
 #include <sstream>
 #include <ctype.h>
 #include <cctype>
+#include "computer.h"
 
 class Service
 {
@@ -16,13 +17,15 @@ public:
     Service();
     void addScientist(string name, string yob, string yod, string gender);
     void addComputer(string name, string buildYear, string builtOrNot, string type);
-    void sort(vector<Computer>& vec, char number);
-    void sort(vector<Scientist>& vec, char number);
-    void search(vector<Scientist>& vec, string searchStr ,char number);
-    void search(vector<Computer>& vec, string searchStr ,char number);
+    vector<Computer> sortCom(char number);
+    vector<Scientist> sortSci(char number);
+    vector<Scientist> searchSci(string searchStr, char number);
+    vector<Computer> searchCom(string searchStr, char number);
     void deleteData(char number, string name);
     bool connect();
     bool disconnect();
+    void addDeleteLink(string scientist, string computer, char number);
+
 };
 
 #endif // SERVICE_H

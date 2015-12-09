@@ -36,6 +36,9 @@ public:
     string typeOfComputer(char choice);
     void deleteStuff(char number);
     void displayClosing();
+    void addDeleteLink();
+    void linkChoice();
+
 
 private:
     string command;

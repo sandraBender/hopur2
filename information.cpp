@@ -28,16 +28,15 @@ void Information::displayOpening()
 }
 void Information::compSciOrLink()
 {
-    cout << endl << "Do you want to work with computers, scientists og link them together? " << endl
-         << "Press 1 for computer " << endl
+    cout << endl << "Do you want to work with computers, scientists or link them together? " << endl
+         << "Press 1 for Computer " << endl
          << "Press 2 for Scientist " << endl
-         << "Press 3 for linking " << endl
+         << "Press 3 for Linking " << endl
          << "Press 4 if you want to quit" << endl;
     compSciOrLinkChoice();
 }
 void Information::compSciOrLinkChoice()
 {
-    Service serv;
     char number;
     cin >> number;
     cout << endl;
@@ -51,9 +50,7 @@ void Information::compSciOrLinkChoice()
         choices(number); //scientis
         break;
     case '3':
-        //kallar á linking fallið
-        cout << "Has not been made.....yet >:-)";
-        compSciOrLink();
+        linkChoice();
         break;
    case '4':
         //serv.disconnect();
@@ -252,32 +249,32 @@ void Information::orderSci()
     switch (number) {
     case'1':{
         cout << "List sorted in alphabetical order:" << endl << endl;
-        serv.sort(vec, number);
+        vec = serv.sortSci(number);
         displayAll(vec);
         compSciOrLink();
         break;}
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl << endl;
-        serv.sort(vec, number);
+        vec = serv.sortSci(number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'3':
         cout << "List sorted ascendingly by year of birth:" << endl << endl;
-        serv.sort(vec, number);
+        vec = serv.sortSci(number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl << endl;
-        serv.sort(vec, number);
+        vec = serv.sortSci(number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'5':
         cout << "List sorted by gender (Female first):" << endl << endl;
         command = "SELECT * FROM Scientists ORDER BY gender, name";
-        serv.sort(vec, number);
+        serv.sortSci(number);
         displayAll(vec);
         compSciOrLink();
         break;
@@ -302,25 +299,25 @@ void Information::orderComp()
     switch (number) {
     case'1':{
         cout << "List sorted in alphabetical order:" << endl << endl;
-        serv.sort(vec, number);
+        vec = serv.sortCom(number);
         displayAll(vec);
         compSciOrLink();
         break;}
     case'2':
         cout << "List sorted in reverse alphabetical order:" << endl << endl;
-        serv.sort(vec, number);
+        vec = serv.sortCom(number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'3':
         cout << "List sorted ascendingly by build year:" << endl << endl;
-        serv.sort(vec, number);
+        vec = serv.sortCom(number);
         displayAll(vec);
         compSciOrLink();
         break;
     case'4':
         cout << "List sorted descendingly by year of birth:" << endl << endl;
-        serv.sort(vec, number);
+        vec = serv.sortCom(number);
         displayAll(vec);
         compSciOrLink();
         break;
@@ -350,7 +347,7 @@ void Information::searchSci()
         cin.ignore();
         getline(cin,searchStr);
         cout << endl << "Search results: " << endl << endl;
-        serv.search(vec, searchStr, number);
+        vec = serv.searchSci(searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
@@ -358,7 +355,7 @@ void Information::searchSci()
         cout << "Enter a year of birth to search for: " << endl;
         cin >> searchStr;
         cout << endl << "Search results: " << endl << endl;
-        serv.search(vec, searchStr, number);
+        vec = serv.searchSci(searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
@@ -366,7 +363,7 @@ void Information::searchSci()
         cout << "Enter either 'M' or 'F' to search by gender:" << endl;
         cin >> searchStr;
         cout << endl << "Search results: " << endl << endl;
-        serv.search(vec, searchStr, number);
+        serv.searchSci(searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
@@ -394,7 +391,7 @@ void Information::searchComp()
         cin.ignore();
         getline(cin,searchStr);
         cout << endl << "Search results: " << endl << endl;
-        serv.search(vec, searchStr, number);
+        vec = serv.searchCom(searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
@@ -402,7 +399,7 @@ void Information::searchComp()
         cout << "Enter a buildyear to search for: " << endl;
         cin >> searchStr;
         cout << endl << "Search results: " << endl << endl;
-        serv.search(vec, searchStr, number);
+        vec = serv.searchCom(searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
@@ -410,7 +407,7 @@ void Information::searchComp()
         cout << "Enter a type to search for: " << endl;
         cin >> searchStr;
         cout << endl << "Search results: " << endl << endl;
-        serv.search(vec, searchStr, number);
+        vec = serv.searchCom(searchStr, number);
         displayAll(vec);
         compSciOrLink();
         break;}
@@ -493,7 +490,7 @@ void Information::addComputer()
     do{
         cin >> number;
         toc = typeOfComputer(number);
-        }   while (number != '1' & number != '2' & number != '3');
+        }   while (number != '1' && number != '2' && number != '3');
 
    serv.addComputer(name, yearBuilt, built, toc);
 }
@@ -546,7 +543,7 @@ void Information::deleteStuff(char number){
         cin.ignore();
         getline(cin,nameToDelete);
         cout << endl << "Search results: " << endl << endl;
-        serv.search(SciVec, nameToDelete, '1');
+        SciVec = serv.searchSci(nameToDelete, '1');
             if(SciVec.size() == 0){
                 cout << "No matches" << endl;
                 deleteStuff(number);}
@@ -575,7 +572,7 @@ void Information::deleteStuff(char number){
         cin.ignore();
         getline(cin,nameToDelete);
         cout << endl << "Search results: " << endl << endl;
-        serv.search(CompVec, nameToDelete, '1');
+        CompVec = serv.searchCom(nameToDelete, '1');
             if(CompVec.size() == 0){
                 cout << "No matches" << endl;
                 deleteStuff(number);}
@@ -614,4 +611,53 @@ void Information::displayClosing()
             << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl;
     }
     exit (0);
+}
+
+void Information::linkChoice()
+{
+    cout << endl << "Press 1 to add a link." << endl
+         << "Press 2 to delete a link." << endl
+         << "Press 3 to go back" << endl;
+    addDeleteLink();
+}
+
+void Information::addDeleteLink()
+{
+    Service serv;
+    char number;
+    cin >> number;
+    string scientist;
+    string computer;
+    switch(number)
+    {
+        case '1':   //Add a link
+            cout << "Please enter the full name of a scientist :" << endl;
+            cin.ignore();
+            getline(cin,scientist);
+
+            cout << "Please enter the full name of a computer:" << endl;
+            cin.ignore();
+
+            getline(cin,computer);
+            serv.addDeleteLink(scientist, computer, number);
+            cout << "The link has been added!" << endl;
+            compSciOrLink();
+        case '2':   //Delete a link
+            cout << "Please enter the full name of a scientist:" << endl;
+            cin.ignore();
+            getline(cin,scientist);
+
+            cout << "Please enter the full name of a computer:" << endl;
+            cin.ignore();
+
+            getline(cin,computer);
+            serv.addDeleteLink(scientist, computer, number);
+            cout << "The link has been removed!" << endl;
+            compSciOrLink();
+        case '3': //Go back
+            compSciOrLink();
+        default:
+            cout << "This is not a valid choice! Please choose again." << endl;
+            linkChoice();
+    }
 }
