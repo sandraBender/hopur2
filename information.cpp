@@ -4,7 +4,7 @@ Information::Information()
 {
 
 }
-//This function print out the opening instructions
+//This function prints out the opening instructions
 void Information::displayOpening()
 {
     //opnun á database
@@ -26,6 +26,8 @@ void Information::displayOpening()
          << "             And you can search through the list  " << endl;
     compSciOrLink();
 }
+
+// Function displays info for initial action selection
 void Information::compSciOrLink()
 {
     cout << endl << "Do you want to work with computers, scientists or link them together? " << endl
@@ -35,6 +37,8 @@ void Information::compSciOrLink()
          << "Press 4 if you want to quit" << endl;
     compSciOrLinkChoice();
 }
+
+//Function to input and initiate initial selection of action
 void Information::compSciOrLinkChoice()
 {
     char number;
@@ -112,7 +116,7 @@ void Information::choices(char num)         //        1 == computer
 }
 
 
-// If the users wants to change something this function askes what kind of change
+// If the users wants to make changes to scientists this function askes what kind of change
 void Information::choiceChangeSci()
 {
     cout << "Here you can add or remove from the list." << endl
@@ -122,6 +126,7 @@ void Information::choiceChangeSci()
     addDeleteSci();
 }
 
+// If the users wants to make changes to Computers this function askes what kind of change
 void Information::choiceChangeComp()
 {
     cout << "Here you can add or remove from the list." << endl
@@ -155,7 +160,6 @@ void Information::choiceSort(char number)
               orderComp();
         }
 }
-
 
 // If the user wants to search for something this function askes what to search for
 void Information::choiceSearch(char number)
@@ -289,6 +293,7 @@ void Information::orderSci()
     }
 }
 
+//Function to select different sorting of computers in output
 void Information::orderComp()
 {
     Service serv;
@@ -377,6 +382,7 @@ void Information::searchSci()
     }
 }
 
+//Funtion for selecting ways to search for computers
 void Information::searchComp()
 {
     Service serv;
@@ -419,7 +425,6 @@ void Information::searchComp()
         searchSci();
         break;
     }
-
 }
 
 // gives the instructions about adding a scientist
@@ -429,7 +434,6 @@ void Information::addScientist()
     cout << "Enter information about the computer scientist whom you wish to add" << endl;
     cout << "If he/she is still alive put in '0' in 'Year of death'" << endl;
     cout << "In gender, enter 'M' for male or 'F' for female"<< endl;
-
     
     string name, gender, yod, yob;
     const string alive = "0";
@@ -438,31 +442,27 @@ void Information::addScientist()
     cin.ignore();
     getline(cin,name);
 
-
-
     cout << "Year of birth: ";
     cin >> yob;
     
-
     cout << "Year of death: ";
     cin >> yod;
  
-
     cout << "Gender: ";
     cin >> gender;
         if(gender == "m")
             gender = "M";
         else if(gender == "f")
             gender = "F";
-    
-    
+        
     serv.addScientist(name, yob, yod, gender);
 }
+
+//Function to get input to add computers
 void Information::addComputer()
 {
     Service serv;
     cout << "Enter information about the computer that you wish to add" << endl;
-
 
     string name, toc, yearBuilt;
     char number;
@@ -472,16 +472,12 @@ void Information::addComputer()
     cin.ignore();
     getline(cin,name);
 
-
-
     cout << "Year built (0 if not built):  ";
     cin >> yearBuilt;
     if (yearBuilt == "0")
           {
             built = "0";
           }
-
-
 
     cout << "Type of computer:  " << endl
          << "1. Electronical"<< endl
@@ -502,6 +498,7 @@ void Information::displayAll(vector<Scientist> vec)
         cout << vec[i] << endl;
     }
 }
+
 // Prints out the computers
 void Information::displayAll(vector<Computer> vec)
 {
@@ -509,6 +506,8 @@ void Information::displayAll(vector<Computer> vec)
         cout << vec[i] << endl;
     }
 }
+
+//Function for selection of computertypes
 string Information::typeOfComputer(char choice)
 {
     string type;
@@ -530,6 +529,7 @@ string Information::typeOfComputer(char choice)
 }
 
 
+//Function to remove selected items in vectors
 void Information::deleteStuff(char number){
     vector<Scientist> SciVec;
     vector<Computer> CompVec;
@@ -597,6 +597,7 @@ void Information::deleteStuff(char number){
         }
     }
 
+//Fuction to display EXIT comment
 void Information::displayClosing()
 {
     Service serv;
@@ -613,6 +614,7 @@ void Information::displayClosing()
     exit (0);
 }
 
+//Function to display selection of actions for linked tables of Computers and Scientists
 void Information::linkChoice()
 {
     cout << endl << "Press 1 to add a link." << endl
@@ -670,6 +672,7 @@ void Information::addDeleteLink()
             linkChoice();
     }
 }
+
 void Information::display(vector<string> vec)
 {
     for (int i =0; i <vec.size(); i++)

@@ -1,10 +1,10 @@
 #include "database.h"
 
-
 database::database()
 {
 
 }
+
 //This function accesses the database
 bool database::getDatabase()
 {
@@ -16,7 +16,7 @@ bool database::getDatabase()
     return db.open();
 }
 
-
+//Function to populate a vector of Scientists
 vector<Scientist> database::createSciVec(QString command)
 {
     vector<Scientist> vec;
@@ -34,6 +34,7 @@ vector<Scientist> database::createSciVec(QString command)
     return vec;
 }
 
+//Function to populate a vector of Computers
 vector<Computer> database::createCompVec(QString command)
 {
     vector<Computer> vec;
@@ -51,14 +52,16 @@ vector<Computer> database::createCompVec(QString command)
     return vec;
 }
 
+//Function to add entries to Scientists table
 void database::editData(string name, string yob, string yod, string gender)
 {
     QSqlQuery query;
     string command1 = "INSERT INTO Scientists (Name, YearOfBirth, YearOfDeath, Gender) VALUES ('" + name + "'," + yob + "," + yod + ",'" + gender + "')";
     QString command = QString::fromStdString(command1);
     query.exec(command);
-
 }
+
+//Function to add entries to Computers table
 void database::editDataComp(string name, string buildYear, string builtOrNot, string type)
 {
     QSqlQuery query;
@@ -67,6 +70,7 @@ void database::editDataComp(string name, string buildYear, string builtOrNot, st
     query.exec(command);
 }
 
+//Function to sort Scientists
 vector<Scientist> database::sortSci(char number){
     QString command;
     vector<Scientist> vec;
@@ -97,6 +101,7 @@ vector<Scientist> database::sortSci(char number){
     }
     return vec;
 }
+
 vector<Computer> database::sortCom(char number){
     QString command;
     vector<Computer> vec;
@@ -123,6 +128,8 @@ vector<Computer> database::sortCom(char number){
     }
     return vec;
 }
+
+//Function to sort Scientists
 vector<Scientist> database::searchSci(string searchStr ,char number){
     QString command;
     vector<Scientist> vec;
@@ -148,6 +155,8 @@ vector<Scientist> database::searchSci(string searchStr ,char number){
     }
     return vec;
 }
+
+//Function to searc for Computers
 vector<Computer> database::searchCom(string searchStr ,char number){
     vector<Computer> vec;
     QString command;
@@ -173,6 +182,8 @@ vector<Computer> database::searchCom(string searchStr ,char number){
     }
     return vec;
 }
+
+//Function to delete from Scientists
 void database::deleteSC(char number, string name){
     QSqlQuery query;
     QString command;
@@ -187,8 +198,9 @@ void database::deleteSC(char number, string name){
         command = QString::fromStdString(temp);
         query.exec(command);
     }
-
 }
+
+//Function to close the database
 bool database::closeDatabase()
 {
     QSqlDatabase db;
@@ -196,6 +208,7 @@ bool database::closeDatabase()
     return db.open();
 }
 
+//Function to add and remove relationship between Scientist and Computer
 void database::addDeleteLink(string scientist, string computer, char number) //Add = 0, delete = 1
 {
     QSqlQuery query;
@@ -226,6 +239,7 @@ void database::addDeleteLink(string scientist, string computer, char number) //A
     query.next();
 }
 
+//Function to link Scientists and Computers
 vector<string> database::getRelations()
 {
     vector<string> vec;
