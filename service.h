@@ -25,6 +25,7 @@ public:
     bool connect();
     bool disconnect();
     void addDeleteLink(string scientist, string computer, char number);
+    vector<string> getRelations();
 
 };
 

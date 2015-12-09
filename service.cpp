@@ -73,3 +73,12 @@ void Service::addDeleteLink(string scientist, string computer, char number)
         db.addDeleteLink(scientist, computer, number);
     }
 }
+
+vector<string> Service::getRelations()
+{
+    database data;
+    vector<string> vec;
+    vec = data.getRelations();
+    return vec;
+
+}

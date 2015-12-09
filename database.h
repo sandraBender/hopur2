@@ -30,6 +30,7 @@ public:
     bool closeDatabase();
     void addDeleteLink(string scientist, string computer, char number);
     void linkChoice();
+    vector<string> getRelations();
 };
 
 #endif // DATABASE_H

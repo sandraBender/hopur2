@@ -617,7 +617,8 @@ void Information::linkChoice()
 {
     cout << endl << "Press 1 to add a link." << endl
          << "Press 2 to delete a link." << endl
-         << "Press 3 to go back" << endl;
+         << "Press 3 to display Relations" <<endl
+         << "Press 4 to go back" << endl;
     addDeleteLink();
 }
 
@@ -628,6 +629,7 @@ void Information::addDeleteLink()
     cin >> number;
     string scientist;
     string computer;
+     vector<string>  vec;
     switch(number)
     {
         case '1':   //Add a link
@@ -654,10 +656,24 @@ void Information::addDeleteLink()
             serv.addDeleteLink(scientist, computer, number);
             cout << "The link has been removed!" << endl;
             compSciOrLink();
-        case '3': //Go back
+        case '3':
+            //display function
+            vec =serv.getRelations();
+            display(vec);
             compSciOrLink();
+        case '4': //Go back
+            compSciOrLink();
+            break;
+
         default:
             cout << "This is not a valid choice! Please choose again." << endl;
             linkChoice();
+    }
+}
+void Information::display(vector<string> vec)
+{
+    for (int i =0; i <vec.size(); i++)
+    {
+        cout << vec[i]<< endl;
     }
 }

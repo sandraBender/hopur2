@@ -225,3 +225,20 @@ void database::addDeleteLink(string scientist, string computer, char number) //A
     query.exec();
     query.next();
 }
+
+vector<string> database::getRelations()
+{
+    vector<string> vec;
+    QSqlQueryModel model;
+    model.setQuery("SELECT S.Name, C.Name FROM SciCompLink SCL JOIN Scientists S on S.id = SCL.ScientistID JOIN Computers C on C.ID = SCL.ComputerID");
+
+    for (int i = 0; i < model.rowCount(); ++i)
+    {
+         string nameSci = model.record(i).value("Name").toString().toUtf8().constData();
+         string nameComp = model.record(i).value("ID").toString().toUtf8().constData();
+         string temp = nameSci + "\t \t links to \t \t " + nameComp;
+         vec.push_back(temp);
+    }
+
+    return vec;
+}

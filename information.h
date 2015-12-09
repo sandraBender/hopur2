@@ -38,6 +38,7 @@ public:
     void displayClosing();
     void addDeleteLink();
     void linkChoice();
+    void display(vector<string> vec);
 
 
 private:
