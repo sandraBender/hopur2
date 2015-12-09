@@ -19,11 +19,14 @@ void Information::displayOpening()
 
     cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
          << "- - - - - - - - - - - - - - Welcome - - - - - - - - - - - - - - -" << endl
-         << "  This program keeps information about computers or  scientists " << endl
+         << endl
+         << "  This program keeps information about computers and scientists " << endl
          << "              You can add  or remove from the lists" << endl
          << "   You can change the order in which the lists is diplayed" << endl
-         << "         You can link computer and scientist together"
-         << "             And you can search through the list  " << endl;
+         << "         You can link computer and scientist together" << endl
+         << "             And you can search through the list  \n" << endl
+         << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl << endl;
+
     compSciOrLink();
 }
 
@@ -44,30 +47,29 @@ void Information::compSciOrLinkChoice()
     char number;
     cin >> number;
     cout << endl;
+
     switch (number) {
-    case'1':
-        instructions();
-        choices(number);
-        break;
-    case '2':
-        instructions();
-        choices(number); //scientis
-        break;
-    case '3':
-        linkChoice();
-        break;
-   case '4':
-        //serv.disconnect();
-        displayClosing();
-        exit(0);
-
-        break;
-    default:{
-        cout << "This is invalid choice!! " << endl;
-        compSciOrLink();
-        break;}
+        case'1':{
+            instructions();
+            choices(number);
+            break;}
+        case '2':{
+            instructions();
+            choices(number); //scientis
+            break;}
+        case '3':{
+            linkChoice();
+            break;}
+        case '4':{
+            //serv.disconnect();
+            displayClosing();
+            exit(0);
+            break;}
+        default:{
+            cout << "This is invalid choice!! " << endl;
+            compSciOrLink();
+            break;}
     }
-
 }
 
  // This function askes for the first choices
@@ -87,31 +89,30 @@ void Information::choices(char num)         //        1 == computer
     char number;
     cin >> number;
     cout << endl;
+
     switch (number) {
-    case'1':
-        if (num == '1')
-            choiceChangeComp();
-        else if (num == '2')
-            choiceChangeSci();
-        break;
-    case'2':
-        if (num == '1')
-            choiceSort(num);
-        else if (num == '2')
-            choiceSort(num);
-
-        break;
-    case'3':
-        if (num == '1')
-            choiceSearch(num);
-        else if (num == '2')
-            choiceSearch(num);
-
-        break;
-    default:{
-        cout << "This is invalid choice!! " << endl;
-        choices(num);
-        break;}
+        case'1':{
+            if (num == '1')
+                choiceChangeComp();
+            else if (num == '2')
+                choiceChangeSci();
+            break;}
+        case'2':{
+            if (num == '1')
+                choiceSort(num);
+            else if (num == '2')
+                choiceSort(num);
+            break;}
+        case'3':{
+            if (num == '1')
+                choiceSearch(num);
+            else if (num == '2')
+                choiceSearch(num);
+            break;}
+        default:{
+            cout << "This is invalid choice!! " << endl;
+            choices(num);
+            break;}
     }
 }
 
@@ -184,7 +185,6 @@ void Information::choiceSearch(char number)
     }
 }
 
-
 // If the user wants to add, delete og change anything he pickes one here
 void Information::addDeleteSci()
 {
@@ -194,6 +194,7 @@ void Information::addDeleteSci()
     string table = "Scientists";
     cin >> number;
     cout << endl;
+
     switch (number) {
         case'1':{
             addScientist();
@@ -204,13 +205,13 @@ void Information::addDeleteSci()
             deleteStuff('1');
             compSciOrLink();
             break;}
-        case'3':
+        case'3':{
             compSciOrLink();
-            break;
-        default:
+            break;}
+        default:{
             cout << "This is invalid choice! Please try again!" << endl;
             addDeleteSci();
-            break;
+            break;}
     }
 }
 
@@ -222,6 +223,7 @@ void Information::addDeleteComp()
     string table = "Computers";
     cin >> number;
     cout << endl;
+
     switch (number) {
         case'1':{
             addComputer();
@@ -232,14 +234,14 @@ void Information::addDeleteComp()
             deleteStuff('2');
             compSciOrLink();
             break;}
-        case'3':
+        case'3':{
             compSciOrLink();
-            break;
-        default:
+            break;}
+        default:{
             cout << "This is invalid choice! Please try again!" << endl;
             addDeleteSci();
-            break;
- }
+            break;}
+    }
 }
 
 // If the user wants to sort the list he tells the program in what kind of way here.
@@ -250,46 +252,47 @@ void Information::orderSci()
     char number;
     cin >> number;
     cout << endl;
+
     switch (number) {
-    case'1':{
-        cout << "List sorted in alphabetical order:" << endl << endl;
-        vec = serv.sortSci(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;}
-    case'2':
-        cout << "List sorted in reverse alphabetical order:" << endl << endl;
-        vec = serv.sortSci(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;
-    case'3':
-        cout << "List sorted ascendingly by year of birth:" << endl << endl;
-        vec = serv.sortSci(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;
-    case'4':
-        cout << "List sorted descendingly by year of birth:" << endl << endl;
-        vec = serv.sortSci(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;
-    case'5':
-        cout << "List sorted by gender (Female first):" << endl << endl;
-        command = "SELECT * FROM Scientists ORDER BY gender, name";
-        serv.sortSci(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;
-    case'6':
-        instructions();
-        choices('2');
-        break;
-    default:
-        cout << "This is invalid choice " << endl;
-        orderSci();
-        break;
+        case'1':{
+            cout << "List sorted in alphabetical order:" << endl << endl;
+            vec = serv.sortSci(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'2':{
+            cout << "List sorted in reverse alphabetical order:" << endl << endl;
+            vec = serv.sortSci(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'3':{
+            cout << "List sorted ascendingly by year of birth:" << endl << endl;
+            vec = serv.sortSci(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'4':{
+            cout << "List sorted descendingly by year of birth:" << endl << endl;
+            vec = serv.sortSci(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'5':{
+            cout << "List sorted by gender (Female first):" << endl << endl;
+            command = "SELECT * FROM Scientists ORDER BY gender, name";
+            serv.sortSci(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'6':{
+            instructions();
+            choices('2');
+            break;}
+        default:{
+            cout << "This is invalid choice " << endl;
+            orderSci();
+            break;}
     }
 }
 
@@ -301,39 +304,40 @@ void Information::orderComp()
     char number;
     cin >> number;
     cout << endl;
+
     switch (number) {
-    case'1':{
-        cout << "List sorted in alphabetical order:" << endl << endl;
-        vec = serv.sortCom(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;}
-    case'2':
-        cout << "List sorted in reverse alphabetical order:" << endl << endl;
-        vec = serv.sortCom(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;
-    case'3':
-        cout << "List sorted ascendingly by build year:" << endl << endl;
-        vec = serv.sortCom(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;
-    case'4':
-        cout << "List sorted descendingly by year of birth:" << endl << endl;
-        vec = serv.sortCom(number);
-        displayAll(vec);
-        compSciOrLink();
-        break;
-    case'5':
-        instructions();
-        choices('1');
-        break;
-    default:
-        cout << "This is invalid choice " << endl;
-        orderComp();
-        break;
+        case'1':{
+            cout << "List sorted in alphabetical order:" << endl << endl;
+            vec = serv.sortCom(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'2':{
+            cout << "List sorted in reverse alphabetical order:" << endl << endl;
+            vec = serv.sortCom(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'3':{
+            cout << "List sorted ascendingly by build year:" << endl << endl;
+            vec = serv.sortCom(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'4':{
+            cout << "List sorted descendingly by year of birth:" << endl << endl;
+            vec = serv.sortCom(number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'5':{
+            instructions();
+            choices('1');
+            break;}
+        default:{
+            cout << "This is invalid choice " << endl;
+            orderComp();
+            break;}
     }
 }
 
@@ -346,39 +350,40 @@ void Information::searchSci()
     string searchStr;
     cin >> number;
     cout << endl;
+
     switch (number) {
-    case'1':{
-        cout << "Enter a name to search for: " << endl;
-        cin.ignore();
-        getline(cin,searchStr);
-        cout << endl << "Search results: " << endl << endl;
-        vec = serv.searchSci(searchStr, number);
-        displayAll(vec);
-        compSciOrLink();
-        break;}
-    case'2':{
-        cout << "Enter a year of birth to search for: " << endl;
-        cin >> searchStr;
-        cout << endl << "Search results: " << endl << endl;
-        vec = serv.searchSci(searchStr, number);
-        displayAll(vec);
-        compSciOrLink();
-        break;}
-    case'3':{
-        cout << "Enter either 'M' or 'F' to search by gender:" << endl;
-        cin >> searchStr;
-        cout << endl << "Search results: " << endl << endl;
-        serv.searchSci(searchStr, number);
-        displayAll(vec);
-        compSciOrLink();
-        break;}
-    case'4':
-        compSciOrLink();
-        break;
-    default:
-        cout << endl << "This is invalid choice!" << endl;
-        searchSci();
-        break;
+        case'1':{
+            cout << "Enter a name to search for: " << endl;
+            cin.ignore();
+            getline(cin,searchStr);
+            cout << endl << "Search results: " << endl << endl;
+            vec = serv.searchSci(searchStr, number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'2':{
+            cout << "Enter a year of birth to search for: " << endl;
+            cin >> searchStr;
+            cout << endl << "Search results: " << endl << endl;
+            vec = serv.searchSci(searchStr, number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'3':{
+            cout << "Enter either 'M' or 'F' to search by gender:" << endl;
+            cin >> searchStr;
+            cout << endl << "Search results: " << endl << endl;
+            serv.searchSci(searchStr, number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'4':{
+            compSciOrLink();
+            break;}
+        default:{
+            cout << endl << "This is invalid choice!" << endl;
+            searchSci();
+            break;}
     }
 }
 
@@ -391,39 +396,40 @@ void Information::searchComp()
     string searchStr;
     cin >> number;
     cout << endl;
+
     switch (number) {
-    case'1':{
-        cout << "Enter a Computer to search for: " << endl;
-        cin.ignore();
-        getline(cin,searchStr);
-        cout << endl << "Search results: " << endl << endl;
-        vec = serv.searchCom(searchStr, number);
-        displayAll(vec);
-        compSciOrLink();
-        break;}
-    case'2':{
-        cout << "Enter a buildyear to search for: " << endl;
-        cin >> searchStr;
-        cout << endl << "Search results: " << endl << endl;
-        vec = serv.searchCom(searchStr, number);
-        displayAll(vec);
-        compSciOrLink();
-        break;}
-    case'3':{
-        cout << "Enter a type to search for: " << endl;
-        cin >> searchStr;
-        cout << endl << "Search results: " << endl << endl;
-        vec = serv.searchCom(searchStr, number);
-        displayAll(vec);
-        compSciOrLink();
-        break;}
-    case'4':
-        compSciOrLink();
-        break;
-    default:
-        cout << endl << "This is invalid choice!" << endl;
-        searchSci();
-        break;
+        case'1':{
+            cout << "Enter a Computer to search for: " << endl;
+            cin.ignore();
+            getline(cin,searchStr);
+            cout << endl << "Search results: " << endl << endl;
+            vec = serv.searchCom(searchStr, number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'2':{
+            cout << "Enter a buildyear to search for: " << endl;
+            cin >> searchStr;
+            cout << endl << "Search results: " << endl << endl;
+            vec = serv.searchCom(searchStr, number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'3':{
+            cout << "Enter a type to search for: " << endl;
+            cin >> searchStr;
+            cout << endl << "Search results: " << endl << endl;
+            vec = serv.searchCom(searchStr, number);
+            displayAll(vec);
+            compSciOrLink();
+            break;}
+        case'4':{
+            compSciOrLink();
+            break;}
+        default:{
+            cout << endl << "This is invalid choice!" << endl;
+            searchSci();
+            break;}
     }
 }
 
@@ -511,6 +517,7 @@ void Information::displayAll(vector<Computer> vec)
 string Information::typeOfComputer(char choice)
 {
     string type;
+
     switch (choice) {
         case'1':{
                     type = "Electronical";
@@ -518,16 +525,15 @@ string Information::typeOfComputer(char choice)
         case'2':{
                 type = "Mechanical";
             break;}
-        case'3':
+        case'3':{
                 type = "Transitor";
-            break;
-        default:
+            break;}
+        default:{
             cout << "This is invalid choice! Please try again!" << endl;
-            break;
+            break;}
     }
     return type;
 }
-
 
 //Function to remove selected items in vectors
 void Information::deleteStuff(char number){
@@ -535,7 +541,7 @@ void Information::deleteStuff(char number){
     vector<Computer> CompVec;
     Service serv;
     string nameToDelete;
-    int numToDelete;
+    unsigned int numToDelete;
     char choice;
 
     if(number == '1'){
@@ -605,11 +611,16 @@ void Information::displayClosing()
 
     connected = serv.disconnect();
     if (!connected){
+    system("cls");  //Clears the screen
+    cout << endl;
         cout << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
-             << "- - - - - -   Thank you for using this program   - - - - - - -" << endl
+             << "- - - - - - -   Thank you for using this program!   - - - - - - -" << endl
+             << endl
              << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
             << "\t \t Database successfully closed!" << endl
-            << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl;
+            << endl
+            << "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" << endl
+            << endl << endl;
     }
     exit (0);
 }
@@ -631,10 +642,10 @@ void Information::addDeleteLink()
     cin >> number;
     string scientist;
     string computer;
-     vector<string>  vec;
-    switch(number)
-    {
-        case '1':   //Add a link
+    vector<string>  vec;
+
+    switch(number)  {
+        case '1':{   //Add a link
             cout << "Please enter the full name of a scientist :" << endl;
             cin.ignore();
             getline(cin,scientist);
@@ -645,8 +656,8 @@ void Information::addDeleteLink()
             getline(cin,computer);
             serv.addDeleteLink(scientist, computer, number);
             cout << "The link has been added!" << endl;
-            compSciOrLink();
-        case '2':   //Delete a link
+            compSciOrLink();}
+        case '2':{   //Delete a link
             cout << "Please enter the full name of a scientist:" << endl;
             cin.ignore();
             getline(cin,scientist);
@@ -657,25 +668,24 @@ void Information::addDeleteLink()
             getline(cin,computer);
             serv.addDeleteLink(scientist, computer, number);
             cout << "The link has been removed!" << endl;
-            compSciOrLink();
-        case '3':
+            compSciOrLink();}
+        case '3':{
             //display function
             vec =serv.getRelations();
             display(vec);
+            compSciOrLink();}
+        case '4':{ //Go back
             compSciOrLink();
-        case '4': //Go back
-            compSciOrLink();
-            break;
-
-        default:
+            break;}
+        default:{
             cout << "This is not a valid choice! Please choose again." << endl;
-            linkChoice();
+            linkChoice();}
     }
 }
 
 void Information::display(vector<string> vec)
 {
-    for (int i =0; i <vec.size(); i++)
+    for (unsigned int i =0; i <vec.size(); i++)
     {
         cout << vec[i]<< endl;
     }

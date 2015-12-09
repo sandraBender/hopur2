@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include "computer.h"
+#include <stdlib.h>
+#include <iomanip>
 
 using namespace std;
 

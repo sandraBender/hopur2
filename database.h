@@ -1,6 +1,5 @@
 #ifndef DATABASE_H
 #define DATABASE_H
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -10,8 +9,6 @@
 #include <QCoreApplication>
 #include <QtSql>
 #include "computer.h"
-
-
 
 class database
 {

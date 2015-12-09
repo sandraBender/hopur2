@@ -74,111 +74,116 @@ void database::editDataComp(string name, string buildYear, string builtOrNot, st
 vector<Scientist> database::sortSci(char number){
     QString command;
     vector<Scientist> vec;
+
     switch (number) {
-    case '1':
-        command = "SELECT * FROM Scientists ORDER BY name";
-        vec = createSciVec(command);
-        break;
-    case '2':
-        command = "SELECT * FROM Scientists ORDER BY name DESC";
-        vec = createSciVec(command);
-        break;
-    case '3':
-        command = "SELECT * FROM Scientists ORDER BY YearOfBirth ASC, name";
-        vec = createSciVec(command);
-        break;
-    case '4':
-        command = "SELECT * FROM Scientists ORDER BY YearOfBirth DESC, name";
-        vec = createSciVec(command);
-        break;
-    case '5':
-        command = "SELECT * FROM Scientists ORDER BY gender, name";
-        vec = createSciVec(command);
-        break;
-    default:
-        cout << "Nothing happend!! " << endl;
-        break;
+        case '1':{
+            command = "SELECT * FROM Scientists ORDER BY name";
+            vec = createSciVec(command);
+            break;}
+        case '2':{
+            command = "SELECT * FROM Scientists ORDER BY name DESC";
+            vec = createSciVec(command);
+            break;}
+        case '3':{
+            command = "SELECT * FROM Scientists ORDER BY YearOfBirth ASC, name";
+            vec = createSciVec(command);
+            break;}
+        case '4':{
+            command = "SELECT * FROM Scientists ORDER BY YearOfBirth DESC, name";
+            vec = createSciVec(command);
+            break;}
+        case '5':{
+            command = "SELECT * FROM Scientists ORDER BY gender, name";
+            vec = createSciVec(command);
+            break;}
+        default:{
+            cout << "Nothing happend!! " << endl;
+            break;}
     }
     return vec;
 }
 
+//Function to sort Computers
 vector<Computer> database::sortCom(char number){
     QString command;
     vector<Computer> vec;
+
     switch (number) {
-    case '1':
-        command = "SELECT * FROM Computers ORDER BY name ASC";
-        vec = createCompVec(command);
-        break;
-    case '2':
-        command = command = "SELECT * FROM Computers ORDER BY name DESC";;
-        vec = createCompVec(command);
-        break;
-    case '3':
-        command = command = "SELECT * FROM Computers ORDER BY BuildYear ASC, name";
-        vec = createCompVec(command);
-        break;
-    case '4':
-        command = "SELECT * FROM Computers ORDER BY BuildYear DESC, name";
-        vec = createCompVec(command);
-        break;
-    default:
-        cout << "Nothing happend!! " << endl;
-        break;
+        case '1':{
+            command = "SELECT * FROM Computers ORDER BY name ASC";
+            vec = createCompVec(command);
+            break;}
+        case '2':{
+            command = command = "SELECT * FROM Computers ORDER BY name DESC";;
+            vec = createCompVec(command);
+            break;}
+        case '3':{
+            command = command = "SELECT * FROM Computers ORDER BY BuildYear ASC, name";
+            vec = createCompVec(command);
+            break;}
+        case '4':{
+            command = "SELECT * FROM Computers ORDER BY BuildYear DESC, name";
+            vec = createCompVec(command);
+            break;}
+        default:{
+            cout << "Nothing happend!! " << endl;
+            break;}
     }
     return vec;
 }
 
-//Function to sort Scientists
+//Function to search Scientists
 vector<Scientist> database::searchSci(string searchStr ,char number){
     QString command;
     vector<Scientist> vec;
+
     switch (number) {
-    case '1':{
-        string temp = "SELECT * FROM Scientists WHERE name LIKE '%" + searchStr + "%'";
-        command = QString::fromStdString(temp);
-        vec = createSciVec(command);}
-        break;
-    case '2':{
-        string temp = "SELECT * FROM Scientists WHERE YearOfBirth LIKE '%" + searchStr + "%'";
-        command = QString::fromStdString(temp);
-        vec = createSciVec(command);}
-        break;
-    case '3':{
-        string temp = "SELECT * FROM Scientists WHERE gender LIKE " + searchStr;
-        command = QString::fromStdString(temp);
-        vec = createSciVec(command);
-        break;}
-    default:
-        cout << "Nothing happend!! " << endl;
-        break;
+        case '1':{
+            string temp = "SELECT * FROM Scientists WHERE name LIKE '%" + searchStr + "%'";
+            command = QString::fromStdString(temp);
+            vec = createSciVec(command);}
+            break;
+        case '2':{
+            string temp = "SELECT * FROM Scientists WHERE YearOfBirth LIKE '%" + searchStr + "%'";
+            command = QString::fromStdString(temp);
+            vec = createSciVec(command);}
+            break;
+        case '3':{
+            string temp = "SELECT * FROM Scientists WHERE gender LIKE " + searchStr;
+            command = QString::fromStdString(temp);
+            vec = createSciVec(command);
+            break;}
+        default:{
+            cout << "Nothing happend!! " << endl;
+            break;}
     }
     return vec;
 }
 
-//Function to searc for Computers
+//Function to searc Computers
 vector<Computer> database::searchCom(string searchStr ,char number){
     vector<Computer> vec;
     QString command;
+
     switch (number) {
-    case '1':{
-        string temp = "SELECT * FROM Computers WHERE name LIKE '%" + searchStr + "%'";
-        command = QString::fromStdString(temp);
-        vec = createCompVec(command);}
-        break;
-    case '2':{
-        string temp = "SELECT * FROM Computers WHERE buildYear LIKE '%" + searchStr + "%'";
-        command = QString::fromStdString(temp);
-        vec = createCompVec(command);}
-        break;
-    case '3':{
-        string temp = "SELECT * FROM Computers WHERE type LIKE '%" + searchStr + "%'";
-        command = QString::fromStdString(temp);
-        vec = createCompVec(command);
-        break;}
-    default:
-        cout << "Nothing happend!! " << endl;
-        break;
+        case '1':{
+            string temp = "SELECT * FROM Computers WHERE name LIKE '%" + searchStr + "%'";
+            command = QString::fromStdString(temp);
+            vec = createCompVec(command);}
+            break;
+        case '2':{
+            string temp = "SELECT * FROM Computers WHERE buildYear LIKE '%" + searchStr + "%'";
+            command = QString::fromStdString(temp);
+            vec = createCompVec(command);}
+            break;
+        case '3':{
+            string temp = "SELECT * FROM Computers WHERE type LIKE '%" + searchStr + "%'";
+            command = QString::fromStdString(temp);
+            vec = createCompVec(command);
+            break;}
+        default:{
+            cout << "Nothing happend!! " << endl;
+            break;}
     }
     return vec;
 }
@@ -243,10 +248,12 @@ void database::addDeleteLink(string scientist, string computer, char number) //A
 vector<string> database::getRelations()
 {
     vector<string> vec;
+
     QSqlQueryModel model;
     model.setQuery("SELECT S.Name FROM SciCompLink SCL JOIN Scientists S on S.id = SCL.ScientistID");
     QSqlQueryModel model2;
     model2.setQuery("SELECT C.Name FROM SciCompLink SCL JOIN Computers C on C.ID = SCL.ComputerID");
+
     for (int i = 0; i < model.rowCount(); ++i)
     {
          string nameSci = model.record(i).value("Name").toString().toUtf8().constData();

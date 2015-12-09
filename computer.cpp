@@ -46,7 +46,6 @@ bool Computer::getBuiltOrNot()
 }
 
 //Function to display if a computer was built or not
-//Bool variable has value of true or false
 string Computer::built(bool yesOrNo)
 {
     switch (yesOrNo)

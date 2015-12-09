@@ -42,6 +42,7 @@ int Scientist::getYod()
 {
     return yearOfDeath;
 }
+
 // Checkes the age of the scientists
 int Scientist::checkAge()
 {
